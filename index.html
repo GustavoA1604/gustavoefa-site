@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gustavo Emanuel Faria Araujo</title>
+  <meta name="description" content="Site pessoal de Gustavo Emanuel — sobre mim e meus jogos." />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang="pt" class="lang-btn">
+          <svg class="flag" viewBox="0 0 28 20" aria-hidden="true">
+            <rect width="28" height="20" fill="#009b3a" />
+            <polygon points="14,2 26,10 14,18 2,10" fill="#fedf00" />
+            <circle cx="14" cy="10" r="4.2" fill="#002776" />
+          </svg>
+          <span>PT</span>
+        </button>
+        <span class="lang-sep">/</span>
+        <button type="button" data-lang="en" class="lang-btn">
+          <svg class="flag" viewBox="0 0 60 30" aria-hidden="true">
+            <clipPath id="uk-clip"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" /></clipPath>
+            <rect width="60" height="30" fill="#012169" />
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+            <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-clip)" stroke="#c8102e" stroke-width="4" />
+            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+            <path d="M30,0 v30 M0,15 h60" stroke="#c8102e" stroke-width="6" />
+          </svg>
+          <span>EN</span>
+        </button>
+      </div>
+      <h1>Gustavo Emanuel Faria Araujo</h1>
+      <p class="tagline" data-i18n="tagline">Desenvolvedor &amp; Gerente de software &amp; Criador de jogos</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- About -->
+    <section id="sobre" class="section">
+      <h2 data-i18n="about_title">Sobre</h2>
+      <p data-i18n="about_body">
+        Olá! Eu sou o Gustavo, desenvolvedor e gerente de software. Nas horas
+        vagas, crio alguns alguns projetos digitais e decidi reuni-los e compartilhá-los aqui.
+      </p>
+      <p class="links">
+        <a href="https://www.linkedin.com/in/gustavoefa/" target="_blank" rel="noopener noreferrer" data-i18n="about_linkedin">
+          Conecte-se comigo no LinkedIn →
+        </a>
+      </p>
+    </section>
+
+    <!-- Games -->
+    <section id="jogos" class="section">
+      <h2 data-i18n="games_title">Jogos</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Entrelinhas</h3>
+          <p data-i18n="entrelinhas_desc">Um jogo de palavras para testar o seu raciocínio.</p>
+          <a class="button" href="/entrelinhas/" data-i18n="entrelinhas_play">Jogar Entrelinhas</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>&copy; <span id="year"></span> Gustavo Emanuel Faria Araujo</p>
+  </footer>
+
+  <script>
+    const translations = {
+      pt: {
+        lang: "pt-BR",
+        title: "Gustavo Emanuel Faria Araujo",
+        tagline: "Desenvolvedor & Gerente de software & Criador de jogos",
+        about_title: "Sobre",
+        about_body:
+          "Olá! Eu sou o Gustavo, desenvolvedor e gerente de software. Nas horas vagas, crio alguns projetos digitais e decidi reuni-los e compartilhá-los aqui.",
+        about_linkedin: "Conecte-se comigo no LinkedIn →",
+        games_title: "Jogos",
+        entrelinhas_desc: "Um jogo de palavras para testar o seu raciocínio.",
+        entrelinhas_play: "Jogar Entrelinhas",
+      },
+      en: {
+        lang: "en",
+        title: "Gustavo Emanuel Faria Araujo",
+        tagline: "Software developer & Engineering manager & Game maker",
+        about_title: "About",
+        about_body:
+          "Hi! I'm Gustavo, a software developer and engineering manager. In my spare time I build small digital projects, and I decided to gather and share them here.",
+        about_linkedin: "Connect with me on LinkedIn →",
+        games_title: "Games",
+        entrelinhas_desc:
+          "A word game to test your reasoning. Note: Entrelinhas is in Portuguese only.",
+        entrelinhas_play: "Play Entrelinhas",
+      },
+    };
+
+    function applyLanguage(lang) {
+      const dict = translations[lang] || translations.pt;
+      document.documentElement.lang = dict.lang;
+      document.title = dict.title;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+      try {
+        localStorage.setItem("lang", lang);
+      } catch (e) {}
+    }
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+    });
+
+    let saved = null;
+    try {
+      saved = localStorage.getItem("lang");
+    } catch (e) {}
+    const browserPt = (navigator.language || "").toLowerCase().startsWith("pt");
+    applyLanguage(saved || (browserPt ? "pt" : "en"));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
