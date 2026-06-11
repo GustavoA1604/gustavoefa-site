@@ -8,5 +8,5 @@
   <rect width="64" height="64" rx="14" fill="url(#fav-bg)" />
   <text x="32" y="45" text-anchor="middle"
         font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
-        font-size="40" font-weight="700" fill="#0b0e1a">G</text>
+        font-size="40" font-weight="700" fill="#ffffff">G</text>
 </svg>
