@@ -532,7 +532,9 @@ function applyLanguage(lang) {
   dict.awards.forEach((t) => awards.append(el("li", null, t)));
 
   document.querySelectorAll(".lang-btn").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.lang === lang);
+    const isActive = btn.dataset.lang === lang;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-pressed", String(isActive));
   });
 
   try {

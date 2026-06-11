@@ -51,12 +51,12 @@
   <header class="hero">
     <div class="container">
       <div class="lang-switch" role="group" aria-label="Language / Idioma">
-        <button type="button" data-lang="pt" class="lang-btn">
+        <button type="button" data-lang="pt" class="lang-btn" aria-pressed="false">
           <svg class="flag" viewBox="0 0 28 20" aria-hidden="true"><use href="./assets/flags.svg#flag-br" /></svg>
           <span>PT</span>
         </button>
         <span class="lang-sep">/</span>
-        <button type="button" data-lang="en" class="lang-btn">
+        <button type="button" data-lang="en" class="lang-btn" aria-pressed="false">
           <svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><use href="./assets/flags.svg#flag-uk" /></svg>
           <span>EN</span>
         </button>
@@ -103,6 +103,8 @@
       pt: {
         lang: "pt-BR",
         title: "Gustavo Emanuel Faria Araujo",
+        description:
+          "Site pessoal de Gustavo Emanuel Faria Araujo, desenvolvedor e gerente de software, com os jogos e projetos digitais que eu crio.",
         tagline: "Desenvolvedor & Gerente de software & Criador de jogos",
         about_title: "Sobre",
         about_body:
@@ -115,6 +117,8 @@
       en: {
         lang: "en",
         title: "Gustavo Emanuel Faria Araujo",
+        description:
+          "Personal site of Gustavo Emanuel Faria Araujo, software developer and manager, featuring the digital games and projects I build.",
         tagline: "Software developer & Engineering manager & Game maker",
         about_title: "About",
         about_body:
@@ -131,12 +135,15 @@
       const dict = translations[lang] || translations.pt;
       document.documentElement.lang = dict.lang;
       document.title = dict.title;
+      document.querySelector('meta[name="description"]').content = dict.description;
       document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
         if (dict[key]) el.textContent = dict[key];
       });
       document.querySelectorAll(".lang-btn").forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.lang === lang);
+        const isActive = btn.dataset.lang === lang;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-pressed", String(isActive));
       });
       try {
         localStorage.setItem("lang", lang);
