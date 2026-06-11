@@ -4,7 +4,7 @@
 const RESUME = {
   name: "Gustavo Emanuel Faria Araujo",
   linkedin: "https://www.linkedin.com/in/gustavoefa/",
-  email: "gustavogefa@gmail.com",
+  email: "gefa.software@gmail.com",
   phone: "+55 (31) 99349-4917",
 
   pt: {
