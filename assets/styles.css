@@ -1,27 +1,8 @@
-:root {
-  --bg: #0f1220;
-  --surface: #1a1f35;
-  --text: #e8eaf2;
-  --muted: #9aa0b5;
-  --accent: #6c8cff;
-  --accent-hover: #88a2ff;
-  --radius: 14px;
-}
-
-* {
-  box-sizing: border-box;
-}
+/* Page-specific styles for the landing page. Shared tokens, reset, and the
+   language-switch component live in base.css (linked first). */
 
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
 }
 
 .container {
@@ -105,51 +86,10 @@ body {
   text-decoration: none;
 }
 
-/* Language switch */
+/* Landing-page placement of the shared switch (base.css has the look) */
 .lang-switch {
-  display: flex;
-  align-items: center;
   justify-content: flex-end;
-  gap: 0.25rem;
   margin-bottom: 1rem;
-}
-
-.lang-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: none;
-  border: none;
-  color: var(--muted);
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  padding: 0.15rem 0.35rem;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: color 0.15s ease;
-}
-
-.flag {
-  width: 1.25em;
-  height: auto;
-  border-radius: 2px;
-  display: block;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
-}
-
-.lang-btn:hover {
-  color: var(--text);
-}
-
-.lang-btn.active {
-  color: var(--accent);
-}
-
-.lang-sep {
-  color: var(--muted);
-  opacity: 0.5;
 }
 
 footer {
