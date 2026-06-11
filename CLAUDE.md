@@ -48,8 +48,9 @@ knowing the URL.
 - Layout: full-width **Summary** on top, then a two-column grid (`.resume-layout`) with the
   main text (Experience, Education, Industry) on the left and a narrow side rail (Skills,
   Languages, Awards) on the right. Collapses to one column at <=760px.
-- A **Print / Save PDF** button triggers `window.print()`; `@media print` in `resume.css`
-  restyles to clean black-on-white.
+- The toolbar has a **← Back to home** link (`.back-btn`, id `r-back`) pointing to `../`
+  (the main site). `@media print` in `resume.css` still restyles to clean black-on-white
+  for browser printing (Ctrl+P), even though there is no in-page print button.
 - Source resume PDF lives outside the repo at `D:/dev/candidaturas/resume.pdf`. It had **no
   embedded hyperlink annotations** (verified by decompressing all streams); the live links
   were supplied by the user separately and hardcoded in `resume.js`.

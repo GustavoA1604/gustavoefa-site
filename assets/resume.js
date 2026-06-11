@@ -12,13 +12,13 @@ const RESUME = {
     docTitle: "Gustavo Araujo - Currículo",
     role: "Lead Software Engineer",
     location: "Belo Horizonte, Brasil",
-    print: "Imprimir / Salvar PDF",
+    back: "← Voltar ao início",
     summaryTitle: "Resumo",
     summary:
-      "Engenheiro de Software com mais de 9 anos de experiência em deploy de IA, desenvolvimento ágil de software e gestão de projetos, atuando com diversos frameworks. Possuo bacharelado em Engenharia Elétrica com ênfase em Ciência da Computação e graduação em IA/ML. Destaco-me em projetos complexos, entregando resultados sob prazos apertados. Comunico-me fluentemente em português e inglês e trabalho de forma dinâmica com equipes geograficamente distribuídas.",
+      "Olá! Sou o Gustavo, Engenheiro de Software com mais de 9 anos de experiência em deploy de IA, desenvolvimento ágil de software e gestão de projetos, atuando com diversos frameworks ao longo de minha carreira. Possuo bacharelado em Engenharia Elétrica com especialização em Ciência da Computação e pós-graduação em Inteligência Artificial e Aprendizado de Máquina. Destaco-me em projetos complexos, entregando bons resultados mesmo sob prazos curtos. Comunico-me fluentemente em português e inglês e trabalho de forma dinâmica com equipes geograficamente distribuídas.",
     experienceTitle: "Experiência profissional",
     educationTitle: "Formação acadêmica",
-    industryTitle: "Participação no setor",
+    industryTitle: "Participação na indústria",
     skillsTitle: "Competências",
     languagesTitle: "Idiomas",
     awardsTitle: "Prêmios",
@@ -160,7 +160,7 @@ const RESUME = {
         orgHref: "https://www.ufmg.br/",
         place: "Belo Horizonte, Brasil (GPA 4.85/5.0)",
         date: "2017 – 2021",
-        sub: "Bacharelado em Engenharia Elétrica com ênfase em Ciência da Computação. Trabalho final: aplicativo para microscópio portátil capaz de identificar bacilos de Mycobacterium tuberculosis (desenvolvimento Android em Java).",
+        sub: "Bacharelado em Engenharia Elétrica com especialização em Ciência da Computação. Trabalho final: aplicativo para microscópio portátil capaz de identificar bacilos de Mycobacterium tuberculosis (desenvolvimento Android em Java).",
         links: [{ text: "Repositório do projeto", href: "https://gitfront.io/r/gustavoa1604/R4ixHB9K2KyB/MicroTBApp/" }],
       },
     ],
@@ -198,10 +198,10 @@ const RESUME = {
     docTitle: "Gustavo Araujo - Resume",
     role: "Lead Software Engineer",
     location: "Belo Horizonte, Brazil",
-    print: "Print / Save PDF",
+    back: "← Back to home",
     summaryTitle: "Summary",
     summary:
-      "Accomplished Software Engineer with 9+ years of experience in AI deployment, agile software development and project management, working with a variety of frameworks. I hold a bachelor's in Electrical Engineering with a minor in Computer Science and a graduate degree in AI/ML. I excel in complex projects, delivering results under tight deadlines. I communicate fluently in Portuguese and English and work dynamically with geographically distributed teams.",
+      "Hi! I am Gustavo, an accomplished Software Engineer with 9+ years of experience in AI deployment, agile software development and project management, working with a variety of frameworks throughout my career. I hold a bachelor's in Electrical Engineering with a minor in Computer Science and a graduate degree in AI/ML. I excel in complex projects, delivering great results even under tight deadlines. I communicate fluently in Portuguese and English and work dynamically with geographically distributed teams.",
     experienceTitle: "Professional experience",
     educationTitle: "Education",
     industryTitle: "Participation in industry",
@@ -452,7 +452,7 @@ function applyLanguage(lang) {
 
   document.getElementById("r-name").textContent = RESUME.name;
   document.getElementById("r-role").textContent = dict.role;
-  document.getElementById("r-print").textContent = dict.print;
+  document.getElementById("r-back").textContent = dict.back;
 
   // Contact line
   const contact = document.getElementById("r-contact");
@@ -545,8 +545,6 @@ function applyLanguage(lang) {
 document.querySelectorAll(".lang-btn").forEach((btn) => {
   btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
 });
-
-document.getElementById("r-print").addEventListener("click", () => window.print());
 
 // Default language: route sets window.RESUME_DEFAULT_LANG; user toggle is not
 // persisted across the two routes, so the route default always wins on load.
