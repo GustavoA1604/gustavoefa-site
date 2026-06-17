@@ -16,6 +16,34 @@ const RESUME = {
     summaryTitle: "Resumo",
     summary:
       "Oi! Sou o Gustavo, engenheiro de software com mais de 9 anos de experiência em deploy de IA, sistemas em C/C++ e liderança técnica. Hoje trabalho com a produtização de modelos de IA quantizados (ASR, TTS, OCR e tradução) rodando localmente em cinco plataformas diferentes (Windows, Linux, macOS, Android, iOS) com aceleração por GPU. Anteriormente, trabalhei por cerca de 5 anos construindo e re-arquitetando o software de verificação (C/C++) do protocolo PCIe na Cadence Design Systems. Já liderei equipes de até 20 pessoas, introduzindo a metodologia de gerenciamento SCRUM (NPS +70%, projetos atrasados -42%), e possuo três patentes concedidas nos EUA em aprendizado de máquina para verificação de hardware. Sou especialista em IA/ML e graduado em Engenharia Elétrica com foco em Ciências da Computação.",
+    // Tagline e resumo por lente. Os padrões acima são usados na lente "all".
+    roles: {
+      ai: "Inferência de IA on-device · Compressão de Modelos · Sistemas de ML",
+      cpp: "Sistemas C/C++ · Verificação de Hardware · Performance de Baixo Nível",
+      lead: "Liderança Técnica · Formação de Times · Entrega Ágil",
+    },
+    summaries: {
+      ai: "Engenheiro de inferência de IA on-device entregando modelos quantizados de fala, OCR e tradução em produção nas cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU via Vulkan, Metal e OpenCL. Lidero um time de 6 pessoas responsável de ponta a ponta por um stack de fala (ASR + TTS) nos backends GGML e ONNX Runtime: TTS em tempo real (RTF ≈ 0,09 em Vulkan), ASR muito abaixo do tempo real (RTF ~0,002) e builds GGUF quantizados que praticamente reduzem o modelo pela metade com perda de qualidade quase nula em dispositivos com pouca memória. Três patentes concedidas nos EUA aplicam aprendizado de máquina (aprendizado por reforço e redes neurais em grafo) à verificação de hardware, além da especialização em IA/ML e da graduação em Engenharia Elétrica.",
+      cpp: "Engenheiro de sistemas C/C++ com cerca de 5 anos construindo e re-arquitetando o software de verificação do protocolo PCIe na Cadence, da migração de toda uma base de código C→C++ à liderança do Verification IP do PCIe 6.0/7.0. Três patentes concedidas nos EUA e um artigo técnico publicado na área de PCIe. Sou também especialista em IA/ML, com graduação em Engenharia Elétrica e foco em Ciência da Computação.",
+      lead: "Líder de engenharia que já liderou times de até 20 pessoas, introduzindo SCRUM (NPS +70%, projetos atrasados -42%, 55 projetos em 10 times) e hoje responsável de ponta a ponta por um stack de fala on-device com um time de 6. Autor de um livro publicado sobre gestão do tempo; mentor e formador de novos engenheiros.",
+    },
+    lens: {
+      prompt: "O que te traz aqui?",
+      sub: "Escolha um foco e eu trago o trabalho mais relevante para o topo. Você pode mudar quando quiser.",
+      viewing: "Visão:",
+      more: "+{n} mais",
+      less: "Mostrar menos",
+      showRole: "Mostrar este cargo ({n})",
+      showRoles: "Mostrar estes cargos ({n})",
+      names: { ai: "IA / ML", cpp: "C++ / Hardware", lead: "Liderança", all: "Tudo" },
+      cardNames: { ai: "IA & Machine Learning", cpp: "C++ & Hardware", lead: "Liderança & Entrega", all: "Ver tudo" },
+      descs: {
+        ai: "Inferência on-device, compressão de modelos, sistemas de ML",
+        cpp: "Sistemas de baixo nível, verificação PCIe, performance",
+        lead: "Liderança de times, Ágil, gestão de projetos",
+        all: "O currículo completo, sem nada esmaecido",
+      },
+    },
     experienceTitle: "Experiência profissional",
     educationTitle: "Formação acadêmica",
     highlightsTitle: "Destaques selecionados",
@@ -37,10 +65,11 @@ const RESUME = {
             date: "Set/2025 – atual",
             mode: "Remoto",
             bullets: [
-              "Lidero uma equipe de até 6 engenheiros de inferência e desenvolvedores JS, com responsabilidade ponta a ponta sobre o stack de fala (ASR + TTS) no QVAC.",
+              "Lidero uma equipe de até 6 engenheiros de inferência e desenvolvedores C++/JS, com responsabilidade ponta a ponta sobre o stack de fala (ASR + TTS) no QVAC.",
               "Coloquei ASR em produção nas cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU (Vulkan, Metal, OpenCL em Adreno): Whisper e uma variante de interface cérebro-computador no backend GGML, e Parakeet em ONNX Runtime e GGML, rodando muito abaixo do tempo real (RTF tão baixo quanto ~0,002 em Vulkan).",
               "Coloquei TTS em tempo real nas mesmas plataformas: Piper (ONNX), Supertonic e Chatterbox (ONNX e GGML), com Chatterbox atingindo RTF ≈ 0,16 em Metal e 0,09 em Vulkan, totalmente no dispositivo.",
               "Entreguei builds GGUF quantizados que praticamente reduzem o tamanho do modelo pela metade com perda de qualidade desprezível (Parakeet CTC 0.6B: 1,3 GiB fp16 → 697 MiB q8_0, saída idêntica bit a bit), viabilizando deploy em dispositivos com pouca memória.",
+              "Conduzi entrevistas técnicas e liderei o onboarding e o treinamento de novas contratações no time de fala.",
             ],
           },
           {
@@ -48,7 +77,7 @@ const RESUME = {
             date: "Fev/2025 – Set/2025",
             mode: "Remoto",
             bullets: [
-              "Como contribuidor individual, portei o EasyOCR (OCR) e o modelo de tradução Marian (NMT) para as cinco plataformas, em ONNX Runtime e GGML.",
+              "Portei o EasyOCR (OCR) e o modelo de tradução Marian (NMT) para as cinco plataformas, em ONNX Runtime e GGML.",
               "Subi LLMs (Llama, Qwen) nos backends ONNX, mlc-llm e Apache TVM.",
               "Implantei modelos em Windows, Linux, macOS, Android e iOS.",
             ],
@@ -70,6 +99,7 @@ const RESUME = {
               "Liderei o projeto de Verification IP (VIP) do PCIe, conduzindo a inovação arquitetural do software.",
               "Atuei em projetos de IA, incluindo LLMs (ChatVIP) e algoritmos de clusterização para testes automáticos e agrupamento de falhas.",
               "Coordenei o desenvolvimento C++ em todas as novas frentes do produto PCIe, incluindo o emergente PCIe 7.0.",
+              "Coordenei o time de desenvolvimento de testes em UVM para elaborar planos de teste, adicionar pontos de cobertura e implementar testes abrangentes para novas features do VIP de PCIe no PCIe 6.0 e 7.0.",
             ],
           },
           {
@@ -142,6 +172,13 @@ const RESUME = {
 
     education: [
       {
+        org: "EBAC - Escola Britânica de Artes Criativas e Tecnologia",
+        orgHref: "https://ebaconline.com.br/",
+        place: "Online",
+        date: "Jul/2022 – Jan/2024",
+        sub: "Certificado profissional: Game Designer e Desenvolvedor Unity (78 módulos, mais de 80 horas).",
+      },
+      {
         org: "PUC Minas",
         orgHref: "https://www.pucminas.br/destaques/Paginas/default.aspx",
         place: "Belo Horizonte, Brasil",
@@ -151,16 +188,16 @@ const RESUME = {
       {
         org: "Wayne State University",
         orgHref: "https://wayne.edu/",
-        place: "Detroit, EUA (GPA 4.0/4.0)",
+        place: "Detroit, EUA",
         date: "Jan/2020 – Abr/2020",
-        sub: "Programa de intercâmbio em Ciência da Computação.",
+        sub: "Programa de intercâmbio em Ciência da Computação. GPA 4.0/4.0.",
       },
       {
         org: "Universidade Federal de Minas Gerais (UFMG)",
         orgHref: "https://www.ufmg.br/",
-        place: "Belo Horizonte, Brasil (GPA 4.85/5.0)",
+        place: "Belo Horizonte, Brasil",
         date: "2017 – 2021",
-        sub: "Bacharelado em Engenharia Elétrica com especialização em Ciência da Computação. Trabalho final: aplicativo para microscópio portátil capaz de identificar bacilos de Mycobacterium tuberculosis (desenvolvimento Android em Java).",
+        sub: "Bacharelado em Engenharia Elétrica com especialização em Ciência da Computação. Trabalho final: aplicativo para microscópio portátil capaz de identificar bacilos de Mycobacterium tuberculosis (desenvolvimento Android em Java). GPA 4.85/5.0.",
         links: [{ text: "Repositório do projeto", href: "https://gitfront.io/r/gustavoa1604/R4ixHB9K2KyB/MicroTBApp/" }],
       },
     ],
@@ -240,6 +277,34 @@ const RESUME = {
     summaryTitle: "Summary",
     summary:
       "Hi! I am Gustavo, software engineer with 9+ years of experience spanning AI deployment, C/C++ systems, and technical leadership. Currently I am shipping quantized on-device AI models (ASR, TTS, OCR, and translation) across five different platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration. Previously, I spent ~5 years building and re-architecting the C/C++ verification software for the PCIe protocol at Cadence Design Systems. I have led teams of up to 20 people, introducing the SCRUM methodology (NPS +70%, overdue projects -42%), and I hold three granted U.S. patents in machine learning for hardware verification. I am an AI/ML specialist on top of an Electrical Engineering degree with Computer Science minor.",
+    // Per-lens hero tagline + summary. The defaults above are used for the "all" lens.
+    roles: {
+      ai: "On-device AI Inference · Model Compression · ML Systems",
+      cpp: "C/C++ Systems · Hardware Verification · Low-level Performance",
+      lead: "Technical Leadership · Team Building · Agile Delivery",
+    },
+    summaries: {
+      ai: "On-device AI inference engineer shipping quantized speech, OCR, and translation models to production across five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration via Vulkan, Metal, and OpenCL. I lead a 6-person team owning an ASR + TTS speech stack end to end on the GGML and ONNX Runtime backends: real-time TTS (RTF ≈ 0.09 on Vulkan), ASR far under real time (RTF ~0.002), and quantized GGUF builds that roughly halve model size at near-zero quality loss on memory-constrained devices. Three granted U.S. patents apply machine learning (reinforcement learning and graph neural networks) to hardware verification, on top of an AI/ML specialization and an Electrical Engineering degree.",
+      cpp: "C/C++ systems engineer with ~5 years building and re-architecting the PCIe protocol verification software at Cadence, from migrating an entire codebase C→C++ to leading the PCIe 6.0/7.0 Verification IP. Three granted U.S. patents and a published technical article in the PCIe space. I am also an AI/ML specialist on top of an Electrical Engineering degree with a Computer Science minor.",
+      lead: "Engineering leader who has led teams of up to 20, introducing SCRUM (NPS +70%, overdue projects -42%, 55 projects across 10 teams) and today owning an on-device speech stack end to end with a 6-person team. Author of a published book on time management; mentor and trainer of new engineers.",
+    },
+    lens: {
+      prompt: "What brings you here?",
+      sub: "Pick a focus and I'll float the most relevant work to the top. You can change it anytime.",
+      viewing: "Viewing:",
+      more: "+{n} more",
+      less: "Show less",
+      showRole: "Show this role ({n})",
+      showRoles: "Show these roles ({n})",
+      names: { ai: "AI / ML", cpp: "C++ / Hardware", lead: "Leadership", all: "Everything" },
+      cardNames: { ai: "AI & Machine Learning", cpp: "C++ & Hardware", lead: "Leadership & Delivery", all: "Show me everything" },
+      descs: {
+        ai: "On-device inference, model compression, ML systems",
+        cpp: "Low-level systems, PCIe verification, performance",
+        lead: "Team leadership, Agile, project management",
+        all: "The full resume, nothing dimmed",
+      },
+    },
     experienceTitle: "Professional experience",
     educationTitle: "Education",
     highlightsTitle: "Selected highlights",
@@ -261,10 +326,11 @@ const RESUME = {
             date: "Sep 2025 – present",
             mode: "Remote",
             bullets: [
-              "Lead a team of up to 6 inference engineers and JS developers, owning the on-device speech stack (ASR + TTS) end to end on QVAC.",
+              "Lead a team of up to 6 inference engineers and C++/JS developers, owning the on-device speech stack (ASR + TTS) end to end on QVAC.",
               "Shipped ASR across all five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration (Vulkan, Metal, OpenCL on Adreno): Whisper and a brain-computer-interface Whisper variant on the GGML backend, and Parakeet on ONNX Runtime and GGML, running far under real time (RTF as low as ~0.002 on Vulkan).",
               "Shipped real-time TTS across the same platforms: Piper (ONNX), Supertonic, and Chatterbox (ONNX and GGML), with Chatterbox reaching RTF ≈ 0.16 on Metal and 0.09 on Vulkan, fully on-device.",
               "Shipped quantized GGUF builds that roughly halve model size with negligible quality loss (Parakeet CTC 0.6B: 1.3 GiB fp16 → 697 MiB q8_0, bit-identical output), enabling deployment on memory-constrained devices.",
+              "Ran technical interviews and led onboarding and training for new hires on the speech team.",
             ],
           },
           {
@@ -272,7 +338,7 @@ const RESUME = {
             date: "Feb 2025 – Sep 2025",
             mode: "Remote",
             bullets: [
-              "As an individual contributor, ported EasyOCR (OCR) and the Marian translation model (NMT) across all five platforms, on ONNX Runtime and GGML.",
+              "Ported EasyOCR (OCR) and the Marian translation model (NMT) across all five platforms, on ONNX Runtime and GGML.",
               "Brought up LLMs (Llama, Qwen) on the ONNX, mlc-llm, and Apache TVM backends.",
               "Deployed models on Windows, Linux, macOS, Android, and iOS.",
             ],
@@ -294,6 +360,7 @@ const RESUME = {
               "Led the Verification IP (VIP) PCIe project, driving software architectural innovation.",
               "Worked on multiple AI projects including LLMs (ChatVIP) and clustering algorithms for automatic tests and failure grouping.",
               "Coordinated C++ development across all new fronts of the PCIe product, including the emerging PCIe 7.0.",
+              "Coordinated the UVM test development team to build test plans, add coverage points, and implement comprehensive tests for new PCIe VIP features in PCIe 6.0 and 7.0.",
             ],
           },
           {
@@ -366,6 +433,13 @@ const RESUME = {
 
     education: [
       {
+        org: "EBAC - British School of Creative Arts and Technology",
+        orgHref: "https://ebaconline.com.br/",
+        place: "Online",
+        date: "Jul 2022 – Jan 2024",
+        sub: "Professional certificate: Game Designer & Unity Developer (78 modules, 80+ hours).",
+      },
+      {
         org: "PUC Minas",
         orgHref: "https://www.pucminas.br/destaques/Paginas/default.aspx",
         place: "Belo Horizonte, Brazil",
@@ -375,16 +449,16 @@ const RESUME = {
       {
         org: "Wayne State University",
         orgHref: "https://wayne.edu/",
-        place: "Detroit, USA (GPA 4.0/4.0)",
+        place: "Detroit, USA",
         date: "Jan 2020 – Apr 2020",
-        sub: "Exchange program in Computer Science.",
+        sub: "Exchange program in Computer Science. GPA 4.0/4.0.",
       },
       {
         org: "Federal University of Minas Gerais (UFMG)",
         orgHref: "https://www.ufmg.br/",
-        place: "Belo Horizonte, Brazil (GPA 4.85/5.0)",
+        place: "Belo Horizonte, Brazil",
         date: "2017 – 2021",
-        sub: "Bachelor's in Electrical Engineering with a minor in Computer Science. Final project: a smartphone app for a portable microscope capable of identifying Mycobacterium tuberculosis bacilli (Android development in Java).",
+        sub: "Bachelor's in Electrical Engineering with a minor in Computer Science. Final project: a smartphone app for a portable microscope capable of identifying Mycobacterium tuberculosis bacilli (Android development in Java). GPA 4.85/5.0.",
         links: [{ text: "Project repository", href: "https://gitfront.io/r/gustavoa1604/R4ixHB9K2KyB/MicroTBApp/" }],
       },
     ],
@@ -463,13 +537,150 @@ function el(tag, className, text) {
   return node;
 }
 
-function bulletList(bullets) {
+/* ------------------------------------------------------------------ *
+ * Role lenses
+ *
+ * The page is sent to one person for one role, but the resume spans AI,
+ * C++/hardware, and leadership. A lens lets the visitor declare what they
+ * came for; matching content leads and the rest collapses behind an
+ * expander (never removed, so nothing is lost and print stays complete).
+ *
+ * Tags live here in ONE language-independent map, index-aligned with the
+ * pt/en data (whose order is identical). Only lens-specific prose lives
+ * in the bilingual blocks (roles, summaries, lens.*).
+ * ------------------------------------------------------------------ */
+const LENSES = ["ai", "cpp", "lead"];
+const DEFAULT_LENS = "all";
+
+const LENS_TAGS = {
+  // highlights[i]: patents, talk, article, book, QVAC
+  highlights: [["ai", "cpp"], ["cpp"], ["cpp"], ["cpp", "lead"], ["cpp"], ["lead"], ["ai"]],
+  // skills[i]: languages, leadership, inference, backends, models, ML&research
+  skills: [["ai", "cpp"], ["lead"], ["ai"], ["ai"], ["ai"], ["ai", "cpp"]],
+  // Bullet-level tags: bullets[experienceIdx][positionIdx][bulletIdx].
+  // A bullet surfaces when its tags include the active lens; off-lens bullets
+  // collapse behind an expander instead of greying out. Index-aligned with the
+  // pt/en data (identical order). An untagged bullet ([]) always surfaces.
+  bullets: [
+    [
+      // Tether — Lead Software Engineer: the hiring bullet is lead/ai only, so it
+      // tucks away under the C++ lens; the rest surface across the tech lenses.
+      [["lead", "ai", "cpp"], ["ai", "cpp"], ["ai", "cpp"], ["ai", "cpp"], ["lead"]],
+      // Tether — C++ Developer
+      [["ai", "cpp"], ["ai", "cpp"], ["ai", "cpp"]],
+    ],
+    [
+      // Cadence — Lead Software Engineer
+      [["cpp", "lead"], ["ai", "cpp"], ["cpp", "lead"], ["cpp", "lead"]],
+      // Cadence — Software Engineer II
+      [["cpp", "lead"], ["cpp", "lead"], ["ai", "cpp"]],
+      // Cadence — Software Engineer I
+      [["cpp"], ["cpp"], ["cpp"]],
+      // Cadence — Intern
+      [["cpp"], ["cpp"], ["lead"]],
+    ],
+    [
+      // CPE — Administrative Counselor
+      [["lead"]],
+      // CPE — Project Director
+      [["lead"], ["lead"], ["lead"], ["lead"]],
+      // CPE — Project Manager / Technology Consultant
+      [["lead", "cpp"], ["cpp"]],
+    ],
+  ],
+};
+
+let currentLang = window.RESUME_DEFAULT_LANG || "en";
+let currentLens = DEFAULT_LENS;
+
+// A node with no tags, or tags including the active lens, is "in focus".
+// The "all" lens puts everything in focus.
+function matchLens(tags, lens) {
+  return lens === "all" || !tags || !tags.length || tags.includes(lens);
+}
+
+function getLens() {
+  try {
+    const v = localStorage.getItem("resumeLens");
+    if (v && (v === "all" || LENSES.includes(v))) return v;
+  } catch (e) {}
+  return null;
+}
+
+function setLens(lens) {
+  currentLens = lens;
+  try {
+    localStorage.setItem("resumeLens", lens);
+  } catch (e) {}
+  render();
+}
+
+// Split a list into in-focus and off-lens items, preserving original order
+// within each group. The "all" lens puts everything in focus.
+function partitionByLens(items, tagList, lens) {
+  const focus = [];
+  const extra = [];
+  items.forEach((item, i) => {
+    const tags = tagList ? tagList[i] : null;
+    (lens === "all" || matchLens(tags, lens) ? focus : extra).push(item);
+  });
+  return { focus, extra };
+}
+
+// A toggle button that reveals/hides the off-lens "extra" items by flipping
+// `revealClass` on `container`. Used for bullets, highlights, and skills so a
+// lens reorganizes rather than dims: relevant first, the rest one click away.
+function lensToggle(container, revealClass, moreText, lessText) {
+  const btn = el("button", "lens-toggle", moreText);
+  btn.type = "button";
+  btn.addEventListener("click", () => {
+    const open = container.classList.toggle(revealClass);
+    btn.textContent = open ? lessText : moreText;
+    btn.classList.toggle("open", open);
+  });
+  return btn;
+}
+
+// Bullet list that surfaces on-lens bullets and tucks the rest behind an
+// expander. When no bullet matches (a whole role is off-lens), the position
+// collapses to its header plus a "show this role" expander.
+function bulletListLens(bullets, bulletTags, lens, dict) {
   const ul = el("ul");
-  bullets.forEach((b) => ul.append(el("li", null, b)));
+  if (lens === "all" || !bulletTags) {
+    bullets.forEach((b) => ul.append(el("li", null, b)));
+    return ul;
+  }
+  const focus = [];
+  const extra = [];
+  bullets.forEach((b, i) => {
+    (matchLens(bulletTags[i], lens) ? focus : extra).push(b);
+  });
+  focus.forEach((b) => ul.append(el("li", null, b)));
+  if (extra.length) {
+    extra.forEach((b) => ul.append(el("li", "lens-extra", b)));
+    const liT = el("li", "lens-toggle-li");
+    const moreText = (focus.length ? dict.lens.more : dict.lens.showRole).replace(
+      "{n}",
+      extra.length
+    );
+    liT.append(lensToggle(ul, "show-extra", moreText, dict.lens.less));
+    ul.append(liT);
+  }
   return ul;
 }
 
-function renderEntry(item) {
+function renderPosition(p, posBulletTags, lens, dict) {
+  const pos = el("div", "position");
+  const ph = el("div", "position-head");
+  ph.append(el("h4", "position-title", p.title));
+  const meta = p.mode ? p.date + " · " + p.mode : p.date;
+  ph.append(el("span", "entry-date", meta));
+  pos.append(ph);
+  if (p.bullets) pos.append(bulletListLens(p.bullets, posBulletTags, lens, dict));
+  return pos;
+}
+
+function renderEntry(item, bulletTags, lens, dict) {
   const entry = el("article", "entry");
 
   const head = el("div", "entry-head");
@@ -506,28 +717,62 @@ function renderEntry(item) {
     entry.append(lp);
   }
 
+  // Optional always-collapsible detail (e.g. a certificate's specifics), shown
+  // behind an expand link regardless of lens. Reuses the lens-extra/show-extra
+  // CSS so print restores it like any other collapsed content.
+  if (item.details && item.details.length) {
+    const ul = el("ul", "entry-details");
+    item.details.forEach((d) => ul.append(el("li", "lens-extra", d)));
+    const liT = el("li", "lens-toggle-li");
+    liT.append(
+      lensToggle(ul, "show-extra", item.detailsLabel || dict.lens.more.replace("{n}", item.details.length), dict.lens.less)
+    );
+    ul.append(liT);
+    entry.append(ul);
+  }
+
   if (item.positions) {
-    item.positions.forEach((p) => {
-      const pos = el("div", "position");
-      const ph = el("div", "position-head");
-      ph.append(el("h4", "position-title", p.title));
-      const meta = p.mode ? p.date + " · " + p.mode : p.date;
-      ph.append(el("span", "entry-date", meta));
-      pos.append(ph);
-      if (p.bullets) pos.append(bulletList(p.bullets));
-      entry.append(pos);
-    });
+    const lensed = lens !== "all" && bulletTags;
+    // When a lens is active and every role in this company is fully off-lens,
+    // collapse the whole company under one "Show these roles (N)" expander
+    // rather than repeating a per-role expander on each.
+    const entryHasFocus =
+      !lensed ||
+      item.positions.some((p, j) =>
+        (p.bullets || []).some((b, k) => matchLens(bulletTags[j][k], lens))
+      );
+
+    if (lensed && !entryHasFocus) {
+      entry.append(
+        lensToggle(
+          entry,
+          "show-roles",
+          dict.lens.showRoles.replace("{n}", item.positions.length),
+          dict.lens.less
+        )
+      );
+      const group = el("div", "lens-roles");
+      item.positions.forEach((p) => group.append(renderPosition(p, null, "all", dict)));
+      entry.append(group);
+    } else {
+      item.positions.forEach((p, j) =>
+        entry.append(renderPosition(p, bulletTags ? bulletTags[j] : null, lens, dict))
+      );
+    }
   }
   return entry;
 }
 
-function applyLanguage(lang) {
+function render() {
+  const lang = currentLang;
+  const lens = currentLens;
   const dict = RESUME[lang] || RESUME.pt;
   document.documentElement.lang = dict.htmlLang;
   document.title = dict.docTitle;
 
   document.getElementById("r-name").textContent = RESUME.name;
-  document.getElementById("r-role").textContent = dict.role;
+  document.getElementById("r-role").textContent =
+    lens !== "all" && dict.roles && dict.roles[lens] ? dict.roles[lens] : dict.role;
   document.getElementById("r-back").textContent = dict.back;
 
   // Contact line
@@ -549,41 +794,56 @@ function applyLanguage(lang) {
   li.textContent = "LinkedIn";
   contact.append(li);
 
-  // Summary
+  // Summary (lens-specific positioning sentence when a lens is active)
   document.getElementById("r-summary-title").textContent = dict.summaryTitle;
-  document.getElementById("r-summary").textContent = dict.summary;
+  document.getElementById("r-summary").textContent =
+    lens !== "all" && dict.summaries && dict.summaries[lens] ? dict.summaries[lens] : dict.summary;
 
-  // Experience
+  // Experience: each role reorganizes around the lens; off-lens bullets (and
+  // wholly off-lens roles) collapse behind an expander instead of greying out.
   document.getElementById("r-exp-title").textContent = dict.experienceTitle;
   const exp = document.getElementById("r-experience");
   exp.innerHTML = "";
-  dict.experience.forEach((item) => exp.append(renderEntry(item)));
+  dict.experience.forEach((item, i) =>
+    exp.append(renderEntry(item, LENS_TAGS.bullets[i], lens, dict))
+  );
 
-  // Education
+  // Education (short; shown in full, no lens treatment)
   document.getElementById("r-edu-title").textContent = dict.educationTitle;
   const edu = document.getElementById("r-education");
   edu.innerHTML = "";
-  dict.education.forEach((item) => edu.append(renderEntry(item)));
+  dict.education.forEach((item) => edu.append(renderEntry(item, null, lens, dict)));
 
-  // Skills
+  // Skills: in-focus groups first; off-lens groups tuck behind an expander.
   document.getElementById("r-skills-title").textContent = dict.skillsTitle;
   const skills = document.getElementById("r-skills");
   skills.innerHTML = "";
-  dict.skills.forEach((group) => {
-    const g = el("div", "skill-group");
+  const renderSkill = (group, extra) => {
+    const g = el("div", "skill-group" + (extra ? " lens-extra" : ""));
     g.append(el("h3", null, group.title));
     const tags = el("div", "tags");
     group.tags.forEach((t) => tags.append(el("span", "tag", t)));
     g.append(tags);
     skills.append(g);
-  });
+  };
+  const skillParts = partitionByLens(dict.skills, LENS_TAGS.skills, lens);
+  skillParts.focus.forEach((g) => renderSkill(g, false));
+  skillParts.extra.forEach((g) => renderSkill(g, true));
+  if (skillParts.extra.length) {
+    const row = el("div", "lens-toggle-row");
+    row.append(
+      lensToggle(skills, "show-extra", dict.lens.more.replace("{n}", skillParts.extra.length), dict.lens.less)
+    );
+    skills.append(row);
+  }
 
-  // Highlights (patents, talk, article, open source)
+  // Highlights (patents, talk, article, open source): in-focus first; the rest
+  // collapse behind an expander.
   document.getElementById("r-highlights-title").textContent = dict.highlightsTitle;
   const hl = document.getElementById("r-highlights");
   hl.innerHTML = "";
-  dict.highlights.forEach((item) => {
-    const liEl = el("li");
+  const renderHighlight = (item, extra) => {
+    const liEl = el("li", extra ? "lens-extra" : null);
     if (item.href) {
       const a = el("a", "highlight-label", item.label + " ↗");
       a.href = item.href;
@@ -597,7 +857,17 @@ function applyLanguage(lang) {
       liEl.append(el("span", "highlight-text", ": " + item.text));
     }
     hl.append(liEl);
-  });
+  };
+  const hlParts = partitionByLens(dict.highlights, LENS_TAGS.highlights, lens);
+  hlParts.focus.forEach((it) => renderHighlight(it, false));
+  hlParts.extra.forEach((it) => renderHighlight(it, true));
+  if (hlParts.extra.length) {
+    const liT = el("li", "lens-toggle-li");
+    liT.append(
+      lensToggle(hl, "show-extra", dict.lens.more.replace("{n}", hlParts.extra.length), dict.lens.less)
+    );
+    hl.append(liT);
+  }
 
   // Languages + Awards (meta grid)
   document.getElementById("r-lang-title").textContent = dict.languagesTitle;
@@ -616,17 +886,107 @@ function applyLanguage(lang) {
     btn.setAttribute("aria-pressed", String(isActive));
   });
 
+  renderLensBar(dict);
+
   try {
     localStorage.setItem("resumeLang", lang);
   } catch (e) {}
 }
 
+// Persistent lens switcher under the hero, so a visitor can re-focus the
+// page (or undo the modal choice) at any time.
+function renderLensBar(dict) {
+  let bar = document.getElementById("r-lens-bar");
+  if (!bar) {
+    bar = el("div", "lens-bar");
+    bar.id = "r-lens-bar";
+    bar.setAttribute("role", "group");
+    const contact = document.getElementById("r-contact");
+    contact.parentNode.insertBefore(bar, contact.nextSibling);
+  }
+  bar.innerHTML = "";
+  bar.setAttribute("aria-label", dict.lens.viewing);
+  bar.append(el("span", "lens-label", dict.lens.viewing));
+  ["ai", "cpp", "lead", "all"].forEach((key) => {
+    const b = el("button", "lens-pill", dict.lens.names[key]);
+    b.type = "button";
+    const active = currentLens === key;
+    b.classList.toggle("active", active);
+    b.setAttribute("aria-pressed", String(active));
+    b.addEventListener("click", () => setLens(key));
+    bar.append(b);
+  });
+}
+
+// Entry modal: a one-question "concierge" that lets the visitor pick a focus
+// before the 10-second scan. Always offers "Everything" so it never traps,
+// and the choice is remembered so return visits skip straight in.
+function showLensModal() {
+  const dict = RESUME[currentLang] || RESUME.pt;
+  const overlay = el("div", "lens-modal");
+  overlay.id = "r-lens-modal";
+
+  const card = el("div", "lens-modal-card");
+  card.setAttribute("role", "dialog");
+  card.setAttribute("aria-modal", "true");
+  card.setAttribute("aria-label", dict.lens.prompt);
+  card.append(el("h2", "lens-modal-title", dict.lens.prompt));
+  card.append(el("p", "lens-modal-sub", dict.lens.sub));
+
+  const opts = el("div", "lens-options");
+  ["ai", "cpp", "lead", "all"].forEach((key) => {
+    const o = el("button", "lens-option" + (key === "all" ? " lens-option-all" : ""));
+    o.type = "button";
+    o.append(el("span", "lens-option-name", dict.lens.cardNames[key]));
+    o.append(el("span", "lens-option-desc", dict.lens.descs[key]));
+    o.addEventListener("click", () => {
+      closeLensModal();
+      setLens(key);
+    });
+    opts.append(o);
+  });
+  card.append(opts);
+  overlay.append(card);
+
+  // Dismissing without choosing defaults to "everything" and is remembered.
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      closeLensModal();
+      setLens("all");
+    }
+  });
+  document.addEventListener("keydown", onModalKey);
+  document.body.append(overlay);
+}
+
+function onModalKey(e) {
+  if (e.key === "Escape") {
+    closeLensModal();
+    setLens("all");
+  }
+}
+
+function closeLensModal() {
+  document.removeEventListener("keydown", onModalKey);
+  const m = document.getElementById("r-lens-modal");
+  if (m) m.remove();
+}
+
 document.querySelectorAll(".lang-btn").forEach((btn) => {
-  btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+  btn.addEventListener("click", () => {
+    currentLang = btn.dataset.lang;
+    render();
+  });
 });
 
 // Default language: route sets window.RESUME_DEFAULT_LANG; user toggle is not
 // persisted across the two routes, so the route default always wins on load.
-applyLanguage(window.RESUME_DEFAULT_LANG || "en");
+currentLang = window.RESUME_DEFAULT_LANG || "en";
+
+// Lens: a remembered choice wins; otherwise ask once via the entry modal.
+const storedLens = getLens();
+if (storedLens) currentLens = storedLens;
+render();
+if (!storedLens) showLensModal();
 
 document.getElementById("year").textContent = new Date().getFullYear();

@@ -112,6 +112,204 @@
   border-color: rgba(255, 255, 255, 0.35);
 }
 
+/* Role lens: switcher bar under the hero */
+.lens-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.4rem 0 0;
+}
+
+.lens-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 0.2rem;
+}
+
+.lens-pill {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.lens-pill:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.lens-pill.active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Off-lens content: collapsed out of the way, revealed by an expander.
+   Nothing is greyed out; relevant work simply leads and the rest is one click
+   away (and always restored for print). */
+.lens-extra {
+  display: none;
+}
+
+.entry ul.show-extra > li.lens-extra,
+#r-highlights.show-extra > li.lens-extra {
+  display: list-item;
+}
+
+#r-skills.show-extra > .skill-group.lens-extra {
+  display: block;
+}
+
+/* Expander control, styled as a quiet inline link rather than a button */
+.lens-toggle-li {
+  list-style: none;
+  margin-left: -1.2rem;
+}
+
+.lens-toggle-row {
+  grid-column: 1 / -1;
+}
+
+.lens-toggle {
+  background: none;
+  border: none;
+  padding: 0.1rem 0;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.lens-toggle:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* Single down-triangle, rotated when collapsed: keeps consistent glyph
+   height in both states (the ▸/▾ pair rendered at mismatched sizes). */
+.lens-toggle::before {
+  content: "▾";
+  display: inline-block;
+  margin-right: 0.35em;
+  font-size: 0.7em;
+  vertical-align: middle;
+  transform: rotate(-90deg);
+  transition: transform 0.15s ease;
+}
+
+.lens-toggle.open::before {
+  transform: rotate(0);
+}
+
+/* Whole-company collapse (a fully off-lens entry under a lens) */
+.lens-roles {
+  display: none;
+}
+
+.entry.show-roles > .lens-roles {
+  display: block;
+}
+
+.entry > .lens-toggle {
+  margin-top: 0.9rem;
+}
+
+/* Entry modal: "what brings you here?" concierge */
+.lens-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(8, 10, 22, 0.72);
+  backdrop-filter: blur(4px);
+  animation: lens-fade 0.18s ease;
+}
+
+@keyframes lens-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lens-modal-card {
+  width: min(560px, 100%);
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: calc(var(--radius) * 1.4);
+  padding: 1.75rem 1.6rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lens-modal-title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.lens-modal-sub {
+  margin: 0.4rem 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.lens-options {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.lens-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: left;
+  background: rgba(108, 140, 255, 0.08);
+  border: 1px solid rgba(108, 140, 255, 0.22);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  font: inherit;
+  color: var(--text);
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+
+.lens-option:hover {
+  border-color: var(--accent);
+  background: rgba(108, 140, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.lens-option-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.lens-option-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.lens-option-all {
+  background: none;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.lens-option-all:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 /* Sections */
 .section {
   padding: 2rem 0;
@@ -324,7 +522,29 @@ footer {
   .toolbar,
   .back-btn,
   .lang-switch,
+  .lens-bar,
+  .lens-modal,
   footer {
+    display: none !important;
+  }
+
+  /* Print is always the complete resume: reveal collapsed content, hide the
+     expander controls. */
+  li.lens-extra {
+    display: list-item !important;
+  }
+
+  .skill-group.lens-extra {
+    display: block !important;
+  }
+
+  .lens-roles {
+    display: block !important;
+  }
+
+  .lens-toggle-li,
+  .lens-toggle-row,
+  .lens-toggle {
     display: none !important;
   }
 

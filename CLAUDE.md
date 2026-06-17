@@ -48,6 +48,26 @@ knowing the URL.
     `href` is set the label becomes a link, otherwise it renders as `<strong>`. `text` is
     an optional short description appended after a colon.
   - `skills[]`: `{title, tags[]}`. Grouped by proficiency area, not a flat keyword dump.
+  - Per-lens prose (see below) also lives in each language block: `roles` and `summaries`
+    (keyed `ai`/`cpp`/`lead`; the top-level `role`/`summary` are the `all` defaults) and a
+    `lens` object holding all lens UI strings (modal copy, pill labels, expander labels with
+    a `{n}` placeholder).
+- **Role lenses** (the resume spans AI, C++/hardware, and leadership; a lens lets a visitor
+  focus it without losing anything):
+  - On first load an entry modal ("What brings you here?") offers `AI / ML`, `C++ / Hardware`,
+    `Leadership`, and `Everything`. The choice is saved to `localStorage` (`resumeLens`), so
+    return visits skip the modal. A persistent pill bar under the hero re-focuses at any time.
+    `Everything` (`all`) is the untouched canonical resume.
+  - A lens **reorganizes and collapses**, it never greys out. On-lens content leads; off-lens
+    content tucks behind a quiet `▾` expander: off-lens bullets become `+N more`, a wholly
+    off-lens role becomes `Show this role (N)`, and a company whose every role is off-lens
+    collapses to one `Show these roles (N)` (see `renderEntry`).
+  - Tags live in **one language-independent `LENS_TAGS` map** in `resume.js`, index-aligned
+    with the pt/en data (whose order is identical): `highlights[i]`, `skills[i]`, and
+    `bullets[experienceIdx][positionIdx][bulletIdx]`. Each is an array of lens keys; an empty
+    array always surfaces. Edit tags here, prose in the language blocks.
+  - `@media print` reveals all collapsed content and hides the lens UI, so printing always
+    yields the complete resume.
 - Layout: full-width **Summary**, then a full-width **Selected research & highlights** band,
   then a two-column grid (`.resume-layout`) with the main text (Experience, Education) on the
   left and a narrow side rail (Skills, Languages, Awards) on the right. Collapses to one
