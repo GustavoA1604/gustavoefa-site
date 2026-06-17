@@ -15,7 +15,7 @@ const RESUME = {
     download: "⤓ Baixar PDF",
     summaryTitle: "Resumo",
     summary:
-      "Engenheiro de software com mais de 9 anos de experiência em sistemas C/C++, deploy de IA e liderança técnica. Desde o início de 2025 trabalho com a produtização de modelos de IA quantizados (fala, OCR e tradução) que rodam inteiramente no dispositivo do usuário, sem servidor, em cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU, e hoje lidero o time de 6 pessoas por trás desse trabalho. Antes disso, passei cerca de 5 anos construindo e re-arquitetando o software de verificação (C/C++) do protocolo PCIe na Cadence Design Systems, onde liderei o Verification IP e conquistei três patentes nos EUA (duas concedidas) em aprendizado de máquina para verificação de hardware. Antes ainda, à frente de até 20 pessoas em uma empresa júnior universitária, introduzi o SCRUM (NPS +70%, projetos atrasados -42%). Sou especialista em IA/ML, com graduação em Engenharia Elétrica e foco em Ciência da Computação.",
+      "Engenheiro de software que entrega IA em produção rodando no próprio dispositivo e detém três patentes nos EUA (duas concedidas). Desde o início de 2025, coloquei modelos quantizados de fala, OCR e tradução no dispositivo do usuário, sem servidor, em cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU, e hoje lidero o time de 6 pessoas por trás desse trabalho de fala. Antes disso, foram cerca de 5 anos construindo e re-arquitetando o software de verificação (C/C++) do protocolo PCIe na Cadence, onde liderei o Verification IP e conquistei essas três patentes em aprendizado de máquina para verificação de hardware, além de um artigo técnico publicado e uma palestra na PCI-SIG. Ao longo de 9 anos, liderei times que vão desse grupo de fala a uma empresa júnior universitária de 20 pessoas, onde introduzi o SCRUM (NPS +70%, projetos atrasados -42%). Graduação em Engenharia Elétrica com ênfase em Ciência da Computação e pós-graduação em IA/ML.",
     // Tagline e resumo por lente. Os padrões acima são usados na lente "all".
     roles: {
       ai: "Inferência de IA on-device · Compressão de Modelos · Sistemas de ML",
@@ -24,7 +24,7 @@ const RESUME = {
     },
     summaries: {
       ai: "Engenheiro de inferência de IA on-device entregando modelos quantizados de fala, OCR e tradução que rodam inteiramente no dispositivo do usuário, sem servidor, nas cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU via Vulkan, Metal e OpenCL. Lidero um time de 6 pessoas responsável de ponta a ponta por um stack de fala (reconhecimento + síntese) nos backends GGML e ONNX Runtime: síntese em tempo real no dispositivo (RTF ≈ 0,09 em GPU), reconhecimento muito mais rápido que o tempo real (RTF ~0,002) e builds GGUF quantizados que praticamente reduzem o modelo pela metade com perda de qualidade quase nula em celulares com pouca memória. Três patentes nos EUA (duas concedidas) aplicam aprendizado de máquina (aprendizado por reforço e redes neurais em grafo) à verificação de hardware, além da especialização em IA/ML e da graduação em Engenharia Elétrica.",
-      cpp: "Engenheiro de sistemas C/C++ com cerca de 5 anos construindo e re-arquitetando o software de verificação do protocolo PCIe na Cadence, da migração de toda uma base de código C→C++ à liderança do Verification IP do PCIe 6.0/7.0. Três patentes nos EUA (duas concedidas) e um artigo técnico publicado na área de PCIe. Sou também especialista em IA/ML, com graduação em Engenharia Elétrica e foco em Ciência da Computação.",
+      cpp: "Engenheiro de sistemas C/C++ com cerca de 5 anos construindo e re-arquitetando o software de verificação do protocolo PCIe na Cadence, da migração de toda uma base de código C→C++ à liderança do Verification IP do PCIe 6.0/7.0. Três patentes nos EUA (duas concedidas) e um artigo técnico publicado na área de PCIe. Também tenho pós-graduação em IA/ML, além da graduação em Engenharia Elétrica com ênfase em Ciência da Computação.",
       lead: "Líder de engenharia que hoje é responsável de ponta a ponta por um stack de fala on-device com um time de 6 pessoas, e que liderou o Verification IP de PCIe na Cadence. Antes, à frente de até 20 pessoas em uma empresa júnior universitária, introduzi o SCRUM (NPS +70%, projetos atrasados -42%, 55 projetos em 10 times). Autor de um livro publicado sobre gestão do tempo; mentor e formador de novos engenheiros.",
     },
     lens: {
@@ -37,6 +37,7 @@ const RESUME = {
       names: { ai: "IA / ML", cpp: "C++ / Hardware", lead: "Liderança", all: "Tudo" },
     },
     experienceTitle: "Experiência profissional",
+    earlierExperienceTitle: "Experiência anterior",
     educationTitle: "Formação acadêmica",
     highlightsTitle: "Destaques selecionados",
     skillsTitle: "Competências",
@@ -58,7 +59,7 @@ const RESUME = {
             mode: "Remoto",
             bullets: [
               "Lidero um time de 6 pessoas responsável de ponta a ponta pelo stack de fala on-device (reconhecimento e síntese de fala), da escolha dos modelos à entrega no QVAC.",
-              "Coloquei reconhecimento de fala no dispositivo do usuário, sem servidor nem rede, nas cinco plataformas (Windows, Linux, macOS, Android, iOS), transcrevendo muito mais rápido que o tempo real (até ~0,002 RTF em GPU). Subi Whisper, uma variante Whisper de interface cérebro-computador e Parakeet nos backends GGML e ONNX Runtime, com aceleração por GPU via Vulkan, Metal e OpenCL.",
+              "Coloquei reconhecimento de fala no dispositivo do usuário, sem servidor nem rede, nas cinco plataformas, transcrevendo muito mais rápido que o tempo real (até ~0,002 RTF em GPU). Subi Whisper, uma variante Whisper de interface cérebro-computador e Parakeet nos backends GGML e ONNX Runtime.",
               "Entreguei síntese de fala em tempo real nas mesmas cinco plataformas, totalmente no dispositivo (Chatterbox a ~0,09 RTF em GPU): Piper, Supertonic e Chatterbox em ONNX e GGML.",
               "Reduzi o tamanho dos modelos pela metade com perda de qualidade desprezível via quantização GGUF (Parakeet 0.6B: 1,3 GiB → 697 MiB, saída idêntica bit a bit), viabilizando deploy em celulares com pouca memória.",
               "Conduzo entrevistas técnicas e lidero o onboarding e o treinamento de novas contratações no time de fala.",
@@ -69,7 +70,7 @@ const RESUME = {
             date: "Fev/2025 – Set/2025",
             mode: "Remoto",
             bullets: [
-              "Levei reconhecimento de texto (OCR) e tradução automática on-device às cinco plataformas (Windows, Linux, macOS, Android, iOS): portei o EasyOCR e os modelos de tradução Marian e IndicTrans2 para ONNX Runtime e GGML.",
+              "Levei reconhecimento de texto (OCR) e tradução automática on-device às cinco plataformas: portei o EasyOCR e os modelos de tradução Marian e IndicTrans2 para ONNX Runtime e GGML.",
               "Subi modelos de linguagem (LLMs: Llama, Qwen) nos backends ONNX Runtime, mlc-llm e Apache TVM.",
             ],
           },
@@ -131,6 +132,9 @@ const RESUME = {
         place: "Belo Horizonte, Brasil",
         date: "Jul/2017 – Dez/2019",
         sub: "Empresa júnior de engenharia e desenvolvimento de software da universidade.",
+        tier: "earlier",
+        compact:
+          "Liderei até 20 pessoas e introduzi o SCRUM (NPS +70%, projetos atrasados -42%, 55 projetos em 10 times), evoluindo de gerente de projetos a diretor e conselheiro.",
         positions: [
           {
             title: "Conselheiro Administrativo",
@@ -164,6 +168,9 @@ const RESUME = {
         place: "Belo Horizonte, Brasil",
         date: "Jul/2019 – Dez/2019",
         sub: "Federação das empresas juniores de Belo Horizonte.",
+        tier: "earlier",
+        compact:
+          "Assessorei 6 empresas juniores em estratégia e conduzi treinamentos (gestão do tempo, SCRUM).",
         positions: [
           {
             title: "Coordenador de Suporte",
@@ -199,13 +206,6 @@ const RESUME = {
         place: "Detroit, EUA",
         date: "Jan/2020 – Abr/2020",
         sub: "Programa de intercâmbio em Ciência da Computação.",
-      },
-      {
-        org: "EBAC - Escola Britânica de Artes Criativas e Tecnologia",
-        orgHref: "https://ebaconline.com.br/",
-        place: "Online",
-        date: "Jul/2022 – Jan/2024",
-        sub: "Certificado profissional: Game Designer e Desenvolvedor Unity.",
       },
     ],
 
@@ -341,6 +341,11 @@ const RESUME = {
         text: "Um jogo de palavras feito sozinho: descubra a palavra secreta dentro de limites alfabéticos que se estreitam.",
         href: "../entrelinhas/",
       },
+      {
+        label: "Game Designer e Desenvolvedor Unity",
+        text: "Certificado profissional pela EBAC (Escola Britânica de Artes Criativas e Tecnologia), a base por trás do Entrelinhas.",
+        href: "https://ebaconline.com.br/",
+      },
     ],
   },
 
@@ -353,7 +358,7 @@ const RESUME = {
     download: "⤓ Download PDF",
     summaryTitle: "Summary",
     summary:
-      "Software engineer with 9+ years across C/C++ systems, AI deployment, and technical leadership. Since early 2025 I've been shipping quantized AI models (speech, OCR, and translation) that run entirely on the user's device, no server, across five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration, and I now lead the 6-person team behind that work. Before that I spent ~5 years building and re-architecting the C/C++ verification software for the PCIe protocol at Cadence Design Systems, where I led the Verification IP and earned three U.S. patents (two granted) in machine learning for hardware verification. Earlier still, heading up to 20 people at a university enterprise, I introduced SCRUM (NPS +70%, overdue projects -42%). I am an AI/ML specialist on top of an Electrical Engineering degree with a Computer Science minor.",
+      "Software engineer who ships production AI on-device and holds three U.S. patents (two granted). Since early 2025 I've put quantized speech, OCR, and translation models on users' devices, no server, across five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration, and today I lead the 6-person team behind that speech work. Before that came ~5 years building and re-architecting the C/C++ PCIe verification software at Cadence, where I led the Verification IP and earned those three patents in machine learning for hardware verification, alongside a published technical article and a PCI-SIG conference talk. Over 9 years I've led teams ranging from this speech group to a 20-person university enterprise, where I introduced SCRUM (NPS +70%, overdue projects -42%). Electrical Engineering degree with a Computer Science minor, plus a graduate degree in AI/ML.",
     // Per-lens hero tagline + summary. The defaults above are used for the "all" lens.
     roles: {
       ai: "On-device AI Inference · Model Compression · ML Systems",
@@ -362,7 +367,7 @@ const RESUME = {
     },
     summaries: {
       ai: "On-device AI inference engineer shipping quantized speech, OCR, and translation models that run entirely on the user's device, no server, across five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration via Vulkan, Metal, and OpenCL. I lead a 6-person team that owns a speech stack (recognition + synthesis) end to end on the GGML and ONNX Runtime backends: real-time on-device synthesis (~0.09 RTF on GPU), recognition far faster than real time (~0.002 RTF), and quantized GGUF builds that roughly halve model size at near-zero quality loss for memory-constrained phones. Three U.S. patents (two granted) apply machine learning (reinforcement learning and graph neural networks) to hardware verification, on top of an AI/ML specialization and an Electrical Engineering degree.",
-      cpp: "C/C++ systems engineer with ~5 years building and re-architecting the PCIe protocol verification software at Cadence, from migrating an entire codebase C→C++ to leading the PCIe 6.0/7.0 Verification IP. Three U.S. patents (two granted) and a published technical article in the PCIe space. I am also an AI/ML specialist on top of an Electrical Engineering degree with a Computer Science minor.",
+      cpp: "C/C++ systems engineer with ~5 years building and re-architecting the PCIe protocol verification software at Cadence, from migrating an entire codebase C→C++ to leading the PCIe 6.0/7.0 Verification IP. Three U.S. patents (two granted) and a published technical article in the PCIe space. I also hold a graduate degree in AI/ML on top of an Electrical Engineering degree with a Computer Science minor.",
       lead: "Engineering leader who today owns an on-device speech stack end to end with a 6-person team, and previously led the PCIe Verification IP at Cadence. Earlier, heading up to 20 people at a university enterprise, I introduced SCRUM (NPS +70%, overdue projects -42%, 55 projects across 10 teams). Author of a published book on time management; mentor and trainer of new engineers.",
     },
     lens: {
@@ -375,6 +380,7 @@ const RESUME = {
       names: { ai: "AI / ML", cpp: "C++ / Hardware", lead: "Leadership", all: "Everything" },
     },
     experienceTitle: "Professional experience",
+    earlierExperienceTitle: "Earlier experience",
     educationTitle: "Education",
     highlightsTitle: "Selected highlights",
     skillsTitle: "Skills",
@@ -396,7 +402,7 @@ const RESUME = {
             mode: "Remote",
             bullets: [
               "Lead a 6-person team that owns the on-device speech stack (speech-to-text and text-to-speech) end to end, from model selection to shipping in QVAC.",
-              "Put speech recognition on users' devices with no server or network, across all five platforms (Windows, Linux, macOS, Android, iOS), transcribing far faster than real time (as low as ~0.002 RTF on GPU). Brought up Whisper, a brain-computer-interface Whisper variant, and Parakeet on the GGML and ONNX Runtime backends, GPU-accelerated via Vulkan, Metal, and OpenCL.",
+              "Put speech recognition on users' devices with no server or network, across all five platforms, transcribing far faster than real time (as low as ~0.002 RTF on GPU). Brought up Whisper, a brain-computer-interface Whisper variant, and Parakeet on the GGML and ONNX Runtime backends.",
               "Delivered real-time speech synthesis on the same five platforms, fully on-device (Chatterbox at ~0.09 RTF on GPU): Piper, Supertonic, and Chatterbox on ONNX and GGML.",
               "Halved model size with negligible quality loss through GGUF quantization (Parakeet 0.6B: 1.3 GiB → 697 MiB, bit-identical output), making deployment possible on memory-constrained phones.",
               "Run technical interviews and lead onboarding and training for new hires on the speech team.",
@@ -407,7 +413,7 @@ const RESUME = {
             date: "Feb 2025 – Sep 2025",
             mode: "Remote",
             bullets: [
-              "Brought on-device text recognition (OCR) and machine translation to all five platforms (Windows, Linux, macOS, Android, iOS): ported EasyOCR and the Marian and IndicTrans2 translation models onto ONNX Runtime and GGML.",
+              "Brought on-device text recognition (OCR) and machine translation to all five platforms: ported EasyOCR and the Marian and IndicTrans2 translation models onto ONNX Runtime and GGML.",
               "Brought up large language models (Llama, Qwen) on the ONNX Runtime, mlc-llm, and Apache TVM backends.",
             ],
           },
@@ -469,6 +475,9 @@ const RESUME = {
         place: "Belo Horizonte, Brazil",
         date: "Jul 2017 – Dec 2019",
         sub: "University's junior engineering and software development company.",
+        tier: "earlier",
+        compact:
+          "Led up to 20 people and introduced SCRUM (NPS +70%, overdue projects -42%, 55 projects across 10 teams), progressing from project manager to director to advisory counselor.",
         positions: [
           {
             title: "Administrative Counselor",
@@ -502,6 +511,9 @@ const RESUME = {
         place: "Belo Horizonte, Brazil",
         date: "Jul 2019 – Dec 2019",
         sub: "Belo Horizonte federation of junior enterprises.",
+        tier: "earlier",
+        compact:
+          "Advised 6 junior enterprises on strategy and ran training (time management, SCRUM).",
         positions: [
           {
             title: "Support Coordinator",
@@ -537,13 +549,6 @@ const RESUME = {
         place: "Detroit, USA",
         date: "Jan 2020 – Apr 2020",
         sub: "Exchange program in Computer Science.",
-      },
-      {
-        org: "EBAC - British School of Creative Arts and Technology",
-        orgHref: "https://ebaconline.com.br/",
-        place: "Online",
-        date: "Jul 2022 – Jan 2024",
-        sub: "Professional certificate: Game Designer & Unity Developer.",
       },
     ],
 
@@ -679,6 +684,11 @@ const RESUME = {
         text: "A solo-developed word game: find the hidden word within narrowing alphabetical limits.",
         href: "../entrelinhas/",
       },
+      {
+        label: "Game Designer & Unity Developer",
+        text: "Professional certificate from EBAC (British School of Creative Arts and Technology), the craft behind Entrelinhas.",
+        href: "https://ebaconline.com.br/",
+      },
     ],
   },
 };
@@ -779,10 +789,6 @@ const LENS_TAGS = {
 
 let currentLang = window.RESUME_DEFAULT_LANG || "en";
 let currentLens = DEFAULT_LENS;
-// True until the visitor first picks a lens (or has a remembered choice). While
-// true, the lens pill bar self-announces with a quiet glow so the feature is
-// discoverable without a blocking modal. See renderLensBar.
-let lensHinting = false;
 
 // A node with no tags, or tags including the active lens, is "in focus".
 // The "all" lens puts everything in focus.
@@ -798,9 +804,21 @@ function getLens() {
   return null;
 }
 
+// A lens can be preselected via the URL (?lens=ai|cpp|lead|all), e.g. a link
+// shared on a specific job application so the page lands already focused for
+// that role. The URL wins over any stored choice (a per-application link must
+// override what a returning visitor once clicked); an invalid or missing value
+// falls through to the stored choice, then the default.
+function getLensFromURL() {
+  try {
+    const v = new URLSearchParams(window.location.search).get("lens");
+    if (v && (v === "all" || LENSES.includes(v))) return v;
+  } catch (e) {}
+  return null;
+}
+
 function setLens(lens) {
   currentLens = lens;
-  lensHinting = false; // an explicit choice retires the glow
   try {
     localStorage.setItem("resumeLens", lens);
   } catch (e) {}
@@ -925,6 +943,18 @@ function renderEntry(item, bulletTags, lens, dict) {
     entry.append(ul);
   }
 
+  // Earlier-tier entries (junior-enterprise work) lead with a one-line outcome
+  // summary; their full roles tuck behind the same whole-company collapse used
+  // for off-lens entries, so the screen stays tight but @media print restores
+  // the complete detail. The compact line itself is hidden in print (the full
+  // roles carry the detail there). See `tier`/`compact` in the experience data.
+  //
+  // Exception: under the Leadership lens this junior-enterprise work IS the
+  // early-leadership story, so it expands to full depth (its bullets are all
+  // lead-tagged and surface normally) rather than collapsing to one line.
+  const showCompact = item.compact && lens !== "lead";
+  if (showCompact) entry.append(el("p", "entry-compact", item.compact));
+
   if (item.positions) {
     const lensed = lens !== "all" && bulletTags;
     // When a lens is active and every role in this company is fully off-lens,
@@ -936,7 +966,9 @@ function renderEntry(item, bulletTags, lens, dict) {
         (p.bullets || []).some((b, k) => matchLens(bulletTags[j][k], lens))
       );
 
-    if (lensed && !entryHasFocus) {
+    // Compacted earlier-tier entries collapse to the compact line + one expander;
+    // otherwise collapse only when the company is wholly off-lens.
+    if (showCompact || (lensed && !entryHasFocus)) {
       // "Show this role" reads better for a one-role company; plural otherwise.
       const rolesLabel = item.positions.length === 1 ? dict.lens.showRole : dict.lens.showRoles;
       entry.append(
@@ -998,9 +1030,16 @@ function render() {
   document.getElementById("r-exp-title").textContent = dict.experienceTitle;
   const exp = document.getElementById("r-experience");
   exp.innerHTML = "";
-  dict.experience.forEach((item, i) =>
-    exp.append(renderEntry(item, LENS_TAGS.bullets[i], lens, dict))
-  );
+  let earlierHeadingDone = false;
+  dict.experience.forEach((item, i) => {
+    // A quiet "Earlier experience" divider introduces the compacted tier so the
+    // junior-enterprise work reads as context, not as a peer of the primary roles.
+    if (item.tier === "earlier" && !earlierHeadingDone) {
+      exp.append(el("h3", "exp-tier-title", dict.earlierExperienceTitle));
+      earlierHeadingDone = true;
+    }
+    exp.append(renderEntry(item, LENS_TAGS.bullets[i], lens, dict));
+  });
 
   // Education (short; shown in full, no lens treatment)
   document.getElementById("r-edu-title").textContent = dict.educationTitle;
@@ -1187,7 +1226,6 @@ function renderLensBar(dict) {
     contact.parentNode.insertBefore(bar, contact.nextSibling);
   }
   bar.innerHTML = "";
-  bar.classList.toggle("lens-bar-hint", lensHinting);
   bar.setAttribute("aria-label", dict.lens.viewing);
   bar.append(el("span", "lens-label", dict.lens.viewing));
   ["ai", "cpp", "lead", "all"].forEach((key) => {
@@ -1218,12 +1256,13 @@ if (printBtn) printBtn.addEventListener("click", () => window.print());
 // persisted across the two routes, so the route default always wins on load.
 currentLang = window.RESUME_DEFAULT_LANG || "en";
 
-// Lens: a remembered choice wins; otherwise show the full resume immediately.
-// The lens pill bar stays available as optional refinement (and self-announces
-// with a quiet glow until first use; see renderLensBar).
+// Lens precedence on load: a URL ?lens= param wins (a per-application link lands
+// pre-aimed), then a remembered choice, then the full resume (the "all" default).
+// The lens pill bar stays available as optional refinement in every case.
+const urlLens = getLensFromURL();
 const storedLens = getLens();
-if (storedLens) currentLens = storedLens;
-else lensHinting = true; // first-time visitor: glow the pills until they choose
+if (urlLens) currentLens = urlLens;
+else if (storedLens) currentLens = storedLens;
 render();
 
 document.getElementById("year").textContent = new Date().getFullYear();

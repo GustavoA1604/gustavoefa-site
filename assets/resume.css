@@ -256,34 +256,6 @@
   margin-top: 0.9rem;
 }
 
-/* First-visit hint: until the visitor picks a focus, the lens pills breathe a
-   quiet glow so the feature is discoverable without a blocking modal. The glow
-   retires the moment a pill is clicked (the .lens-bar-hint class is dropped). */
-.lens-bar-hint .lens-pill:not(.active) {
-  border-color: rgba(108, 140, 255, 0.55);
-  color: var(--text);
-  animation: lens-glow 2.4s ease-in-out infinite;
-}
-
-@keyframes lens-glow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(108, 140, 255, 0);
-    border-color: rgba(108, 140, 255, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 0 3px rgba(108, 140, 255, 0.18);
-    border-color: rgba(108, 140, 255, 0.7);
-  }
-}
-
-/* Respect reduced-motion: keep a static accent border, no pulsing. */
-@media (prefers-reduced-motion: reduce) {
-  .lens-bar-hint .lens-pill:not(.active) {
-    animation: none;
-    border-color: rgba(108, 140, 255, 0.55);
-  }
-}
-
 /* Sections */
 .section {
   padding: 2rem 0;
@@ -352,6 +324,23 @@
 .entry-links .link-sep {
   color: var(--muted);
   opacity: 0.6;
+}
+
+/* One-line outcome summary for earlier-tier (compacted) entries. Sits above the
+   collapsed roles; carries the metric punch so the tier reads in a glance. */
+.entry-compact {
+  margin: 0.4rem 0 0.1rem;
+  font-size: 0.92rem;
+}
+
+/* Quiet divider introducing the compacted "Earlier experience" tier. */
+.exp-tier-title {
+  margin: 1.6rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 /* Nested positions within a company */
@@ -637,6 +626,12 @@ footer {
 
   .lens-roles {
     display: block !important;
+  }
+
+  /* Earlier-tier entries: print restores the full roles, so the screen-only
+     one-line summary is redundant and hidden. */
+  .entry-compact {
+    display: none !important;
   }
 
   .lens-toggle-li,
