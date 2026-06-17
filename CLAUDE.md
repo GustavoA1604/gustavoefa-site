@@ -55,14 +55,18 @@ knowing the URL.
     pins). See `renderSkill`.
   - Per-lens prose (see below) also lives in each language block: `roles` and `summaries`
     (keyed `ai`/`cpp`/`lead`; the top-level `role`/`summary` are the `all` defaults) and a
-    `lens` object holding all lens UI strings (modal copy, pill labels, expander labels with
-    a `{n}` placeholder).
+    `lens` object holding all lens UI strings (pill labels via `names`, the `viewing:` label,
+    and expander labels with a `{n}` placeholder).
 - **Role lenses** (the resume spans AI, C++/hardware, and leadership; a lens lets a visitor
   focus it without losing anything):
-  - On first load an entry modal ("What brings you here?") offers `AI / ML`, `C++ / Hardware`,
-    `Leadership`, and `Everything`. The choice is saved to `localStorage` (`resumeLens`), so
-    return visits skip the modal. A persistent pill bar under the hero re-focuses at any time.
-    `Everything` (`all`) is the untouched canonical resume.
+  - The page loads showing the full resume (`Everything`/`all`, the untouched canonical
+    resume): there is **no blocking entry modal**. A persistent pill bar under the hero
+    (`AI / ML`, `C++ / Hardware`, `Leadership`, `Everything`) re-focuses at any time. On a
+    first visit (no stored choice) the non-active pills self-announce with a quiet oscillating
+    glow (`.lens-bar-hint`, see `lensHinting` in `resume.js` and `@keyframes lens-glow` in
+    `resume.css`); the glow retires the moment any pill is clicked. The choice is saved to
+    `localStorage` (`resumeLens`), so return visits skip straight to that lens with no glow.
+    The glow honors `prefers-reduced-motion` (static accent border, no pulse).
   - A lens **reorganizes and collapses**, it never greys out. On-lens content leads; off-lens
     content tucks behind a quiet `▾` expander: off-lens bullets become `+N more`, a wholly
     off-lens role becomes `Show this role (N)`, and a company whose every role is off-lens
@@ -75,8 +79,11 @@ knowing the URL.
     yields the complete resume.
 - Layout: full-width **Summary**, then a full-width **Selected research & highlights** band,
   then a two-column grid (`.resume-layout`) with the main text (Experience, Education) on the
-  left and a narrow side rail (Skills, Languages, Awards) on the right. Collapses to one
-  column at <=760px.
+  left and a narrow side rail (Skills, Languages, Awards, Beyond work) on the right. Collapses
+  to one column at <=760px. **Beyond work** is a small, lens-free list (`beyond[]` per language:
+  `{label, text?, href?}`, rendered into `#r-beyond`) of personal projects (the book, the
+  Entrelinhas game), kept out of the highlights band so it does not compete with the
+  patents/talks/open-source credentials.
 - The toolbar has a **← Back to home** link (`.back-btn`, id `r-back`) pointing to `../`
   (the main site). `@media print` in `resume.css` still restyles to clean black-on-white
   for browser printing (Ctrl+P), even though there is no in-page print button.

@@ -112,6 +112,28 @@
   border-color: rgba(255, 255, 255, 0.35);
 }
 
+/* Left cluster of the toolbar: back link + download */
+.toolbar-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Download PDF: accent-filled so recruiters spot it immediately. Triggers the
+   browser's print-to-PDF (the @media print stylesheet renders a clean, complete
+   black-on-white resume). */
+.print-btn {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.print-btn:hover {
+  color: #fff;
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
 /* Role lens: switcher bar under the hero */
 .lens-bar {
   display: flex;
@@ -234,89 +256,32 @@
   margin-top: 0.9rem;
 }
 
-/* Entry modal: "what brings you here?" concierge */
-.lens-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.25rem;
-  background: rgba(8, 10, 22, 0.72);
-  backdrop-filter: blur(4px);
-  animation: lens-fade 0.18s ease;
-}
-
-@keyframes lens-fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.lens-modal-card {
-  width: min(560px, 100%);
-  background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: calc(var(--radius) * 1.4);
-  padding: 1.75rem 1.6rem;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-}
-
-.lens-modal-title {
-  margin: 0;
-  font-size: 1.35rem;
-}
-
-.lens-modal-sub {
-  margin: 0.4rem 0 1.25rem;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.lens-options {
-  display: grid;
-  gap: 0.6rem;
-}
-
-.lens-option {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  text-align: left;
-  background: rgba(108, 140, 255, 0.08);
-  border: 1px solid rgba(108, 140, 255, 0.22);
-  border-radius: var(--radius);
-  padding: 0.8rem 1rem;
-  cursor: pointer;
-  font: inherit;
+/* First-visit hint: until the visitor picks a focus, the lens pills breathe a
+   quiet glow so the feature is discoverable without a blocking modal. The glow
+   retires the moment a pill is clicked (the .lens-bar-hint class is dropped). */
+.lens-bar-hint .lens-pill:not(.active) {
+  border-color: rgba(108, 140, 255, 0.55);
   color: var(--text);
-  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+  animation: lens-glow 2.4s ease-in-out infinite;
 }
 
-.lens-option:hover {
-  border-color: var(--accent);
-  background: rgba(108, 140, 255, 0.16);
-  transform: translateY(-1px);
+@keyframes lens-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(108, 140, 255, 0);
+    border-color: rgba(108, 140, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(108, 140, 255, 0.18);
+    border-color: rgba(108, 140, 255, 0.7);
+  }
 }
 
-.lens-option-name {
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.lens-option-desc {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
-.lens-option-all {
-  background: none;
-  border-color: rgba(255, 255, 255, 0.14);
-}
-
-.lens-option-all:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
+/* Respect reduced-motion: keep a static accent border, no pulsing. */
+@media (prefers-reduced-motion: reduce) {
+  .lens-bar-hint .lens-pill:not(.active) {
+    animation: none;
+    border-color: rgba(108, 140, 255, 0.55);
+  }
 }
 
 /* Sections */
@@ -427,6 +392,8 @@
    narrow screens. */
 .highlights {
   display: grid;
+  /* Three credential groups: patents / talks & publications / open source.
+     (Personal items live in the "Beyond work" side-rail section, not here.) */
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem 1.75rem;
   align-items: start;
@@ -582,6 +549,28 @@ button.tag:hover {
   color: var(--accent);
 }
 
+/* Beyond work: compact list of personal projects in the side rail. No bullets;
+   each item is a linked label with a short, muted note beneath. */
+.beyond-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.beyond-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.beyond-text {
+  margin: 0.1rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
 .section a {
   color: var(--accent);
   text-decoration: none;
@@ -623,7 +612,6 @@ footer {
   .back-btn,
   .lang-switch,
   .lens-bar,
-  .lens-modal,
   footer {
     display: none !important;
   }

@@ -16,7 +16,10 @@
   <header class="resume-hero">
     <div class="container">
       <div class="toolbar">
-        <a href="../" id="r-back" class="back-btn">← Voltar ao início</a>
+        <div class="toolbar-left">
+          <a href="../" id="r-back" class="back-btn">← Voltar ao início</a>
+          <button type="button" id="r-print" class="back-btn print-btn">⤓ Baixar PDF</button>
+        </div>
         <div class="lang-switch" role="group" aria-label="Language / Idioma">
           <button type="button" data-lang="pt" class="lang-btn" aria-pressed="false">
             <svg class="flag" viewBox="0 0 28 20" aria-hidden="true"><use href="../assets/flags.svg#flag-br" /></svg>
@@ -73,6 +76,11 @@
       <section class="section">
         <h2 id="r-awards-title">Prêmios</h2>
         <ul class="side-list" id="r-awards"></ul>
+      </section>
+
+      <section class="section">
+        <h2 id="r-beyond-title">Além do trabalho</h2>
+        <ul class="beyond-list" id="r-beyond"></ul>
       </section>
     </aside>
     </div>

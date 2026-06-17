@@ -12,9 +12,10 @@ const RESUME = {
     role: "Inferência de IA · Sistemas em C++ · Liderança Técnica",
     location: "Belo Horizonte, Brasil",
     back: "← Voltar ao início",
+    download: "⤓ Baixar PDF",
     summaryTitle: "Resumo",
     summary:
-      "Oi! Sou o Gustavo, engenheiro de software com mais de 9 anos de experiência em deploy de IA, sistemas em C/C++ e liderança técnica. Hoje trabalho com a produtização de modelos de IA quantizados (ASR, TTS, OCR e tradução) rodando localmente em cinco plataformas diferentes (Windows, Linux, macOS, Android, iOS) com aceleração por GPU. Anteriormente, trabalhei por cerca de 5 anos construindo e re-arquitetando o software de verificação (C/C++) do protocolo PCIe na Cadence Design Systems. Já liderei equipes de até 20 pessoas, introduzindo a metodologia de gerenciamento SCRUM (NPS +70%, projetos atrasados -42%), e possuo três patentes concedidas nos EUA em aprendizado de máquina para verificação de hardware. Sou especialista em IA/ML e graduado em Engenharia Elétrica com foco em Ciências da Computação.",
+      "Engenheiro de software com mais de 9 anos de experiência em sistemas C/C++, deploy de IA e liderança técnica. Desde o início de 2025 trabalho com a produtização de modelos de IA quantizados (fala, OCR e tradução) que rodam inteiramente no dispositivo do usuário, sem servidor, em cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU, e hoje lidero o time de 6 pessoas por trás desse trabalho. Antes disso, passei cerca de 5 anos construindo e re-arquitetando o software de verificação (C/C++) do protocolo PCIe na Cadence Design Systems, onde liderei o Verification IP e conquistei três patentes nos EUA (duas concedidas) em aprendizado de máquina para verificação de hardware. Antes ainda, à frente de até 20 pessoas em uma empresa júnior universitária, introduzi o SCRUM (NPS +70%, projetos atrasados -42%). Sou especialista em IA/ML, com graduação em Engenharia Elétrica e foco em Ciência da Computação.",
     // Tagline e resumo por lente. Os padrões acima são usados na lente "all".
     roles: {
       ai: "Inferência de IA on-device · Compressão de Modelos · Sistemas de ML",
@@ -22,13 +23,11 @@ const RESUME = {
       lead: "Liderança Técnica · Formação de Times · Entrega Ágil",
     },
     summaries: {
-      ai: "Engenheiro de inferência de IA on-device entregando modelos quantizados de fala, OCR e tradução em produção nas cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU via Vulkan, Metal e OpenCL. Lidero um time de 6 pessoas responsável de ponta a ponta por um stack de fala (ASR + TTS) nos backends GGML e ONNX Runtime: TTS em tempo real (RTF ≈ 0,09 em Vulkan), ASR muito abaixo do tempo real (RTF ~0,002) e builds GGUF quantizados que praticamente reduzem o modelo pela metade com perda de qualidade quase nula em dispositivos com pouca memória. Três patentes concedidas nos EUA aplicam aprendizado de máquina (aprendizado por reforço e redes neurais em grafo) à verificação de hardware, além da especialização em IA/ML e da graduação em Engenharia Elétrica.",
-      cpp: "Engenheiro de sistemas C/C++ com cerca de 5 anos construindo e re-arquitetando o software de verificação do protocolo PCIe na Cadence, da migração de toda uma base de código C→C++ à liderança do Verification IP do PCIe 6.0/7.0. Três patentes concedidas nos EUA e um artigo técnico publicado na área de PCIe. Sou também especialista em IA/ML, com graduação em Engenharia Elétrica e foco em Ciência da Computação.",
-      lead: "Líder de engenharia que já liderou times de até 20 pessoas, introduzindo SCRUM (NPS +70%, projetos atrasados -42%, 55 projetos em 10 times) e hoje responsável de ponta a ponta por um stack de fala on-device com um time de 6. Autor de um livro publicado sobre gestão do tempo; mentor e formador de novos engenheiros.",
+      ai: "Engenheiro de inferência de IA on-device entregando modelos quantizados de fala, OCR e tradução que rodam inteiramente no dispositivo do usuário, sem servidor, nas cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU via Vulkan, Metal e OpenCL. Lidero um time de 6 pessoas responsável de ponta a ponta por um stack de fala (reconhecimento + síntese) nos backends GGML e ONNX Runtime: síntese em tempo real no dispositivo (RTF ≈ 0,09 em GPU), reconhecimento muito mais rápido que o tempo real (RTF ~0,002) e builds GGUF quantizados que praticamente reduzem o modelo pela metade com perda de qualidade quase nula em celulares com pouca memória. Três patentes nos EUA (duas concedidas) aplicam aprendizado de máquina (aprendizado por reforço e redes neurais em grafo) à verificação de hardware, além da especialização em IA/ML e da graduação em Engenharia Elétrica.",
+      cpp: "Engenheiro de sistemas C/C++ com cerca de 5 anos construindo e re-arquitetando o software de verificação do protocolo PCIe na Cadence, da migração de toda uma base de código C→C++ à liderança do Verification IP do PCIe 6.0/7.0. Três patentes nos EUA (duas concedidas) e um artigo técnico publicado na área de PCIe. Sou também especialista em IA/ML, com graduação em Engenharia Elétrica e foco em Ciência da Computação.",
+      lead: "Líder de engenharia que hoje é responsável de ponta a ponta por um stack de fala on-device com um time de 6 pessoas, e que liderou o Verification IP de PCIe na Cadence. Antes, à frente de até 20 pessoas em uma empresa júnior universitária, introduzi o SCRUM (NPS +70%, projetos atrasados -42%, 55 projetos em 10 times). Autor de um livro publicado sobre gestão do tempo; mentor e formador de novos engenheiros.",
     },
     lens: {
-      prompt: "O que te traz aqui?",
-      sub: "Escolha um foco e eu trago o trabalho mais relevante para o topo. Você pode mudar quando quiser.",
       viewing: "Visão:",
       more: "+{n} mais",
       less: "Mostrar menos",
@@ -36,13 +35,6 @@ const RESUME = {
       showRoles: "Mostrar estes cargos ({n})",
       showGroup: "Mostrar estes ({n})",
       names: { ai: "IA / ML", cpp: "C++ / Hardware", lead: "Liderança", all: "Tudo" },
-      cardNames: { ai: "IA & Machine Learning", cpp: "C++ & Hardware", lead: "Liderança & Entrega", all: "Ver tudo" },
-      descs: {
-        ai: "Inferência on-device, compressão de modelos, sistemas de ML",
-        cpp: "Sistemas de baixo nível, verificação PCIe, performance",
-        lead: "Liderança de times, Ágil, gestão de projetos",
-        all: "O currículo completo, sem nada esmaecido",
-      },
     },
     experienceTitle: "Experiência profissional",
     educationTitle: "Formação acadêmica",
@@ -65,11 +57,11 @@ const RESUME = {
             date: "Set/2025 – atual",
             mode: "Remoto",
             bullets: [
-              "Lidero uma equipe de até 6 engenheiros de inferência e desenvolvedores C++/JS, com responsabilidade ponta a ponta sobre o stack de fala (ASR + TTS) no QVAC.",
-              "Coloquei ASR em produção nas cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU (Vulkan, Metal, OpenCL em Adreno): Whisper e uma variante de interface cérebro-computador no backend GGML, e Parakeet em ONNX Runtime e GGML, rodando muito abaixo do tempo real (RTF tão baixo quanto ~0,002 em Vulkan).",
-              "Coloquei TTS em tempo real nas mesmas plataformas: Piper (ONNX), Supertonic e Chatterbox (ONNX e GGML), com Chatterbox atingindo RTF ≈ 0,16 em Metal e 0,09 em Vulkan, totalmente no dispositivo.",
-              "Entreguei builds GGUF quantizados que praticamente reduzem o tamanho do modelo pela metade com perda de qualidade desprezível (Parakeet CTC 0.6B: 1,3 GiB fp16 → 697 MiB q8_0, saída idêntica bit a bit), viabilizando deploy em dispositivos com pouca memória.",
-              "Conduzi entrevistas técnicas e liderei o onboarding e o treinamento de novas contratações no time de fala.",
+              "Lidero um time de 6 pessoas responsável de ponta a ponta pelo stack de fala on-device (reconhecimento e síntese de fala), da escolha dos modelos à entrega no QVAC.",
+              "Coloquei reconhecimento de fala no dispositivo do usuário, sem servidor nem rede, nas cinco plataformas (Windows, Linux, macOS, Android, iOS), transcrevendo muito mais rápido que o tempo real (até ~0,002 RTF em GPU). Subi Whisper, uma variante Whisper de interface cérebro-computador e Parakeet nos backends GGML e ONNX Runtime, com aceleração por GPU via Vulkan, Metal e OpenCL.",
+              "Entreguei síntese de fala em tempo real nas mesmas cinco plataformas, totalmente no dispositivo (Chatterbox a ~0,09 RTF em GPU): Piper, Supertonic e Chatterbox em ONNX e GGML.",
+              "Reduzi o tamanho dos modelos pela metade com perda de qualidade desprezível via quantização GGUF (Parakeet 0.6B: 1,3 GiB → 697 MiB, saída idêntica bit a bit), viabilizando deploy em celulares com pouca memória.",
+              "Conduzo entrevistas técnicas e lidero o onboarding e o treinamento de novas contratações no time de fala.",
             ],
           },
           {
@@ -77,9 +69,8 @@ const RESUME = {
             date: "Fev/2025 – Set/2025",
             mode: "Remoto",
             bullets: [
-              "Portei o EasyOCR (OCR) e os modelos de tradução Marian e IndicTrans2 (NMT) para as cinco plataformas, em ONNX Runtime e GGML.",
-              "Subi LLMs (Llama, Qwen) nos backends ONNX, mlc-llm e Apache TVM.",
-              "Implantei modelos em Windows, Linux, macOS, Android e iOS.",
+              "Levei reconhecimento de texto (OCR) e tradução automática on-device às cinco plataformas (Windows, Linux, macOS, Android, iOS): portei o EasyOCR e os modelos de tradução Marian e IndicTrans2 para ONNX Runtime e GGML.",
+              "Subi modelos de linguagem (LLMs: Llama, Qwen) nos backends ONNX Runtime, mlc-llm e Apache TVM.",
             ],
           },
         ],
@@ -188,11 +179,12 @@ const RESUME = {
 
     education: [
       {
-        org: "EBAC - Escola Britânica de Artes Criativas e Tecnologia",
-        orgHref: "https://ebaconline.com.br/",
-        place: "Online",
-        date: "Jul/2022 – Jan/2024",
-        sub: "Certificado profissional: Game Designer e Desenvolvedor Unity (78 módulos, mais de 80 horas).",
+        org: "Universidade Federal de Minas Gerais (UFMG)",
+        orgHref: "https://www.ufmg.br/",
+        place: "Belo Horizonte, Brasil",
+        date: "2017 – 2021",
+        sub: "Bacharelado em Engenharia Elétrica com especialização em Ciência da Computação. Trabalho final: aplicativo para microscópio portátil capaz de identificar bacilos de Mycobacterium tuberculosis (desenvolvimento Android em Java). GPA 4.85/5.0.",
+        links: [{ text: "Repositório do projeto", href: "https://gitfront.io/r/gustavoa1604/R4ixHB9K2KyB/MicroTBApp/" }],
       },
       {
         org: "PUC Minas",
@@ -206,15 +198,14 @@ const RESUME = {
         orgHref: "https://wayne.edu/",
         place: "Detroit, EUA",
         date: "Jan/2020 – Abr/2020",
-        sub: "Programa de intercâmbio em Ciência da Computação. GPA 4.0/4.0.",
+        sub: "Programa de intercâmbio em Ciência da Computação.",
       },
       {
-        org: "Universidade Federal de Minas Gerais (UFMG)",
-        orgHref: "https://www.ufmg.br/",
-        place: "Belo Horizonte, Brasil",
-        date: "2017 – 2021",
-        sub: "Bacharelado em Engenharia Elétrica com especialização em Ciência da Computação. Trabalho final: aplicativo para microscópio portátil capaz de identificar bacilos de Mycobacterium tuberculosis (desenvolvimento Android em Java). GPA 4.85/5.0.",
-        links: [{ text: "Repositório do projeto", href: "https://gitfront.io/r/gustavoa1604/R4ixHB9K2KyB/MicroTBApp/" }],
+        org: "EBAC - Escola Britânica de Artes Criativas e Tecnologia",
+        orgHref: "https://ebaconline.com.br/",
+        place: "Online",
+        date: "Jul/2022 – Jan/2024",
+        sub: "Certificado profissional: Game Designer e Desenvolvedor Unity.",
       },
     ],
 
@@ -224,8 +215,8 @@ const RESUME = {
     // set the label becomes a link. `text` (optional) is a short description.
     highlightGroups: [
       { key: "patents", title: "Patentes" },
-      { key: "authorship", title: "Autoria" },
-      { key: "community", title: "Comunidade" },
+      { key: "talkspubs", title: "Palestras e publicações" },
+      { key: "opensource", title: "Código aberto" },
     ],
     highlights: [
       {
@@ -249,39 +240,25 @@ const RESUME = {
         text: "Decodificação confiável dos blocos ordered-set do PCIe 6.0.",
       },
       {
-        group: "community",
+        group: "talkspubs",
         label: "PCI-SIG US Developers Conference",
         meta: "Palestrante · 2023",
         text: "Apresentei “Handling PCIe 6.0 Spec Optimizations” no principal evento de PCIe da indústria: os cenários de falha escondidos nas otimizações de latência do PCIe 6.0 e os algoritmos e testes que mantêm a implementação correta.",
         href: "https://pcisig.com/events/pci-sig-developers-conference/pci-sig-developers-conference-2023-agenda",
       },
       {
-        group: "authorship",
+        group: "talkspubs",
         label: "“Insights Into the Evolutions and Optimizations of PCIe 6.0”",
         meta: "Artigo técnico · Cadence",
         text: "Um mergulho nas otimizações que permitem ao PCIe 6.0 alcançar 64 GT/s por lane: codificação 1b/1b, números de sequência de flit implícitos e o estado de largura dinâmica L0p. Publicado pela Cadence.",
         href: "https://www.chipestimate.com/Insights-Into-the-Evolutions-and-Optimizations-of-PCIe-60/Cadence/Technical-Article/2024/02/27",
       },
       {
-        group: "authorship",
-        label: "“O Tempo Fala”",
-        meta: "Livro · gestão do tempo",
-        text: "Um livro curto sobre gestão do tempo, narrado como um diálogo entre um jovem e o “Senhor do Tempo” sobre como interpretar e investir nosso recurso mais precioso. Em linguagem simples, aborda procrastinação, produtividade e definição de objetivos, com capítulos pensados para ler um por dia.",
-        href: "https://hotm.art/otempofala",
-      },
-      {
-        group: "community",
+        group: "opensource",
         label: "QVAC",
         meta: "Contribuidor · líder de time",
-        text: "Ecossistema open-source de inferência de IA local; contribuo com o projeto e lidero o time que constrói seu stack de fala on-device.",
+        text: "Ecossistema open-source da Tether para rodar modelos de IA localmente, 100% no dispositivo. Contribuo com o projeto e lidero o time que constrói seu stack de fala: reconhecimento e síntese de fala nas cinco plataformas com aceleração por GPU.",
         href: "https://github.com/tetherto/qvac",
-      },
-      {
-        group: "community",
-        label: "Entrelinhas",
-        meta: "Jogo desenvolvido sozinho",
-        text: "Um jogo de palavras: descubra a palavra secreta dentro de limites alfabéticos que vão se estreitando.",
-        href: "../entrelinhas/",
       },
     ],
 
@@ -301,8 +278,8 @@ const RESUME = {
       {
         title: "Liderança e entrega",
         tags: [
-          { label: "Liderança de equipes", detail: "Liderei times de até 20 pessoas (CPE) e um time de fala de 6 pessoas (Tether)." },
-          { label: "Ágil / SCRUM", detail: "Introduzi SCRUM na CPE: NPS +70% e projetos atrasados -42%." },
+          { label: "Liderança de equipes", detail: "Lidero um time de fala de 6 pessoas (Tether) e liderei o Verification IP de PCIe na Cadence; antes, liderei até 20 pessoas em uma empresa júnior universitária (CPE)." },
+          { label: "Ágil / SCRUM", detail: "Introduzi SCRUM em uma empresa júnior universitária (CPE): NPS +70%, projetos atrasados -42%." },
           { label: "Roadmap e prioridades", detail: "Conduzi roadmaps e priorização de tarefas em times na Tether e na Cadence." },
           { label: "Mentoria e treinamento", detail: "Onboarding e treinamento de novas contratações na Tether e na Cadence; treinamentos na CPE e na Beagá Júnior." },
         ],
@@ -340,7 +317,7 @@ const RESUME = {
       {
         title: "ML e pesquisa",
         tags: [
-          { label: "ML para verificação de HW", detail: "Três patentes concedidas nos EUA aplicando RL e redes neurais em grafo à geração de testes de verificação do PCIe." },
+          { label: "ML para verificação de HW", detail: "Três patentes nos EUA (duas concedidas) aplicando RL e redes neurais em grafo à geração de testes de verificação do PCIe." },
           { label: "Curadoria de datasets", detail: "Datasets de treino, validação e teste para um chatbot de suporte ao produto (ChatVIP)." },
           { label: "HuggingFace", detail: "Obtenção de modelos e builds GGUF quantizados." },
         ],
@@ -349,6 +326,22 @@ const RESUME = {
 
     languages: ["Português (nativo)", "Inglês (fluente)", "Espanhol (intermediário)"],
     awards: ["Segunda maior nota geral entre os formandos da UFMG (Out/2021)."],
+    // Personal projects: a small, lens-free side-rail section below Awards. Kept
+    // out of the "Selected highlights" band so it doesn't compete with the
+    // patents/talks/open-source credentials.
+    beyondTitle: "Além do trabalho",
+    beyond: [
+      {
+        label: "Escritor: “O Tempo Fala”",
+        text: "Um livro curto sobre gestão do tempo, narrado como um diálogo com o “Senhor do Tempo”.",
+        href: "https://hotm.art/otempofala",
+      },
+      {
+        label: "Entrelinhas",
+        text: "Um jogo de palavras feito sozinho: descubra a palavra secreta dentro de limites alfabéticos que se estreitam.",
+        href: "../entrelinhas/",
+      },
+    ],
   },
 
   en: {
@@ -357,9 +350,10 @@ const RESUME = {
     role: "AI Inference · C++ Systems · Technical Leadership",
     location: "Belo Horizonte, Brazil",
     back: "← Back to home",
+    download: "⤓ Download PDF",
     summaryTitle: "Summary",
     summary:
-      "Hi! I am Gustavo, software engineer with 9+ years of experience spanning AI deployment, C/C++ systems, and technical leadership. Currently I am shipping quantized on-device AI models (ASR, TTS, OCR, and translation) across five different platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration. Previously, I spent ~5 years building and re-architecting the C/C++ verification software for the PCIe protocol at Cadence Design Systems. I have led teams of up to 20 people, introducing the SCRUM methodology (NPS +70%, overdue projects -42%), and I hold three granted U.S. patents in machine learning for hardware verification. I am an AI/ML specialist on top of an Electrical Engineering degree with Computer Science minor.",
+      "Software engineer with 9+ years across C/C++ systems, AI deployment, and technical leadership. Since early 2025 I've been shipping quantized AI models (speech, OCR, and translation) that run entirely on the user's device, no server, across five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration, and I now lead the 6-person team behind that work. Before that I spent ~5 years building and re-architecting the C/C++ verification software for the PCIe protocol at Cadence Design Systems, where I led the Verification IP and earned three U.S. patents (two granted) in machine learning for hardware verification. Earlier still, heading up to 20 people at a university enterprise, I introduced SCRUM (NPS +70%, overdue projects -42%). I am an AI/ML specialist on top of an Electrical Engineering degree with a Computer Science minor.",
     // Per-lens hero tagline + summary. The defaults above are used for the "all" lens.
     roles: {
       ai: "On-device AI Inference · Model Compression · ML Systems",
@@ -367,13 +361,11 @@ const RESUME = {
       lead: "Technical Leadership · Team Building · Agile Delivery",
     },
     summaries: {
-      ai: "On-device AI inference engineer shipping quantized speech, OCR, and translation models to production across five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration via Vulkan, Metal, and OpenCL. I lead a 6-person team owning an ASR + TTS speech stack end to end on the GGML and ONNX Runtime backends: real-time TTS (RTF ≈ 0.09 on Vulkan), ASR far under real time (RTF ~0.002), and quantized GGUF builds that roughly halve model size at near-zero quality loss on memory-constrained devices. Three granted U.S. patents apply machine learning (reinforcement learning and graph neural networks) to hardware verification, on top of an AI/ML specialization and an Electrical Engineering degree.",
-      cpp: "C/C++ systems engineer with ~5 years building and re-architecting the PCIe protocol verification software at Cadence, from migrating an entire codebase C→C++ to leading the PCIe 6.0/7.0 Verification IP. Three granted U.S. patents and a published technical article in the PCIe space. I am also an AI/ML specialist on top of an Electrical Engineering degree with a Computer Science minor.",
-      lead: "Engineering leader who has led teams of up to 20, introducing SCRUM (NPS +70%, overdue projects -42%, 55 projects across 10 teams) and today owning an on-device speech stack end to end with a 6-person team. Author of a published book on time management; mentor and trainer of new engineers.",
+      ai: "On-device AI inference engineer shipping quantized speech, OCR, and translation models that run entirely on the user's device, no server, across five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration via Vulkan, Metal, and OpenCL. I lead a 6-person team that owns a speech stack (recognition + synthesis) end to end on the GGML and ONNX Runtime backends: real-time on-device synthesis (~0.09 RTF on GPU), recognition far faster than real time (~0.002 RTF), and quantized GGUF builds that roughly halve model size at near-zero quality loss for memory-constrained phones. Three U.S. patents (two granted) apply machine learning (reinforcement learning and graph neural networks) to hardware verification, on top of an AI/ML specialization and an Electrical Engineering degree.",
+      cpp: "C/C++ systems engineer with ~5 years building and re-architecting the PCIe protocol verification software at Cadence, from migrating an entire codebase C→C++ to leading the PCIe 6.0/7.0 Verification IP. Three U.S. patents (two granted) and a published technical article in the PCIe space. I am also an AI/ML specialist on top of an Electrical Engineering degree with a Computer Science minor.",
+      lead: "Engineering leader who today owns an on-device speech stack end to end with a 6-person team, and previously led the PCIe Verification IP at Cadence. Earlier, heading up to 20 people at a university enterprise, I introduced SCRUM (NPS +70%, overdue projects -42%, 55 projects across 10 teams). Author of a published book on time management; mentor and trainer of new engineers.",
     },
     lens: {
-      prompt: "What brings you here?",
-      sub: "Pick a focus and I'll float the most relevant work to the top. You can change it anytime.",
       viewing: "Viewing:",
       more: "+{n} more",
       less: "Show less",
@@ -381,13 +373,6 @@ const RESUME = {
       showRoles: "Show these roles ({n})",
       showGroup: "Show these ({n})",
       names: { ai: "AI / ML", cpp: "C++ / Hardware", lead: "Leadership", all: "Everything" },
-      cardNames: { ai: "AI & Machine Learning", cpp: "C++ & Hardware", lead: "Leadership & Delivery", all: "Show me everything" },
-      descs: {
-        ai: "On-device inference, model compression, ML systems",
-        cpp: "Low-level systems, PCIe verification, performance",
-        lead: "Team leadership, Agile, project management",
-        all: "The full resume, nothing dimmed",
-      },
     },
     experienceTitle: "Professional experience",
     educationTitle: "Education",
@@ -410,11 +395,11 @@ const RESUME = {
             date: "Sep 2025 – present",
             mode: "Remote",
             bullets: [
-              "Lead a team of up to 6 inference engineers and C++/JS developers, owning the on-device speech stack (ASR + TTS) end to end on QVAC.",
-              "Shipped ASR across all five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration (Vulkan, Metal, OpenCL on Adreno): Whisper and a brain-computer-interface Whisper variant on the GGML backend, and Parakeet on ONNX Runtime and GGML, running far under real time (RTF as low as ~0.002 on Vulkan).",
-              "Shipped real-time TTS across the same platforms: Piper (ONNX), Supertonic, and Chatterbox (ONNX and GGML), with Chatterbox reaching RTF ≈ 0.16 on Metal and 0.09 on Vulkan, fully on-device.",
-              "Shipped quantized GGUF builds that roughly halve model size with negligible quality loss (Parakeet CTC 0.6B: 1.3 GiB fp16 → 697 MiB q8_0, bit-identical output), enabling deployment on memory-constrained devices.",
-              "Ran technical interviews and led onboarding and training for new hires on the speech team.",
+              "Lead a 6-person team that owns the on-device speech stack (speech-to-text and text-to-speech) end to end, from model selection to shipping in QVAC.",
+              "Put speech recognition on users' devices with no server or network, across all five platforms (Windows, Linux, macOS, Android, iOS), transcribing far faster than real time (as low as ~0.002 RTF on GPU). Brought up Whisper, a brain-computer-interface Whisper variant, and Parakeet on the GGML and ONNX Runtime backends, GPU-accelerated via Vulkan, Metal, and OpenCL.",
+              "Delivered real-time speech synthesis on the same five platforms, fully on-device (Chatterbox at ~0.09 RTF on GPU): Piper, Supertonic, and Chatterbox on ONNX and GGML.",
+              "Halved model size with negligible quality loss through GGUF quantization (Parakeet 0.6B: 1.3 GiB → 697 MiB, bit-identical output), making deployment possible on memory-constrained phones.",
+              "Run technical interviews and lead onboarding and training for new hires on the speech team.",
             ],
           },
           {
@@ -422,9 +407,8 @@ const RESUME = {
             date: "Feb 2025 – Sep 2025",
             mode: "Remote",
             bullets: [
-              "Ported EasyOCR (OCR) and the Marian and IndicTrans2 translation models (NMT) across all five platforms, on ONNX Runtime and GGML.",
-              "Brought up LLMs (Llama, Qwen) on the ONNX, mlc-llm, and Apache TVM backends.",
-              "Deployed models on Windows, Linux, macOS, Android, and iOS.",
+              "Brought on-device text recognition (OCR) and machine translation to all five platforms (Windows, Linux, macOS, Android, iOS): ported EasyOCR and the Marian and IndicTrans2 translation models onto ONNX Runtime and GGML.",
+              "Brought up large language models (Llama, Qwen) on the ONNX Runtime, mlc-llm, and Apache TVM backends.",
             ],
           },
         ],
@@ -533,11 +517,12 @@ const RESUME = {
 
     education: [
       {
-        org: "EBAC - British School of Creative Arts and Technology",
-        orgHref: "https://ebaconline.com.br/",
-        place: "Online",
-        date: "Jul 2022 – Jan 2024",
-        sub: "Professional certificate: Game Designer & Unity Developer (78 modules, 80+ hours).",
+        org: "Federal University of Minas Gerais (UFMG)",
+        orgHref: "https://www.ufmg.br/",
+        place: "Belo Horizonte, Brazil",
+        date: "2017 – 2021",
+        sub: "Bachelor's in Electrical Engineering with a minor in Computer Science. Final project: a smartphone app for a portable microscope capable of identifying Mycobacterium tuberculosis bacilli (Android development in Java). GPA 4.85/5.0.",
+        links: [{ text: "Project repository", href: "https://gitfront.io/r/gustavoa1604/R4ixHB9K2KyB/MicroTBApp/" }],
       },
       {
         org: "PUC Minas",
@@ -551,15 +536,14 @@ const RESUME = {
         orgHref: "https://wayne.edu/",
         place: "Detroit, USA",
         date: "Jan 2020 – Apr 2020",
-        sub: "Exchange program in Computer Science. GPA 4.0/4.0.",
+        sub: "Exchange program in Computer Science.",
       },
       {
-        org: "Federal University of Minas Gerais (UFMG)",
-        orgHref: "https://www.ufmg.br/",
-        place: "Belo Horizonte, Brazil",
-        date: "2017 – 2021",
-        sub: "Bachelor's in Electrical Engineering with a minor in Computer Science. Final project: a smartphone app for a portable microscope capable of identifying Mycobacterium tuberculosis bacilli (Android development in Java). GPA 4.85/5.0.",
-        links: [{ text: "Project repository", href: "https://gitfront.io/r/gustavoa1604/R4ixHB9K2KyB/MicroTBApp/" }],
+        org: "EBAC - British School of Creative Arts and Technology",
+        orgHref: "https://ebaconline.com.br/",
+        place: "Online",
+        date: "Jul 2022 – Jan 2024",
+        sub: "Professional certificate: Game Designer & Unity Developer.",
       },
     ],
 
@@ -569,8 +553,8 @@ const RESUME = {
     // set the label becomes a link. `text` (optional) is a short description.
     highlightGroups: [
       { key: "patents", title: "Patents" },
-      { key: "authorship", title: "Authorship" },
-      { key: "community", title: "Community" },
+      { key: "talkspubs", title: "Talks & publications" },
+      { key: "opensource", title: "Open source" },
     ],
     highlights: [
       {
@@ -594,39 +578,25 @@ const RESUME = {
         text: "Reliable decoding of PCIe 6.0 ordered-set blocks.",
       },
       {
-        group: "community",
+        group: "talkspubs",
         label: "PCI-SIG U.S. Developers Conference",
         meta: "Speaker · 2023",
         text: "Presented “Handling PCIe 6.0 Spec Optimizations” at the industry's main PCIe event: the failure scenarios hidden in PCIe 6.0's latency optimizations, and the algorithms and test approaches that keep an implementation correct.",
         href: "https://pcisig.com/events/pci-sig-developers-conference/pci-sig-developers-conference-2023-agenda",
       },
       {
-        group: "authorship",
+        group: "talkspubs",
         label: "“Insights Into the Evolutions and Optimizations of PCIe 6.0”",
         meta: "Technical article · Cadence",
         text: "A deep dive into the optimizations that let PCIe 6.0 reach 64 GT/s per lane: 1b/1b encoding, implicit flit sequence numbers, and the L0p dynamic link-width state. Published by Cadence.",
         href: "https://www.chipestimate.com/Insights-Into-the-Evolutions-and-Optimizations-of-PCIe-60/Cadence/Technical-Article/2024/02/27",
       },
       {
-        group: "authorship",
-        label: "“O Tempo Fala”",
-        meta: "Book · time management",
-        text: "A short book on time management, told as a dialogue between a young man and the “Lord of Time” about how to interpret and invest our most precious resource. Written in plain Portuguese, it covers procrastination, productivity, and goal-setting, with chapters meant to be read one per day.",
-        href: "https://hotm.art/otempofala",
-      },
-      {
-        group: "community",
+        group: "opensource",
         label: "QVAC",
         meta: "Contributor · team lead",
-        text: "Open-source local AI inference ecosystem; I contribute to it and lead the team building its on-device speech stack.",
+        text: "Tether's open-source ecosystem for running AI models locally, fully on-device. I contribute to the project and lead the team building its speech stack: speech-to-text and text-to-speech across five platforms with GPU acceleration.",
         href: "https://github.com/tetherto/qvac",
-      },
-      {
-        group: "community",
-        label: "Entrelinhas",
-        meta: "Solo-developed game",
-        text: "A word game: find the hidden word within narrowing alphabetical limits.",
-        href: "../entrelinhas/",
       },
     ],
 
@@ -646,8 +616,8 @@ const RESUME = {
       {
         title: "Leadership & delivery",
         tags: [
-          { label: "Team leadership", detail: "Led teams of up to 20 (CPE) and a 6-person speech team (Tether)." },
-          { label: "Agile / SCRUM", detail: "Introduced SCRUM at CPE: NPS +70% and overdue projects -42%." },
+          { label: "Team leadership", detail: "Lead a 6-person speech team (Tether) and led the PCIe Verification IP at Cadence; earlier led up to 20 people at a university enterprise (CPE)." },
+          { label: "Agile / SCRUM", detail: "Introduced SCRUM at a university enterprise (CPE): NPS +70%, overdue projects -42%." },
           { label: "Roadmap & priorities", detail: "Owned roadmaps and task prioritization across teams at Tether and Cadence." },
           { label: "Mentoring & training", detail: "Onboarded and trained new hires at Tether and Cadence; ran training at CPE and Beaga Junior." },
         ],
@@ -685,7 +655,7 @@ const RESUME = {
       {
         title: "ML & research",
         tags: [
-          { label: "ML for HW verification", detail: "Three granted U.S. patents applying RL and graph neural networks to PCIe verification test generation." },
+          { label: "ML for HW verification", detail: "Three U.S. patents (two granted) applying RL and graph neural networks to PCIe verification test generation." },
           { label: "Dataset curation", detail: "Built training, validation, and test datasets for a product-support chatbot (ChatVIP)." },
           { label: "HuggingFace", detail: "Model sourcing and quantized GGUF builds." },
         ],
@@ -694,6 +664,22 @@ const RESUME = {
 
     languages: ["Portuguese (native)", "English (fluent)", "Spanish (intermediate)"],
     awards: ["Second highest overall grade among graduating students at UFMG (Oct 2021)."],
+    // Personal projects: a small, lens-free side-rail section below Awards. Kept
+    // out of the "Selected highlights" band so it doesn't compete with the
+    // patents/talks/open-source credentials.
+    beyondTitle: "Beyond work",
+    beyond: [
+      {
+        label: "Writer: “O Tempo Fala”",
+        text: "A short book on time management, framed as a dialogue with the “Lord of Time.”",
+        href: "https://hotm.art/otempofala",
+      },
+      {
+        label: "Entrelinhas",
+        text: "A solo-developed word game: find the hidden word within narrowing alphabetical limits.",
+        href: "../entrelinhas/",
+      },
+    ],
   },
 };
 
@@ -744,12 +730,13 @@ const LENSES = ["ai", "cpp", "lead"];
 const DEFAULT_LENS = "all";
 
 const LENS_TAGS = {
-  // highlights[i]: patents (3), talk, article, book, QVAC, Entrelinhas.
-  // Index-aligned with the highlights array (same order in pt/en). Entrelinhas
-  // carries the sentinel ["none"], which matches no specific lens: it shows only
-  // in the unfiltered "Everything" view (as the last Community card) and tucks
-  // into the Community expander under any single lens.
-  highlights: [["ai", "cpp"], ["cpp"], ["cpp"], ["ai", "cpp", "lead"], ["ai", "cpp"], ["lead"], ["ai", "cpp", "lead"], ["none"]],
+  // highlights[i]: patents (3), talk, article, QVAC.
+  // Index-aligned with the highlights array (same order in pt/en). Note this is
+  // the array order, not the display order: items are bucketed into the
+  // highlightGroups (patents / talks & publications / open source) by their
+  // `group` key at render time. Personal items (the book, Entrelinhas) are not
+  // here: they live in the lens-free "Beyond work" side-rail section.
+  highlights: [["ai", "cpp"], ["cpp"], ["cpp"], ["ai", "cpp", "lead"], ["ai", "cpp"], ["ai", "cpp", "lead"]],
   // skills[i]: languages, leadership, inference, backends, models, ML&research
   skills: [["ai", "cpp"], ["lead"], ["ai"], ["ai"], ["ai"], ["ai", "cpp"]],
   // Bullet-level tags: bullets[experienceIdx][positionIdx][bulletIdx].
@@ -762,7 +749,7 @@ const LENS_TAGS = {
       // tucks away under the C++ lens; the rest surface across the tech lenses.
       [["lead", "ai", "cpp"], ["ai", "cpp"], ["ai", "cpp"], ["ai", "cpp"], ["lead"]],
       // Tether — C++ Developer
-      [["ai", "cpp"], ["ai", "cpp"], ["ai", "cpp"]],
+      [["ai", "cpp"], ["ai", "cpp"]],
     ],
     [
       // Cadence — Lead Software Engineer
@@ -792,6 +779,10 @@ const LENS_TAGS = {
 
 let currentLang = window.RESUME_DEFAULT_LANG || "en";
 let currentLens = DEFAULT_LENS;
+// True until the visitor first picks a lens (or has a remembered choice). While
+// true, the lens pill bar self-announces with a quiet glow so the feature is
+// discoverable without a blocking modal. See renderLensBar.
+let lensHinting = false;
 
 // A node with no tags, or tags including the active lens, is "in focus".
 // The "all" lens puts everything in focus.
@@ -809,6 +800,7 @@ function getLens() {
 
 function setLens(lens) {
   currentLens = lens;
+  lensHinting = false; // an explicit choice retires the glow
   try {
     localStorage.setItem("resumeLens", lens);
   } catch (e) {}
@@ -978,6 +970,8 @@ function render() {
   document.getElementById("r-role").textContent =
     lens !== "all" && dict.roles && dict.roles[lens] ? dict.roles[lens] : dict.role;
   document.getElementById("r-back").textContent = dict.back;
+  const printBtn = document.getElementById("r-print");
+  if (printBtn) printBtn.textContent = dict.download;
 
   // Contact line
   const contact = document.getElementById("r-contact");
@@ -1145,6 +1139,29 @@ function render() {
   awards.innerHTML = "";
   dict.awards.forEach((t) => awards.append(el("li", null, t)));
 
+  // Beyond work: small, lens-free list of personal projects (book, game). Each
+  // item is a linked label plus a short note. Internal links (Entrelinhas) stay
+  // in-tab; external ones open in a new tab, mirroring the highlight cards.
+  document.getElementById("r-beyond-title").textContent = dict.beyondTitle;
+  const beyond = document.getElementById("r-beyond");
+  beyond.innerHTML = "";
+  dict.beyond.forEach((it) => {
+    const liEl = el("li", "beyond-item");
+    if (it.href) {
+      const a = el("a", "beyond-label", it.label + " ↗");
+      a.href = it.href;
+      if (/^https?:/.test(it.href)) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+      }
+      liEl.append(a);
+    } else {
+      liEl.append(el("strong", "beyond-label", it.label));
+    }
+    if (it.text) liEl.append(el("p", "beyond-text", it.text));
+    beyond.append(liEl);
+  });
+
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     const isActive = btn.dataset.lang === lang;
     btn.classList.toggle("active", isActive);
@@ -1170,6 +1187,7 @@ function renderLensBar(dict) {
     contact.parentNode.insertBefore(bar, contact.nextSibling);
   }
   bar.innerHTML = "";
+  bar.classList.toggle("lens-bar-hint", lensHinting);
   bar.setAttribute("aria-label", dict.lens.viewing);
   bar.append(el("span", "lens-label", dict.lens.viewing));
   ["ai", "cpp", "lead", "all"].forEach((key) => {
@@ -1183,60 +1201,6 @@ function renderLensBar(dict) {
   });
 }
 
-// Entry modal: a one-question "concierge" that lets the visitor pick a focus
-// before the 10-second scan. Always offers "Everything" so it never traps,
-// and the choice is remembered so return visits skip straight in.
-function showLensModal() {
-  const dict = RESUME[currentLang] || RESUME.pt;
-  const overlay = el("div", "lens-modal");
-  overlay.id = "r-lens-modal";
-
-  const card = el("div", "lens-modal-card");
-  card.setAttribute("role", "dialog");
-  card.setAttribute("aria-modal", "true");
-  card.setAttribute("aria-label", dict.lens.prompt);
-  card.append(el("h2", "lens-modal-title", dict.lens.prompt));
-  card.append(el("p", "lens-modal-sub", dict.lens.sub));
-
-  const opts = el("div", "lens-options");
-  ["ai", "cpp", "lead", "all"].forEach((key) => {
-    const o = el("button", "lens-option" + (key === "all" ? " lens-option-all" : ""));
-    o.type = "button";
-    o.append(el("span", "lens-option-name", dict.lens.cardNames[key]));
-    o.append(el("span", "lens-option-desc", dict.lens.descs[key]));
-    o.addEventListener("click", () => {
-      closeLensModal();
-      setLens(key);
-    });
-    opts.append(o);
-  });
-  card.append(opts);
-  overlay.append(card);
-
-  // Dismissing without choosing defaults to "everything" and is remembered.
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-      closeLensModal();
-      setLens("all");
-    }
-  });
-  document.addEventListener("keydown", onModalKey);
-  document.body.append(overlay);
-}
-
-function onModalKey(e) {
-  if (e.key === "Escape") {
-    closeLensModal();
-    setLens("all");
-  }
-}
-
-function closeLensModal() {
-  document.removeEventListener("keydown", onModalKey);
-  const m = document.getElementById("r-lens-modal");
-  if (m) m.remove();
-}
-
 document.querySelectorAll(".lang-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     currentLang = btn.dataset.lang;
@@ -1244,14 +1208,22 @@ document.querySelectorAll(".lang-btn").forEach((btn) => {
   });
 });
 
+// Download PDF: hand off to the browser's print-to-PDF. The @media print rules
+// in resume.css reveal all lens-collapsed content and strip the UI chrome, so
+// the printed/saved file is always the complete, clean resume.
+const printBtn = document.getElementById("r-print");
+if (printBtn) printBtn.addEventListener("click", () => window.print());
+
 // Default language: route sets window.RESUME_DEFAULT_LANG; user toggle is not
 // persisted across the two routes, so the route default always wins on load.
 currentLang = window.RESUME_DEFAULT_LANG || "en";
 
-// Lens: a remembered choice wins; otherwise ask once via the entry modal.
+// Lens: a remembered choice wins; otherwise show the full resume immediately.
+// The lens pill bar stays available as optional refinement (and self-announces
+// with a quiet glow until first use; see renderLensBar).
 const storedLens = getLens();
 if (storedLens) currentLens = storedLens;
+else lensHinting = true; // first-time visitor: glow the pills until they choose
 render();
-if (!storedLens) showLensModal();
 
 document.getElementById("year").textContent = new Date().getFullYear();
