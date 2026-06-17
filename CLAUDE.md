@@ -81,12 +81,19 @@ knowing the URL.
 
 ## Previewing locally
 
+**Don't screenshot/render the page to verify routine changes.** The user does not
+want the hassle of spinning up a server and capturing headless screenshots for
+ordinary edits (copy, styling, data tweaks). Reason through the change and, if
+needed, verify with `node --check assets/resume.js` and a DOM dump / grep instead.
+Only render when a change is genuinely disruptive (a layout overhaul) and the visual
+result can't be reasoned about confidently.
+
 ```sh
 python -m http.server 8000
 # then open http://localhost:8000/resume/ and http://localhost:8000/curriculo/
 ```
 
-Headless screenshot (Windows, Edge available):
+Headless screenshot (Windows, Edge available) — reserve for the disruptive cases above:
 
 ```sh
 "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" \

@@ -363,6 +363,10 @@
   color: var(--accent);
 }
 
+.entry-org-name {
+  color: var(--accent);
+}
+
 .entry-date {
   color: var(--muted);
   font-size: 0.85rem;

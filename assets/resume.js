@@ -78,7 +78,7 @@ const RESUME = {
             date: "Fev/2025 – Set/2025",
             mode: "Remoto",
             bullets: [
-              "Portei o EasyOCR (OCR) e o modelo de tradução Marian (NMT) para as cinco plataformas, em ONNX Runtime e GGML.",
+              "Portei o EasyOCR (OCR) e os modelos de tradução Marian e IndicTrans2 (NMT) para as cinco plataformas, em ONNX Runtime e GGML.",
               "Subi LLMs (Llama, Qwen) nos backends ONNX, mlc-llm e Apache TVM.",
               "Implantei modelos em Windows, Linux, macOS, Android e iOS.",
             ],
@@ -163,8 +163,24 @@ const RESUME = {
             title: "Gerente de Projetos · Consultor de Tecnologia",
             date: "Jul/2017 – Jun/2018",
             bullets: [
-              "Gerenciei equipes em projetos de prototipagem eletrônica e desenvolvimento de sites (WordPress, HTML5).",
+              "Gerenciei uma equipe de 3 pessoas em 7 projetos de prototipagem eletrônica e desenvolvimento de sites (WordPress, HTML5).",
               "Criei protótipos eletrônicos: projeto de circuitos, implementação de PCB e cases 3D impressos.",
+            ],
+          },
+        ],
+      },
+      {
+        org: "Beagá Júnior",
+        place: "Belo Horizonte, Brasil",
+        date: "Jul/2019 – Dez/2019",
+        sub: "Federação das empresas juniores de Belo Horizonte.",
+        positions: [
+          {
+            title: "Coordenador de Suporte",
+            date: "Jul/2019 – Dez/2019",
+            bullets: [
+              "Assessorei 6 empresas juniores de Belo Horizonte em decisões estratégicas, usando a matriz GUT para identificar problemas de gestão e estrutura e propor soluções.",
+              "Orientei mudanças em departamentos-chave e conduzi treinamentos em temas como gestão do tempo e SCRUM.",
             ],
           },
         ],
@@ -286,7 +302,7 @@ const RESUME = {
       },
       {
         title: "Modelos",
-        tags: ["ASR (Whisper, Parakeet)", "TTS (Piper, Supertonic, Chatterbox)", "OCR (EasyOCR)", "NMT (Marian)", "LLMs (Llama, Qwen)"],
+        tags: ["ASR (Whisper, Parakeet)", "TTS (Piper, Supertonic, Chatterbox)", "OCR (EasyOCR)", "NMT (Marian, IndicTrans2)", "LLMs (Llama, Qwen)"],
       },
       {
         title: "ML e pesquisa",
@@ -369,7 +385,7 @@ const RESUME = {
             date: "Feb 2025 – Sep 2025",
             mode: "Remote",
             bullets: [
-              "Ported EasyOCR (OCR) and the Marian translation model (NMT) across all five platforms, on ONNX Runtime and GGML.",
+              "Ported EasyOCR (OCR) and the Marian and IndicTrans2 translation models (NMT) across all five platforms, on ONNX Runtime and GGML.",
               "Brought up LLMs (Llama, Qwen) on the ONNX, mlc-llm, and Apache TVM backends.",
               "Deployed models on Windows, Linux, macOS, Android, and iOS.",
             ],
@@ -427,7 +443,7 @@ const RESUME = {
         ],
       },
       {
-        org: "CPE - Consultoria e Projetos Elétricos Júnior",
+        org: "CPE - Consultoria e Projetos Eletricos Junior",
         orgHref: "https://cpejr.com/",
         place: "Belo Horizonte, Brazil",
         date: "Jul 2017 – Dec 2019",
@@ -454,8 +470,24 @@ const RESUME = {
             title: "Project Manager · Technology Consultant",
             date: "Jul 2017 – Jun 2018",
             bullets: [
-              "Managed teams on electronic-prototyping and website-development projects (WordPress, HTML5).",
+              "Managed a team of 3 across 7 electronic-prototyping and website-development projects (WordPress, HTML5).",
               "Built electronic prototypes: circuit design, PCB implementation, and 3D-printed cases.",
+            ],
+          },
+        ],
+      },
+      {
+        org: "Beaga Junior",
+        place: "Belo Horizonte, Brazil",
+        date: "Jul 2019 – Dec 2019",
+        sub: "Belo Horizonte federation of junior enterprises.",
+        positions: [
+          {
+            title: "Support Coordinator",
+            date: "Jul 2019 – Dec 2019",
+            bullets: [
+              "Advised 6 junior enterprises across Belo Horizonte on strategy, using the GUT matrix to surface management and structural problems and propose solutions.",
+              "Guided changes across key departments and ran training on topics such as time management and SCRUM.",
             ],
           },
         ],
@@ -577,7 +609,7 @@ const RESUME = {
       },
       {
         title: "Models",
-        tags: ["ASR (Whisper, Parakeet)", "TTS (Piper, Supertonic, Chatterbox)", "OCR (EasyOCR)", "NMT (Marian)", "LLMs (Llama, Qwen)"],
+        tags: ["ASR (Whisper, Parakeet)", "TTS (Piper, Supertonic, Chatterbox)", "OCR (EasyOCR)", "NMT (Marian, IndicTrans2)", "LLMs (Llama, Qwen)"],
       },
       {
         title: "ML & research",
@@ -650,6 +682,11 @@ const LENS_TAGS = {
       [["lead"], ["lead"], ["lead"], ["lead"]],
       // CPE — Project Manager / Technology Consultant
       [["lead", "cpp"], ["cpp"]],
+    ],
+    [
+      // Beagá Júnior — Support Coordinator (leadership only; tucks away under
+      // the AI and C++ lenses)
+      [["lead"], ["lead"]],
     ],
   ],
 };
@@ -756,7 +793,9 @@ function renderEntry(item, bulletTags, lens, dict) {
     a.rel = "noopener noreferrer";
     title.append(a);
   } else {
-    title.append(item.org);
+    // No link: still render the org name in the accent color so it matches the
+    // linked entries (which are accent via `.section a`).
+    title.append(el("span", "entry-org-name", item.org));
   }
   if (item.place) {
     title.append(" ");
@@ -807,11 +846,13 @@ function renderEntry(item, bulletTags, lens, dict) {
       );
 
     if (lensed && !entryHasFocus) {
+      // "Show this role" reads better for a one-role company; plural otherwise.
+      const rolesLabel = item.positions.length === 1 ? dict.lens.showRole : dict.lens.showRoles;
       entry.append(
         lensToggle(
           entry,
           "show-roles",
-          dict.lens.showRoles.replace("{n}", item.positions.length),
+          rolesLabel.replace("{n}", item.positions.length),
           dict.lens.less
         )
       );
