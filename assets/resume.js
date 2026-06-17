@@ -5,7 +5,6 @@ const RESUME = {
   name: "Gustavo Emanuel Faria Araujo",
   linkedin: "https://www.linkedin.com/in/gustavoefa/",
   email: "gefa.software@gmail.com",
-  phone: "+55 (31) 99349-4917",
 
   pt: {
     htmlLang: "pt-BR",
@@ -984,10 +983,6 @@ function render() {
   const contact = document.getElementById("r-contact");
   contact.innerHTML = "";
   contact.append(el("span", null, dict.location));
-  const phone = el("a");
-  phone.href = "tel:" + RESUME.phone.replace(/[^0-9+]/g, "");
-  phone.textContent = RESUME.phone;
-  contact.append(phone);
   const mail = el("a");
   mail.href = "mailto:" + RESUME.email;
   mail.textContent = RESUME.email;
