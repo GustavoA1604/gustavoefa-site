@@ -35,6 +35,7 @@ const RESUME = {
       less: "Mostrar menos",
       showRole: "Mostrar este cargo ({n})",
       showRoles: "Mostrar estes cargos ({n})",
+      showGroup: "Mostrar estes ({n})",
       names: { ai: "IA / ML", cpp: "C++ / Hardware", lead: "Liderança", all: "Tudo" },
       cardNames: { ai: "IA & Machine Learning", cpp: "C++ & Hardware", lead: "Liderança & Entrega", all: "Ver tudo" },
       descs: {
@@ -202,41 +203,70 @@ const RESUME = {
       },
     ],
 
-    // Prominent "highlights" band near the top: promotes patents, talk, and
-    // article out of a buried side list. `label` is the bold lead-in; if `href`
-    // is set the label becomes a link. `text` (optional) is a short description.
+    // Highlights are split into labelled groups (see `highlightGroups` for the
+    // display order). Each item carries a `group` key; rendering buckets them
+    // under the matching subheading. `label` is the bold lead-in; if `href` is
+    // set the label becomes a link. `text` (optional) is a short description.
+    highlightGroups: [
+      { key: "patents", title: "Patentes" },
+      { key: "authorship", title: "Autoria" },
+      { key: "community", title: "Comunidade" },
+    ],
     highlights: [
       {
-        label: "Patente: aprendizado por reforço para geração de testes de verificação (US 12.099.791, concedida)",
-        text: "Exploração do espaço de estados guiada por RL, com políticas por alvo e modelagem de recompensa, mais uma representação em grafo dos estados descobertos, para gerar e deduplicar sequências de teste de hardware automaticamente.",
+        group: "patents",
+        label: "Aprendizado por reforço para geração de testes",
+        meta: "US 12.099.791 · Concedida",
+        text: "RL explora o espaço de estados para gerar e deduplicar testes de verificação de hardware automaticamente.",
         href: "https://patents.justia.com/patent/12099791",
       },
       {
-        label: "Patente: sincronização de monitor baseada em número de sequência (US 12.348.403, concedida)",
-        text: "Método de verificação que mantém um monitor passivo em sincronia com o DUT para tráfego FLIT-mode do PCIe 6.0, via processamento adiado dirigido por ACK/NAK.",
+        group: "patents",
+        label: "Sincronização de monitor por número de sequência",
+        meta: "US 12.348.403 · Concedida",
+        text: "Mantém um monitor passivo em sincronia com o dispositivo no tráfego do PCIe 6.0.",
         href: "https://patents.justia.com/patent/12348403",
       },
       {
-        label: "Patente: identificação robusta de fluxo de dados (contexto de verificação PCIe, depositada)",
-        text: "Mecanismo para decodificar com confiabilidade os blocos ordered-set do PCIe 6.0 em codificação 1b/1b.",
+        group: "patents",
+        label: "Identificação robusta de fluxo de dados",
+        meta: "Depositada",
+        text: "Decodificação confiável dos blocos ordered-set do PCIe 6.0.",
       },
       {
-        label: "Palestrante na PCI-SIG US Developers Conference (2023)",
+        group: "community",
+        label: "PCI-SIG US Developers Conference",
+        meta: "Palestrante · 2023",
+        text: "Apresentei “Handling PCIe 6.0 Spec Optimizations” no principal evento de PCIe da indústria: os cenários de falha escondidos nas otimizações de latência do PCIe 6.0 e os algoritmos e testes que mantêm a implementação correta.",
         href: "https://pcisig.com/events/pci-sig-developers-conference/pci-sig-developers-conference-2023-agenda",
       },
       {
-        label: "Autor do artigo “Insights Into the Evolutions and Optimizations of PCIe 6.0”",
+        group: "authorship",
+        label: "“Insights Into the Evolutions and Optimizations of PCIe 6.0”",
+        meta: "Artigo técnico · Cadence",
+        text: "Um mergulho nas otimizações que permitem ao PCIe 6.0 alcançar 64 GT/s por lane: codificação 1b/1b, números de sequência de flit implícitos e o estado de largura dinâmica L0p. Publicado pela Cadence.",
         href: "https://www.chipestimate.com/Insights-Into-the-Evolutions-and-Optimizations-of-PCIe-60/Cadence/Technical-Article/2024/02/27",
       },
       {
-        label: "Autor do livro “O Tempo Fala”, sobre gestão do tempo",
-        text: "Publicado.",
+        group: "authorship",
+        label: "“O Tempo Fala”",
+        meta: "Livro · gestão do tempo",
+        text: "Um livro curto sobre gestão do tempo, narrado como um diálogo entre um jovem e o “Senhor do Tempo” sobre como interpretar e investir nosso recurso mais precioso. Em linguagem simples, aborda procrastinação, produtividade e definição de objetivos, com capítulos pensados para ler um por dia.",
         href: "https://hotm.art/otempofala",
       },
       {
-        label: "Contribuidor do projeto open-source QVAC",
-        text: "Ecossistema open-source de inferência de IA local.",
+        group: "community",
+        label: "QVAC",
+        meta: "Contribuidor · líder de time",
+        text: "Ecossistema open-source de inferência de IA local; contribuo com o projeto e lidero o time que constrói seu stack de fala on-device.",
         href: "https://github.com/tetherto/qvac",
+      },
+      {
+        group: "community",
+        label: "Entrelinhas",
+        meta: "Jogo desenvolvido sozinho",
+        text: "Um jogo de palavras: descubra a palavra secreta dentro de limites alfabéticos que vão se estreitando.",
+        href: "../entrelinhas/",
       },
     ],
 
@@ -296,6 +326,7 @@ const RESUME = {
       less: "Show less",
       showRole: "Show this role ({n})",
       showRoles: "Show these roles ({n})",
+      showGroup: "Show these ({n})",
       names: { ai: "AI / ML", cpp: "C++ / Hardware", lead: "Leadership", all: "Everything" },
       cardNames: { ai: "AI & Machine Learning", cpp: "C++ & Hardware", lead: "Leadership & Delivery", all: "Show me everything" },
       descs: {
@@ -463,41 +494,70 @@ const RESUME = {
       },
     ],
 
-    // Prominent "highlights" band near the top: promotes patents, talk, and
-    // article out of a buried side list. `label` is the bold lead-in; if `href`
-    // is set the label becomes a link. `text` (optional) is a short description.
+    // Highlights are split into labelled groups (see `highlightGroups` for the
+    // display order). Each item carries a `group` key; rendering buckets them
+    // under the matching subheading. `label` is the bold lead-in; if `href` is
+    // set the label becomes a link. `text` (optional) is a short description.
+    highlightGroups: [
+      { key: "patents", title: "Patents" },
+      { key: "authorship", title: "Authorship" },
+      { key: "community", title: "Community" },
+    ],
     highlights: [
       {
-        label: "Patent: reinforcement learning for verification test generation (US 12,099,791, granted)",
-        text: "RL-driven state-space exploration with per-target policies and reward shaping, plus a graph representation of discovered states, to automatically generate and de-duplicate hardware test sequences.",
+        group: "patents",
+        label: "Reinforcement learning for test generation",
+        meta: "US 12,099,791 · Granted",
+        text: "RL explores the state space to generate and de-duplicate hardware verification tests automatically.",
         href: "https://patents.justia.com/patent/12099791",
       },
       {
-        label: "Patent: sequence-number-based monitor synchronization (US 12,348,403, granted)",
-        text: "Verification method that keeps a passive monitor in sync with a DUT for PCIe 6.0 FLIT-mode traffic via ACK/NAK-driven deferred processing.",
+        group: "patents",
+        label: "Sequence-number monitor synchronization",
+        meta: "US 12,348,403 · Granted",
+        text: "Keeps a passive monitor in sync with the device for PCIe 6.0 traffic.",
         href: "https://patents.justia.com/patent/12348403",
       },
       {
-        label: "Patent: robust data-stream identification (PCIe verification context, filed)",
-        text: "Mechanism for reliably decoding PCIe 6.0 ordered-set blocks at 1b/1b encoding.",
+        group: "patents",
+        label: "Robust data-stream identification",
+        meta: "Filed",
+        text: "Reliable decoding of PCIe 6.0 ordered-set blocks.",
       },
       {
-        label: "Speaker, PCI-SIG U.S. Developers Conference (2023)",
+        group: "community",
+        label: "PCI-SIG U.S. Developers Conference",
+        meta: "Speaker · 2023",
+        text: "Presented “Handling PCIe 6.0 Spec Optimizations” at the industry's main PCIe event: the failure scenarios hidden in PCIe 6.0's latency optimizations, and the algorithms and test approaches that keep an implementation correct.",
         href: "https://pcisig.com/events/pci-sig-developers-conference/pci-sig-developers-conference-2023-agenda",
       },
       {
-        label: "Author, “Insights Into the Evolutions and Optimizations of PCIe 6.0”",
+        group: "authorship",
+        label: "“Insights Into the Evolutions and Optimizations of PCIe 6.0”",
+        meta: "Technical article · Cadence",
+        text: "A deep dive into the optimizations that let PCIe 6.0 reach 64 GT/s per lane: 1b/1b encoding, implicit flit sequence numbers, and the L0p dynamic link-width state. Published by Cadence.",
         href: "https://www.chipestimate.com/Insights-Into-the-Evolutions-and-Optimizations-of-PCIe-60/Cadence/Technical-Article/2024/02/27",
       },
       {
-        label: "Author of the book “O Tempo Fala”, on time management",
-        text: "Published (in Portuguese).",
+        group: "authorship",
+        label: "“O Tempo Fala”",
+        meta: "Book · time management",
+        text: "A short book on time management, told as a dialogue between a young man and the “Lord of Time” about how to interpret and invest our most precious resource. Written in plain Portuguese, it covers procrastination, productivity, and goal-setting, with chapters meant to be read one per day.",
         href: "https://hotm.art/otempofala",
       },
       {
-        label: "Contributor to the QVAC open-source project",
-        text: "Open-source, local AI inference ecosystem.",
+        group: "community",
+        label: "QVAC",
+        meta: "Contributor · team lead",
+        text: "Open-source local AI inference ecosystem; I contribute to it and lead the team building its on-device speech stack.",
         href: "https://github.com/tetherto/qvac",
+      },
+      {
+        group: "community",
+        label: "Entrelinhas",
+        meta: "Solo-developed game",
+        text: "A word game: find the hidden word within narrowing alphabetical limits.",
+        href: "../entrelinhas/",
       },
     ],
 
@@ -553,8 +613,12 @@ const LENSES = ["ai", "cpp", "lead"];
 const DEFAULT_LENS = "all";
 
 const LENS_TAGS = {
-  // highlights[i]: patents, talk, article, book, QVAC
-  highlights: [["ai", "cpp"], ["cpp"], ["cpp"], ["cpp", "lead"], ["cpp"], ["lead"], ["ai"]],
+  // highlights[i]: patents (3), talk, article, book, QVAC, Entrelinhas.
+  // Index-aligned with the highlights array (same order in pt/en). Entrelinhas
+  // carries the sentinel ["none"], which matches no specific lens: it shows only
+  // in the unfiltered "Everything" view (as the last Community card) and tucks
+  // into the Community expander under any single lens.
+  highlights: [["ai", "cpp"], ["cpp"], ["cpp"], ["ai", "cpp", "lead"], ["ai", "cpp"], ["lead"], ["ai", "cpp", "lead"], ["none"]],
   // skills[i]: languages, leadership, inference, backends, models, ML&research
   skills: [["ai", "cpp"], ["lead"], ["ai"], ["ai"], ["ai"], ["ai", "cpp"]],
   // Bullet-level tags: bullets[experienceIdx][positionIdx][bulletIdx].
@@ -837,37 +901,59 @@ function render() {
     skills.append(row);
   }
 
-  // Highlights (patents, talk, article, open source): in-focus first; the rest
-  // collapse behind an expander.
+  // Highlights, bucketed into labelled groups (patents / authorship / community).
+  // Within each group the lens floats in-focus items first; off-lens items tuck
+  // behind a per-group expander (a wholly off-lens group collapses to its heading
+  // plus one "show these" expander, mirroring the wholly off-lens role behavior).
   document.getElementById("r-highlights-title").textContent = dict.highlightsTitle;
   const hl = document.getElementById("r-highlights");
   hl.innerHTML = "";
-  const renderHighlight = (item, extra) => {
-    const liEl = el("li", extra ? "lens-extra" : null);
+  // Each highlight renders as a showcase card: a (linked) title, an optional
+  // small meta line (patent number/status, medium), and an optional one-line
+  // description. Deeper detail is left to the linked source.
+  const makeHighlight = (item, extra) => {
+    const liEl = el("li", "highlight-card" + (extra ? " lens-extra" : ""));
     if (item.href) {
       const a = el("a", "highlight-label", item.label + " ↗");
       a.href = item.href;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
+      // Internal links (e.g. Entrelinhas) stay in-tab; external proof opens new.
+      if (/^https?:/.test(item.href)) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+      }
       liEl.append(a);
     } else {
       liEl.append(el("strong", "highlight-label", item.label));
     }
-    if (item.text) {
-      liEl.append(el("span", "highlight-text", ": " + item.text));
-    }
-    hl.append(liEl);
+    if (item.meta) liEl.append(el("span", "highlight-meta", item.meta));
+    if (item.text) liEl.append(el("p", "highlight-text", item.text));
+    return liEl;
   };
-  const hlParts = partitionByLens(dict.highlights, LENS_TAGS.highlights, lens);
-  hlParts.focus.forEach((it) => renderHighlight(it, false));
-  hlParts.extra.forEach((it) => renderHighlight(it, true));
-  if (hlParts.extra.length) {
-    const liT = el("li", "lens-toggle-li");
-    liT.append(
-      lensToggle(hl, "show-extra", dict.lens.more.replace("{n}", hlParts.extra.length), dict.lens.less)
-    );
-    hl.append(liT);
-  }
+  (dict.highlightGroups || [{ key: null, title: null }]).forEach((grp) => {
+    const items = [];
+    const tags = [];
+    dict.highlights.forEach((it, i) => {
+      if (grp.key == null || it.group === grp.key) {
+        items.push(it);
+        tags.push(LENS_TAGS.highlights[i]);
+      }
+    });
+    if (!items.length) return;
+    const parts = partitionByLens(items, tags, lens);
+    const block = el("div", "highlight-group");
+    if (grp.title) block.append(el("h3", "highlight-group-title", grp.title));
+    const ul = el("ul", "highlights-list");
+    parts.focus.forEach((it) => ul.append(makeHighlight(it, false)));
+    parts.extra.forEach((it) => ul.append(makeHighlight(it, true)));
+    if (parts.extra.length) {
+      const liT = el("li", "lens-toggle-li");
+      const tmpl = parts.focus.length ? dict.lens.more : dict.lens.showGroup;
+      liT.append(lensToggle(ul, "show-extra", tmpl.replace("{n}", parts.extra.length), dict.lens.less));
+      ul.append(liT);
+    }
+    block.append(ul);
+    hl.append(block);
+  });
 
   // Languages + Awards (meta grid)
   document.getElementById("r-lang-title").textContent = dict.languagesTitle;
