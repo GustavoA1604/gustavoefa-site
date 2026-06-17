@@ -210,6 +210,36 @@
   color: var(--accent);
 }
 
+/* Selected research & highlights band */
+.highlights-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.highlights-list li::marker {
+  color: var(--accent);
+}
+
+.highlights-list .highlight-label {
+  font-weight: 700;
+}
+
+a.highlight-label {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a.highlight-label:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.highlights-list .highlight-text {
+  color: var(--muted);
+}
+
 /* Skills + meta grids */
 .skill-grid {
   display: grid;

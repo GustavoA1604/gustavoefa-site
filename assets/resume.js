@@ -10,15 +10,15 @@ const RESUME = {
   pt: {
     htmlLang: "pt-BR",
     docTitle: "Gustavo Araujo - Currículo",
-    role: "Lead Software Engineer",
+    role: "Inferência de IA · Sistemas em C++ · Liderança Técnica",
     location: "Belo Horizonte, Brasil",
     back: "← Voltar ao início",
     summaryTitle: "Resumo",
     summary:
-      "Olá! Sou o Gustavo, Engenheiro de Software com mais de 9 anos de experiência em deploy de IA, desenvolvimento ágil de software e gestão de projetos, atuando com diversos frameworks ao longo de minha carreira. Possuo bacharelado em Engenharia Elétrica com especialização em Ciência da Computação e pós-graduação em Inteligência Artificial e Aprendizado de Máquina. Destaco-me em projetos complexos, entregando bons resultados mesmo sob prazos curtos. Comunico-me fluentemente em português e inglês e trabalho de forma dinâmica com equipes geograficamente distribuídas.",
+      "Oi! Sou o Gustavo, engenheiro de software com mais de 9 anos de experiência em deploy de IA, sistemas em C/C++ e liderança técnica. Hoje trabalho com a produtização de modelos de IA quantizados (ASR, TTS, OCR e tradução) rodando localmente em cinco plataformas diferentes (Windows, Linux, macOS, Android, iOS) com aceleração por GPU. Anteriormente, trabalhei por cerca de 5 anos construindo e re-arquitetando o software de verificação (C/C++) do protocolo PCIe na Cadence Design Systems. Já liderei equipes de até 20 pessoas, introduzindo a metodologia de gerenciamento SCRUM (NPS +70%, projetos atrasados -42%), e possuo três patentes concedidas nos EUA em aprendizado de máquina para verificação de hardware. Sou especialista em IA/ML e graduado em Engenharia Elétrica com foco em Ciências da Computação.",
     experienceTitle: "Experiência profissional",
     educationTitle: "Formação acadêmica",
-    industryTitle: "Participação na indústria",
+    highlightsTitle: "Destaques selecionados",
     skillsTitle: "Competências",
     languagesTitle: "Idiomas",
     awardsTitle: "Prêmios",
@@ -33,24 +33,24 @@ const RESUME = {
         links: [{ text: "qvac.tether.io", href: "https://qvac.tether.io/" }],
         positions: [
           {
-            title: "Lead Software Engineering Services",
+            title: "Lead Software Engineer",
             date: "Set/2025 – atual",
             mode: "Remoto",
             bullets: [
-              "Atuo com diversos modelos de IA open-source: Qwen, Llama, Whisper, Parakeet, Chatterbox, Supertonic, Marian, IndicTrans2, entre outros.",
-              "Conduzo a inferência sobre os backends llama.cpp e ONNX Runtime.",
-              "Entrego soluções de Reconhecimento de Fala (ASR), Síntese de Voz (TTS) e Reconhecimento Óptico de Caracteres (OCR).",
-              "Lidero 10 pessoas entre engenheiros de inferência de IA e desenvolvedores JS.",
+              "Lidero uma equipe de até 6 engenheiros de inferência e desenvolvedores JS, com responsabilidade ponta a ponta sobre o stack de fala (ASR + TTS) no QVAC.",
+              "Coloquei ASR em produção nas cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU (Vulkan, Metal, OpenCL em Adreno): Whisper e uma variante de interface cérebro-computador no backend GGML, e Parakeet em ONNX Runtime e GGML, rodando muito abaixo do tempo real (RTF tão baixo quanto ~0,002 em Vulkan).",
+              "Coloquei TTS em tempo real nas mesmas plataformas: Piper (ONNX), Supertonic e Chatterbox (ONNX e GGML), com Chatterbox atingindo RTF ≈ 0,16 em Metal e 0,09 em Vulkan, totalmente no dispositivo.",
+              "Entreguei builds GGUF quantizados que praticamente reduzem o tamanho do modelo pela metade com perda de qualidade desprezível (Parakeet CTC 0.6B: 1,3 GiB fp16 → 697 MiB q8_0, saída idêntica bit a bit), viabilizando deploy em dispositivos com pouca memória.",
             ],
           },
           {
-            title: "C++ Development Services",
+            title: "C++ Developer",
             date: "Fev/2025 – Set/2025",
             mode: "Remoto",
             bullets: [
-              "Desenvolvi em C++ múltiplos modelos de IA: OCR, tradução (Marian), transcrição (Whisper) e LLMs (Llama, Qwen).",
-              "Trabalhei com os backends ONNX, mlc-llm e Apache TVM.",
-              "Implantei modelos em múltiplas plataformas (Windows, Linux, Mac, Android, iOS).",
+              "Como contribuidor individual, portei o EasyOCR (OCR) e o modelo de tradução Marian (NMT) para as cinco plataformas, em ONNX Runtime e GGML.",
+              "Subi LLMs (Llama, Qwen) nos backends ONNX, mlc-llm e Apache TVM.",
+              "Implantei modelos em Windows, Linux, macOS, Android e iOS.",
             ],
           },
         ],
@@ -165,27 +165,65 @@ const RESUME = {
       },
     ],
 
-    // Set `href` to make an item link out. URLs were NOT embedded in the source
-    // PDF (verified), so fill these in with the real links when available.
-    industry: [
-      { text: "Contribuidor do projeto open-source QVAC.", href: "https://github.com/tetherto/qvac" },
-      { text: "Palestrante na PCI-SIG US Developers Conference.", href: "https://pcisig.com/events/pci-sig-developers-conference/pci-sig-developers-conference-2023-agenda" },
-      { text: "Autor do artigo “Insights Into the Evolutions and Optimizations of PCIe 6.0”.", href: "https://www.chipestimate.com/Insights-Into-the-Evolutions-and-Optimizations-of-PCIe-60/Cadence/Technical-Article/2024/02/27" },
+    // Prominent "highlights" band near the top: promotes patents, talk, and
+    // article out of a buried side list. `label` is the bold lead-in; if `href`
+    // is set the label becomes a link. `text` (optional) is a short description.
+    highlights: [
+      {
+        label: "Patente: aprendizado por reforço para geração de testes de verificação (US 12.099.791, concedida)",
+        text: "Exploração do espaço de estados guiada por RL, com políticas por alvo e modelagem de recompensa, mais uma representação em grafo dos estados descobertos, para gerar e deduplicar sequências de teste de hardware automaticamente.",
+        href: "https://patents.justia.com/patent/12099791",
+      },
+      {
+        label: "Patente: sincronização de monitor baseada em número de sequência (US 12.348.403, concedida)",
+        text: "Método de verificação que mantém um monitor passivo em sincronia com o DUT para tráfego FLIT-mode do PCIe 6.0, via processamento adiado dirigido por ACK/NAK.",
+        href: "https://patents.justia.com/patent/12348403",
+      },
+      {
+        label: "Patente: identificação robusta de fluxo de dados (contexto de verificação PCIe, depositada)",
+        text: "Mecanismo para decodificar com confiabilidade os blocos ordered-set do PCIe 6.0 em codificação 1b/1b.",
+      },
+      {
+        label: "Palestrante na PCI-SIG US Developers Conference (2023)",
+        href: "https://pcisig.com/events/pci-sig-developers-conference/pci-sig-developers-conference-2023-agenda",
+      },
+      {
+        label: "Autor do artigo “Insights Into the Evolutions and Optimizations of PCIe 6.0”",
+        href: "https://www.chipestimate.com/Insights-Into-the-Evolutions-and-Optimizations-of-PCIe-60/Cadence/Technical-Article/2024/02/27",
+      },
+      {
+        label: "Autor do livro “O Tempo Fala”, sobre gestão do tempo",
+        text: "Publicado.",
+        href: "https://hotm.art/otempofala",
+      },
+      {
+        label: "Contribuidor do projeto open-source QVAC",
+        text: "Ecossistema open-source de inferência de IA local.",
+        href: "https://github.com/tetherto/qvac",
+      },
     ],
 
     skills: [
+      { title: "Linguagens de programação", tags: ["C", "C++", "Python", "JavaScript"] },
       {
-        title: "Inteligência Artificial",
-        tags: ["Otimização de inferência", "Kernels (Vulkan, Metal)", "GGML / llama.cpp", "ONNX Runtime", "mlc-llm", "Apache TVM", "TTS", "ASR", "OCR", "Whisper", "Parakeet", "Chatterbox", "Supertonic"],
-      },
-      { title: "Linguagens de programação", tags: ["C", "C++", "Python", "JS"] },
-      {
-        title: "Desenvolvimento de software",
-        tags: ["Git", "Desenvolvimento Ágil", "SCRUM", "SystemVerilog / UVM", "Asana", "Jira", "GDB", "Perforce", "Mozilla RR"],
+        title: "Liderança e entrega",
+        tags: ["Liderança de equipes", "Ágil / SCRUM", "Roadmap e priorização", "Mentoria e treinamento"],
       },
       {
-        title: "Soft skills",
-        tags: ["Gestão de tempo", "Liderança", "Aprendizado rápido", "Comunicação", "Pensamento criativo"],
+        title: "Inferência e compressão",
+        tags: ["Quantização de modelos", "Inferência local de baixa latência/memória", "Tempo real (RTF < 1) em mobile"],
+      },
+      {
+        title: "Backends e GPU",
+        tags: ["GGML / llama.cpp", "ONNX Runtime", "mlc-llm", "Apache TVM", "Vulkan", "Metal", "OpenCL (Adreno)"],
+      },
+      {
+        title: "Modelos",
+        tags: ["ASR (Whisper, Parakeet)", "TTS (Piper, Supertonic, Chatterbox)", "OCR (EasyOCR)", "NMT (Marian)", "LLMs (Llama, Qwen)"],
+      },
+      {
+        title: "ML e pesquisa",
+        tags: ["ML para verificação de hardware (patenteado)", "Curadoria de datasets", "HuggingFace"],
       },
     ],
 
@@ -196,15 +234,15 @@ const RESUME = {
   en: {
     htmlLang: "en",
     docTitle: "Gustavo Araujo - Resume",
-    role: "Lead Software Engineer",
+    role: "AI Inference · C++ Systems · Technical Leadership",
     location: "Belo Horizonte, Brazil",
     back: "← Back to home",
     summaryTitle: "Summary",
     summary:
-      "Hi! I am Gustavo, an accomplished Software Engineer with 9+ years of experience in AI deployment, agile software development and project management, working with a variety of frameworks throughout my career. I hold a bachelor's in Electrical Engineering with a minor in Computer Science and a graduate degree in AI/ML. I excel in complex projects, delivering great results even under tight deadlines. I communicate fluently in Portuguese and English and work dynamically with geographically distributed teams.",
+      "Hi! I am Gustavo, software engineer with 9+ years of experience spanning AI deployment, C/C++ systems, and technical leadership. Currently I am shipping quantized on-device AI models (ASR, TTS, OCR, and translation) across five different platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration. Previously, I spent ~5 years building and re-architecting the C/C++ verification software for the PCIe protocol at Cadence Design Systems. I have led teams of up to 20 people, introducing the SCRUM methodology (NPS +70%, overdue projects -42%), and I hold three granted U.S. patents in machine learning for hardware verification. I am an AI/ML specialist on top of an Electrical Engineering degree with Computer Science minor.",
     experienceTitle: "Professional experience",
     educationTitle: "Education",
-    industryTitle: "Participation in industry",
+    highlightsTitle: "Selected highlights",
     skillsTitle: "Skills",
     languagesTitle: "Languages",
     awardsTitle: "Awards",
@@ -219,24 +257,24 @@ const RESUME = {
         links: [{ text: "qvac.tether.io", href: "https://qvac.tether.io/" }],
         positions: [
           {
-            title: "Lead Software Engineering Services",
+            title: "Lead Software Engineer",
             date: "Sep 2025 – present",
             mode: "Remote",
             bullets: [
-              "Work with multiple open-source AI models: Qwen, Llama, Whisper, Parakeet, Chatterbox, Supertonic, Marian, IndicTrans2, and others.",
-              "Drive inference across the llama.cpp and ONNX Runtime backends.",
-              "Deliver Automatic Speech Recognition (ASR), Text-to-Speech (TTS), and Optical Character Recognition (OCR).",
-              "Lead 10 people across AI inference engineers and JS developers.",
+              "Lead a team of up to 6 inference engineers and JS developers, owning the on-device speech stack (ASR + TTS) end to end on QVAC.",
+              "Shipped ASR across all five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration (Vulkan, Metal, OpenCL on Adreno): Whisper and a brain-computer-interface Whisper variant on the GGML backend, and Parakeet on ONNX Runtime and GGML, running far under real time (RTF as low as ~0.002 on Vulkan).",
+              "Shipped real-time TTS across the same platforms: Piper (ONNX), Supertonic, and Chatterbox (ONNX and GGML), with Chatterbox reaching RTF ≈ 0.16 on Metal and 0.09 on Vulkan, fully on-device.",
+              "Shipped quantized GGUF builds that roughly halve model size with negligible quality loss (Parakeet CTC 0.6B: 1.3 GiB fp16 → 697 MiB q8_0, bit-identical output), enabling deployment on memory-constrained devices.",
             ],
           },
           {
-            title: "C++ Development Services",
+            title: "C++ Developer",
             date: "Feb 2025 – Sep 2025",
             mode: "Remote",
             bullets: [
-              "Developed multiple AI models in C++: OCR, translation (Marian), transcription (Whisper), and LLMs (Llama, Qwen).",
-              "Worked with the ONNX, mlc-llm, and Apache TVM backends.",
-              "Deployed models on multiple platforms (Windows, Linux, Mac, Android, iOS).",
+              "As an individual contributor, ported EasyOCR (OCR) and the Marian translation model (NMT) across all five platforms, on ONNX Runtime and GGML.",
+              "Brought up LLMs (Llama, Qwen) on the ONNX, mlc-llm, and Apache TVM backends.",
+              "Deployed models on Windows, Linux, macOS, Android, and iOS.",
             ],
           },
         ],
@@ -351,27 +389,65 @@ const RESUME = {
       },
     ],
 
-    // Set `href` to make an item link out. URLs were NOT embedded in the source
-    // PDF (verified), so fill these in with the real links when available.
-    industry: [
-      { text: "Contributor to the QVAC open-source project.", href: "https://github.com/tetherto/qvac" },
-      { text: "Presenter at the PCI-SIG US Developers Conference.", href: "https://pcisig.com/events/pci-sig-developers-conference/pci-sig-developers-conference-2023-agenda" },
-      { text: "Author of the article “Insights Into the Evolutions and Optimizations of PCIe 6.0”.", href: "https://www.chipestimate.com/Insights-Into-the-Evolutions-and-Optimizations-of-PCIe-60/Cadence/Technical-Article/2024/02/27" },
+    // Prominent "highlights" band near the top: promotes patents, talk, and
+    // article out of a buried side list. `label` is the bold lead-in; if `href`
+    // is set the label becomes a link. `text` (optional) is a short description.
+    highlights: [
+      {
+        label: "Patent: reinforcement learning for verification test generation (US 12,099,791, granted)",
+        text: "RL-driven state-space exploration with per-target policies and reward shaping, plus a graph representation of discovered states, to automatically generate and de-duplicate hardware test sequences.",
+        href: "https://patents.justia.com/patent/12099791",
+      },
+      {
+        label: "Patent: sequence-number-based monitor synchronization (US 12,348,403, granted)",
+        text: "Verification method that keeps a passive monitor in sync with a DUT for PCIe 6.0 FLIT-mode traffic via ACK/NAK-driven deferred processing.",
+        href: "https://patents.justia.com/patent/12348403",
+      },
+      {
+        label: "Patent: robust data-stream identification (PCIe verification context, filed)",
+        text: "Mechanism for reliably decoding PCIe 6.0 ordered-set blocks at 1b/1b encoding.",
+      },
+      {
+        label: "Speaker, PCI-SIG U.S. Developers Conference (2023)",
+        href: "https://pcisig.com/events/pci-sig-developers-conference/pci-sig-developers-conference-2023-agenda",
+      },
+      {
+        label: "Author, “Insights Into the Evolutions and Optimizations of PCIe 6.0”",
+        href: "https://www.chipestimate.com/Insights-Into-the-Evolutions-and-Optimizations-of-PCIe-60/Cadence/Technical-Article/2024/02/27",
+      },
+      {
+        label: "Author of the book “O Tempo Fala”, on time management",
+        text: "Published (in Portuguese).",
+        href: "https://hotm.art/otempofala",
+      },
+      {
+        label: "Contributor to the QVAC open-source project",
+        text: "Open-source, local AI inference ecosystem.",
+        href: "https://github.com/tetherto/qvac",
+      },
     ],
 
     skills: [
+      { title: "Programming languages", tags: ["C", "C++", "Python", "JavaScript"] },
       {
-        title: "Artificial Intelligence",
-        tags: ["Inference optimization", "Kernels (Vulkan, Metal)", "GGML / llama.cpp", "ONNX Runtime", "mlc-llm", "Apache TVM", "TTS", "ASR", "OCR", "Whisper", "Parakeet", "Chatterbox", "Supertonic"],
-      },
-      { title: "Programming languages", tags: ["C", "C++", "Python", "JS"] },
-      {
-        title: "Software development",
-        tags: ["Git", "Agile Development", "SCRUM", "SystemVerilog / UVM", "Asana", "Jira", "GDB", "Perforce", "Mozilla RR"],
+        title: "Leadership & delivery",
+        tags: ["Team leadership", "Agile / SCRUM", "Roadmap & prioritization", "Mentoring & training"],
       },
       {
-        title: "Soft skills",
-        tags: ["Time management", "Leadership", "Quick learning", "Communication", "Creative thinking"],
+        title: "Inference & compression",
+        tags: ["Model quantization", "Low-latency / low-memory on-device inference", "Real-time (RTF < 1) on mobile"],
+      },
+      {
+        title: "Backends & GPU",
+        tags: ["GGML / llama.cpp", "ONNX Runtime", "mlc-llm", "Apache TVM", "Vulkan", "Metal", "OpenCL (Adreno)"],
+      },
+      {
+        title: "Models",
+        tags: ["ASR (Whisper, Parakeet)", "TTS (Piper, Supertonic, Chatterbox)", "OCR (EasyOCR)", "NMT (Marian)", "LLMs (Llama, Qwen)"],
+      },
+      {
+        title: "ML & research",
+        tags: ["ML for hardware verification (patented)", "Dataset curation", "HuggingFace"],
       },
     ],
 
@@ -502,22 +578,25 @@ function applyLanguage(lang) {
     skills.append(g);
   });
 
-  // Industry
-  document.getElementById("r-ind-title").textContent = dict.industryTitle;
-  const ind = document.getElementById("r-industry");
-  ind.innerHTML = "";
-  dict.industry.forEach((item) => {
+  // Highlights (patents, talk, article, open source)
+  document.getElementById("r-highlights-title").textContent = dict.highlightsTitle;
+  const hl = document.getElementById("r-highlights");
+  hl.innerHTML = "";
+  dict.highlights.forEach((item) => {
     const liEl = el("li");
     if (item.href) {
-      const a = el("a", null, item.text);
+      const a = el("a", "highlight-label", item.label + " ↗");
       a.href = item.href;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
       liEl.append(a);
     } else {
-      liEl.textContent = item.text;
+      liEl.append(el("strong", "highlight-label", item.label));
     }
-    ind.append(liEl);
+    if (item.text) {
+      liEl.append(el("span", "highlight-text", ": " + item.text));
+    }
+    hl.append(liEl);
   });
 
   // Languages + Awards (meta grid)

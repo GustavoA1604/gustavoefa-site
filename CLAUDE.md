@@ -43,11 +43,15 @@ knowing the URL.
   - `experience[]`/`education[]` entries: `org`, optional `orgHref` (makes the org name a
     link), `place`, `date`, `sub`, optional `links[]` (`{text, href}`, rendered as a small
     `↗` line), and for jobs `positions[]` (nested dated sub-roles with `bullets[]`).
-  - `industry[]`: `{text, href}` (href optional, makes the line a link).
-  - `skills[]`: `{title, tags[]}`.
-- Layout: full-width **Summary** on top, then a two-column grid (`.resume-layout`) with the
-  main text (Experience, Education, Industry) on the left and a narrow side rail (Skills,
-  Languages, Awards) on the right. Collapses to one column at <=760px.
+  - `highlights[]`: `{label, text?, href?}`. Prominent band promoting patents, the
+    conference talk, the article, and open-source work. `label` is the bold lead-in; if
+    `href` is set the label becomes a link, otherwise it renders as `<strong>`. `text` is
+    an optional short description appended after a colon.
+  - `skills[]`: `{title, tags[]}`. Grouped by proficiency area, not a flat keyword dump.
+- Layout: full-width **Summary**, then a full-width **Selected research & highlights** band,
+  then a two-column grid (`.resume-layout`) with the main text (Experience, Education) on the
+  left and a narrow side rail (Skills, Languages, Awards) on the right. Collapses to one
+  column at <=760px.
 - The toolbar has a **← Back to home** link (`.back-btn`, id `r-back`) pointing to `../`
   (the main site). `@media print` in `resume.css` still restyles to clean black-on-white
   for browser printing (Ctrl+P), even though there is no in-page print button.
