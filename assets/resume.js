@@ -286,27 +286,65 @@ const RESUME = {
       },
     ],
 
+    // Each tag is { label, detail }. The label is kept short (one line, no wrap);
+    // the detail expands on hover/click with evidence drawn from the rest of the
+    // resume (experience, patents, highlights).
     skills: [
-      { title: "Linguagens de programação", tags: ["C", "C++", "Python", "JavaScript"] },
+      {
+        title: "Linguagens de programação",
+        tags: [
+          { label: "C", detail: "Base de código de verificação do PCIe antes da migração para C++." },
+          { label: "C++", detail: "Linguagem principal: stack de inferência do QVAC e o Verification IP do PCIe na Cadence." },
+          { label: "Python", detail: "Ferramentas de ML, curadoria de datasets e conversão de modelos." },
+          { label: "JavaScript", detail: "Camada de aplicação do QVAC." },
+        ],
+      },
       {
         title: "Liderança e entrega",
-        tags: ["Liderança de equipes", "Ágil / SCRUM", "Roadmap e priorização", "Mentoria e treinamento"],
+        tags: [
+          { label: "Liderança de equipes", detail: "Liderei times de até 20 pessoas (CPE) e um time de fala de 6 pessoas (Tether)." },
+          { label: "Ágil / SCRUM", detail: "Introduzi SCRUM na CPE: NPS +70% e projetos atrasados -42%." },
+          { label: "Roadmap e prioridades", detail: "Conduzi roadmaps e priorização de tarefas em times na Tether e na Cadence." },
+          { label: "Mentoria e treinamento", detail: "Onboarding e treinamento de novas contratações na Tether e na Cadence; treinamentos na CPE e na Beagá Júnior." },
+        ],
       },
       {
         title: "Inferência e compressão",
-        tags: ["Quantização de modelos", "Inferência local de baixa latência/memória", "Tempo real (RTF < 1) em mobile"],
+        tags: [
+          { label: "Quantização de modelos", detail: "Builds GGUF que praticamente reduzem o tamanho do modelo pela metade com perda de qualidade desprezível." },
+          { label: "Inferência on-device", detail: "Baixa latência e baixa memória em dispositivos limitados; fala, OCR e tradução nas cinco plataformas." },
+          { label: "Tempo real em mobile", detail: "RTF < 1 no dispositivo, ex.: Chatterbox TTS a RTF ≈ 0,09 em Vulkan; ASR a partir de ~0,002." },
+        ],
       },
       {
         title: "Backends e GPU",
-        tags: ["GGML / llama.cpp", "ONNX Runtime", "mlc-llm", "Apache TVM", "Vulkan", "Metal", "OpenCL (Adreno)"],
+        tags: [
+          { label: "GGML / llama.cpp", detail: "Backend principal para ASR/TTS no QVAC." },
+          { label: "ONNX Runtime", detail: "Backend para Parakeet, Piper, Chatterbox, EasyOCR e Marian." },
+          { label: "mlc-llm", detail: "Backend usado para subir LLMs (Llama, Qwen)." },
+          { label: "Apache TVM", detail: "Compilação e otimização de modelos para inferência." },
+          { label: "Vulkan", detail: "Aceleração por GPU em Windows, Linux e Android." },
+          { label: "Metal", detail: "Aceleração por GPU em macOS e iOS." },
+          { label: "OpenCL (Adreno)", detail: "Aceleração por GPU em GPUs Adreno (Android)." },
+        ],
       },
       {
         title: "Modelos",
-        tags: ["ASR (Whisper, Parakeet)", "TTS (Piper, Supertonic, Chatterbox)", "OCR (EasyOCR)", "NMT (Marian, IndicTrans2)", "LLMs (Llama, Qwen)"],
+        tags: [
+          { label: "ASR", detail: "Whisper, uma variante Whisper de interface cérebro-computador e Parakeet (GGML/ONNX), muito abaixo do tempo real." },
+          { label: "TTS", detail: "Piper, Supertonic e Chatterbox; síntese em tempo real no dispositivo." },
+          { label: "OCR", detail: "EasyOCR, portado para as cinco plataformas." },
+          { label: "NMT", detail: "Modelos de tradução Marian e IndicTrans2." },
+          { label: "LLMs", detail: "Llama e Qwen, nos backends ONNX, mlc-llm e Apache TVM." },
+        ],
       },
       {
         title: "ML e pesquisa",
-        tags: ["ML para verificação de hardware (patenteado)", "Curadoria de datasets", "HuggingFace"],
+        tags: [
+          { label: "ML para verificação de HW", detail: "Três patentes concedidas nos EUA aplicando RL e redes neurais em grafo à geração de testes de verificação do PCIe." },
+          { label: "Curadoria de datasets", detail: "Datasets de treino, validação e teste para um chatbot de suporte ao produto (ChatVIP)." },
+          { label: "HuggingFace", detail: "Obtenção de modelos e builds GGUF quantizados." },
+        ],
       },
     ],
 
@@ -593,27 +631,65 @@ const RESUME = {
       },
     ],
 
+    // Each tag is { label, detail }. The label is kept short (one line, no wrap);
+    // the detail expands on hover/click with evidence drawn from the rest of the
+    // resume (experience, patents, highlights).
     skills: [
-      { title: "Programming languages", tags: ["C", "C++", "Python", "JavaScript"] },
+      {
+        title: "Programming languages",
+        tags: [
+          { label: "C", detail: "The PCIe verification codebase before the C-to-C++ migration." },
+          { label: "C++", detail: "Primary language: the QVAC inference stack and the PCIe Verification IP at Cadence." },
+          { label: "Python", detail: "ML tooling, dataset curation, and model conversion." },
+          { label: "JavaScript", detail: "The QVAC application layer." },
+        ],
+      },
       {
         title: "Leadership & delivery",
-        tags: ["Team leadership", "Agile / SCRUM", "Roadmap & prioritization", "Mentoring & training"],
+        tags: [
+          { label: "Team leadership", detail: "Led teams of up to 20 (CPE) and a 6-person speech team (Tether)." },
+          { label: "Agile / SCRUM", detail: "Introduced SCRUM at CPE: NPS +70% and overdue projects -42%." },
+          { label: "Roadmap & priorities", detail: "Owned roadmaps and task prioritization across teams at Tether and Cadence." },
+          { label: "Mentoring & training", detail: "Onboarded and trained new hires at Tether and Cadence; ran training at CPE and Beaga Junior." },
+        ],
       },
       {
         title: "Inference & compression",
-        tags: ["Model quantization", "Low-latency / low-memory on-device inference", "Real-time (RTF < 1) on mobile"],
+        tags: [
+          { label: "Model quantization", detail: "GGUF builds that roughly halve model size with negligible quality loss." },
+          { label: "On-device inference", detail: "Low-latency, low-memory inference on constrained devices; speech, OCR, and translation across five platforms." },
+          { label: "Real-time on mobile", detail: "RTF < 1 on-device, e.g. Chatterbox TTS at RTF ≈ 0.09 on Vulkan; ASR as low as ~0.002." },
+        ],
       },
       {
         title: "Backends & GPU",
-        tags: ["GGML / llama.cpp", "ONNX Runtime", "mlc-llm", "Apache TVM", "Vulkan", "Metal", "OpenCL (Adreno)"],
+        tags: [
+          { label: "GGML / llama.cpp", detail: "Primary backend for ASR/TTS on QVAC." },
+          { label: "ONNX Runtime", detail: "Backend for Parakeet, Piper, Chatterbox, EasyOCR, and Marian." },
+          { label: "mlc-llm", detail: "Backend used to bring up LLMs (Llama, Qwen)." },
+          { label: "Apache TVM", detail: "Model compilation and optimization for inference." },
+          { label: "Vulkan", detail: "GPU acceleration on Windows, Linux, and Android." },
+          { label: "Metal", detail: "GPU acceleration on macOS and iOS." },
+          { label: "OpenCL (Adreno)", detail: "GPU acceleration on Adreno GPUs (Android)." },
+        ],
       },
       {
         title: "Models",
-        tags: ["ASR (Whisper, Parakeet)", "TTS (Piper, Supertonic, Chatterbox)", "OCR (EasyOCR)", "NMT (Marian, IndicTrans2)", "LLMs (Llama, Qwen)"],
+        tags: [
+          { label: "ASR", detail: "Whisper, a brain-computer-interface Whisper variant, and Parakeet (GGML/ONNX), far under real time." },
+          { label: "TTS", detail: "Piper, Supertonic, and Chatterbox; real-time on-device synthesis." },
+          { label: "OCR", detail: "EasyOCR, ported across all five platforms." },
+          { label: "NMT", detail: "Marian and IndicTrans2 translation models." },
+          { label: "LLMs", detail: "Llama and Qwen, brought up on ONNX, mlc-llm, and Apache TVM." },
+        ],
       },
       {
         title: "ML & research",
-        tags: ["ML for hardware verification (patented)", "Dataset curation", "HuggingFace"],
+        tags: [
+          { label: "ML for HW verification", detail: "Three granted U.S. patents applying RL and graph neural networks to PCIe verification test generation." },
+          { label: "Dataset curation", detail: "Built training, validation, and test datasets for a product-support chatbot (ChatVIP)." },
+          { label: "HuggingFace", detail: "Model sourcing and quantized GGUF builds." },
+        ],
       },
     ],
 
@@ -628,6 +704,30 @@ function el(tag, className, text) {
   if (text != null) node.textContent = text;
   return node;
 }
+
+// Reset a skill group to its resting state: if a chip is pinned, show that chip's
+// detail; otherwise hide the detail line and clear the active highlight. Used by
+// chip hover/blur, chip clicks, and the outside-click handler.
+function restoreSkillGroup(group) {
+  const detail = group.querySelector(".skill-detail");
+  if (!detail) return;
+  const pinned = group.querySelector(".tag.pinned");
+  if (pinned) {
+    detail.textContent = pinned.getAttribute("data-detail");
+    detail.hidden = false;
+    group.querySelectorAll(".tag").forEach((b) => b.classList.toggle("active", b === pinned));
+  } else {
+    detail.hidden = true;
+    group.querySelectorAll(".tag.active").forEach((b) => b.classList.remove("active"));
+  }
+}
+
+// Clicking anywhere that is not a skill chip unpins the selected skill detail.
+document.addEventListener("click", (e) => {
+  if (e.target.closest && e.target.closest(".tag-interactive")) return;
+  document.querySelectorAll("#r-skills .tag.pinned").forEach((b) => b.classList.remove("pinned"));
+  document.querySelectorAll("#r-skills .skill-group").forEach(restoreSkillGroup);
+});
 
 /* ------------------------------------------------------------------ *
  * Role lenses
@@ -923,12 +1023,55 @@ function render() {
   document.getElementById("r-skills-title").textContent = dict.skillsTitle;
   const skills = document.getElementById("r-skills");
   skills.innerHTML = "";
+  // Each group is a card of tag chips plus one detail line. Hovering or focusing
+  // a chip previews its detail (evidence pulled from the rest of the resume);
+  // clicking pins it so it stays while the pointer moves away. Clicking the
+  // pinned chip again, or anywhere off the chips (see the outside-click handler
+  // below the function), unpins. Only one chip is pinned at a time across all
+  // groups. Pin state lives in the DOM (`.tag.pinned`) so the outside-click
+  // handler can clear it without reaching into closures. Tags with no `detail`
+  // stay plain, non-interactive chips.
   const renderSkill = (group, extra) => {
     const g = el("div", "skill-group" + (extra ? " lens-extra" : ""));
     g.append(el("h3", null, group.title));
     const tags = el("div", "tags");
-    group.tags.forEach((t) => tags.append(el("span", "tag", t)));
+    const detail = el("p", "skill-detail");
+    detail.hidden = true;
+    detail.setAttribute("aria-live", "polite");
+
+    group.tags.forEach((t) => {
+      const label = typeof t === "string" ? t : t.label;
+      const text = typeof t === "string" ? null : t.detail;
+      if (!text) {
+        tags.append(el("span", "tag", label));
+        return;
+      }
+      const btn = el("button", "tag tag-interactive", label);
+      btn.type = "button";
+      btn.setAttribute("data-detail", text);
+      btn.setAttribute("aria-label", label + ": " + text);
+      const preview = () => {
+        detail.textContent = text;
+        detail.hidden = false;
+        tags.querySelectorAll(".tag").forEach((b) => b.classList.toggle("active", b === btn));
+      };
+      btn.addEventListener("mouseenter", preview);
+      btn.addEventListener("focus", preview);
+      btn.addEventListener("mouseleave", () => restoreSkillGroup(g));
+      btn.addEventListener("blur", () => restoreSkillGroup(g));
+      btn.addEventListener("click", () => {
+        const wasPinned = btn.classList.contains("pinned");
+        // Single selection: drop every pin, reset every group, then re-show here.
+        document.querySelectorAll("#r-skills .tag.pinned").forEach((b) => b.classList.remove("pinned"));
+        document.querySelectorAll("#r-skills .skill-group").forEach(restoreSkillGroup);
+        if (!wasPinned) btn.classList.add("pinned");
+        preview(); // pointer is still on the chip, so keep its detail visible
+      });
+      tags.append(btn);
+    });
+
     g.append(tags);
+    g.append(detail);
     skills.append(g);
   };
   const skillParts = partitionByLens(dict.skills, LENS_TAGS.skills, lens);

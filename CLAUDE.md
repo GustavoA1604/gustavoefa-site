@@ -47,7 +47,12 @@ knowing the URL.
     conference talk, the article, and open-source work. `label` is the bold lead-in; if
     `href` is set the label becomes a link, otherwise it renders as `<strong>`. `text` is
     an optional short description appended after a colon.
-  - `skills[]`: `{title, tags[]}`. Grouped by proficiency area, not a flat keyword dump.
+  - `skills[]`: `{title, tags[]}`, grouped by proficiency area (not a flat keyword dump).
+    Each tag is `{label, detail}` (a bare string is also accepted and renders as a plain,
+    non-interactive chip). Keep `label` short so the chip never wraps; `detail` is the
+    longer evidence (drawn from experience/patents/highlights) that a chip reveals on
+    hover/focus/click into a single per-group `.skill-detail` line (hover previews, click
+    pins). See `renderSkill`.
   - Per-lens prose (see below) also lives in each language block: `roles` and `summaries`
     (keyed `ai`/`cpp`/`lead`; the top-level `role`/`summary` are the `all` defaults) and a
     `lens` object holding all lens UI strings (modal copy, pill labels, expander labels with
