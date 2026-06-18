@@ -1,9 +1,77 @@
-/* Page-specific styles for the resume. Shared tokens, reset, and the
-   language-switch component live in base.css (linked first). */
+/* Resume page styles: an engineer's instrument readout.
+   The throughline of Gustavo's work (PCIe signal integrity, speech waveforms,
+   real-time factor, quantization) is measurement and signal, so the page reads
+   like a precise datasheet: cool paper, a signal-teal accent, monospace for
+   every measurement, and one signature, the oscilloscope trace that sweeps in
+   under the hero.
+
+   This file is linked ONLY by /resume and /curriculo, so the token overrides
+   below stay scoped to the resume and never touch the landing page (which loads
+   base.css + styles.css). Shared reset and the language switch live in base.css;
+   the tokens here re-skin the few base components it styles (lang switch, flags).
+   Class/id names are kept exactly as resume.js expects. */
+
+:root {
+  --paper: #eef2f4;          /* cool off-white page (deliberately not cream) */
+  --surface: #ffffff;        /* readout panels / cards */
+  --ink: #0e1a1f;            /* deep cool near-black text */
+  --text: #0e1a1f;           /* base.css lang switch reads --text */
+  --muted: #5b6b75;          /* slate secondary text */
+  --line: #d6dee2;           /* hairlines, grid, borders */
+  --accent: #0b6b74;         /* signal teal: channel 1 */
+  --accent-strong: #084e55;  /* darker teal for hover/links */
+  --accent-hover: #0b6b74;   /* base.css contact links read --accent-hover */
+  --live: #c2611a;           /* amber: the one "live" marker (scope playhead) */
+  --trace: rgba(11, 107, 116, 0.16);
+  --radius: 10px;
+  --bg: #eef2f4;             /* base.css body reads --bg */
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Dark theme: the same instrument, lights off. A deep teal-slate panel with a
+   brighter signal teal, so the scope trace reads as a glowing readout. Toggled
+   via data-theme on <html> (set before paint by an inline script in each page;
+   the toggle button persists the choice to localStorage). */
+:root[data-theme="dark"] {
+  --paper: #0b1316;
+  --surface: #121e22;
+  --ink: #e8eff0;
+  --text: #e8eff0;
+  --muted: #8ba2a8;
+  --line: rgba(255, 255, 255, 0.1);
+  --accent: #2fb9b3;
+  --accent-strong: #5fd6cf;
+  --accent-hover: #5fd6cf;
+  --live: #e08a3c;
+  --trace: rgba(47, 185, 179, 0.2);
+  --bg: #0b1316;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+}
 
 .container {
   width: min(1000px, 92%);
   margin: 0 auto;
+}
+
+/* Accessibility floor: a clearly visible keyboard focus ring everywhere. */
+a:focus-visible,
+button:focus-visible,
+.tag:focus-visible,
+.lens-pill:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* The lang-switch flag ring (white in base.css) is invisible on light paper. */
+.flag {
+  box-shadow: 0 0 0 1px var(--line);
 }
 
 /* Two-column body: wide main text + narrow side rail */
@@ -14,7 +82,6 @@
   align-items: start;
 }
 
-/* Experience and Skills start on the same row, sharing the divider line */
 .resume-main > .section:first-child,
 .resume-side > .section:first-child {
   padding-top: 2rem;
@@ -25,7 +92,7 @@
 }
 
 .resume-side h2 {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 @media (max-width: 760px) {
@@ -35,50 +102,130 @@
   }
 
   .resume-side > .section:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid var(--line);
     padding-top: 2rem;
   }
 }
 
-/* Header */
+/* ------------------------------------------------------------------ *
+ * Hero: a left-aligned instrument header. A mono coordinate eyebrow, an
+ * expanded-weight nameplate, a mono role readout, then the signal trace.
+ * ------------------------------------------------------------------ */
 .resume-hero {
-  padding: 3.5rem 0 2rem;
-  background: radial-gradient(120% 120% at 50% 0%, #232a4a 0%, var(--bg) 60%);
-  text-align: center;
+  padding: 2.4rem 0 2.2rem;
+  background: transparent;
+  border-top: 3px solid var(--accent); /* the page's "power-on" bar */
+  text-align: left;
 }
 
 .resume-hero h1 {
   margin: 0;
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-family: var(--sans);
+  font-weight: 800;
+  font-stretch: 115%; /* Archivo width axis: a wide, engineered nameplate */
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  font-size: clamp(2rem, 5.5vw, 3.3rem);
+  color: var(--ink);
 }
 
 .resume-hero .role {
-  margin: 0.35rem 0 0;
-  color: var(--accent);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.95rem;
+  margin: 0.75rem 0 0;
+  font-family: var(--mono);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 0.88rem;
+  color: var(--accent-strong);
 }
 
 .contact {
   margin: 1rem 0 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.4rem 1.1rem;
+  justify-content: flex-start;
+  gap: 0.35rem 1.1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
   color: var(--muted);
-  font-size: 0.9rem;
 }
 
 .contact a {
   color: var(--muted);
   text-decoration: none;
+  border-bottom: 1px solid transparent;
 }
 
 .contact a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
+  color: var(--accent-strong);
+  border-bottom-color: var(--accent);
+}
+
+/* Signature: an oscilloscope trace that sweeps in on load, closing the hero.
+   A stylized speech/PCIe signal with a single amber playhead. Strokes use
+   non-scaling-stroke so the full-width horizontal stretch never distorts them. */
+.wave {
+  display: block;
+  width: 100%;
+  height: 52px;
+  margin: 1.7rem 0 0;
+  overflow: visible;
+}
+
+.wave .trace {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: scope-sweep 1.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.wave .cursor {
+  stroke: var(--live);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  opacity: 0;
+  animation: cursor-in 0.5s ease 1.55s forwards,
+    cursor-pulse 2.4s ease-in-out 2.1s infinite;
+}
+
+@keyframes scope-sweep {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cursor-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cursor-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave .trace {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .wave .cursor {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 /* Toolbar */
@@ -87,41 +234,73 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.6rem;
 }
 
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: var(--muted);
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.back-btn:hover {
-  color: var(--text);
-  border-color: rgba(255, 255, 255, 0.35);
-}
-
-/* Left cluster of the toolbar: back link + download */
 .toolbar-left {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
 }
 
-/* Download PDF: accent-filled so recruiters spot it immediately. Triggers the
-   browser's print-to-PDF (the @media print stylesheet renders a clean, complete
-   black-on-white resume). */
+/* Right cluster: theme toggle, then the language switch. */
+.toolbar-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-btn:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+}
+
+.theme-ico {
+  display: block;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.back-btn:hover {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+/* Download PDF: accent-filled so recruiters spot it. Triggers print-to-PDF
+   (the @media print sheet renders a clean, complete black-on-white resume). */
 .print-btn {
   color: #fff;
   background: var(--accent);
@@ -130,44 +309,47 @@
 
 .print-btn:hover {
   color: #fff;
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
 }
 
-/* Role lens: switcher bar under the hero */
+/* Role lens: a row of instrument toggles under the hero */
 .lens-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
-  margin: 1.4rem 0 0;
+  margin: 1.5rem 0 0;
 }
 
 .lens-label {
+  font-family: var(--mono);
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-right: 0.2rem;
+  letter-spacing: 0.1em;
+  margin-right: 0.25rem;
 }
 
 .lens-pill {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--surface);
+  border: 1px solid var(--line);
   color: var(--muted);
-  font: inherit;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 0.3rem 0.85rem;
-  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.32rem 0.8rem;
+  border-radius: 6px;
   cursor: pointer;
   transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
 .lens-pill:hover {
-  color: var(--text);
-  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--ink);
+  border-color: var(--accent);
 }
 
 .lens-pill.active {
@@ -176,15 +358,11 @@
   border-color: var(--accent);
 }
 
-/* Off-lens content: collapsed out of the way, revealed by an expander.
-   Nothing is greyed out; relevant work simply leads and the rest is one click
-   away (and always restored for print). */
+/* Off-lens content: collapsed, revealed by an expander. Nothing is greyed out. */
 .lens-extra {
   display: none;
 }
 
-/* Highlight cards set their own display, so the hide needs equal-or-higher
-   specificity to win over `.highlight-card { display: grid }`. */
 .highlight-card.lens-extra {
   display: none;
 }
@@ -201,7 +379,7 @@
   display: block;
 }
 
-/* Expander control, styled as a quiet inline link rather than a button */
+/* Expander, a quiet mono link */
 .lens-toggle-li {
   list-style: none;
   margin-left: -1.2rem;
@@ -215,20 +393,18 @@
   background: none;
   border: none;
   padding: 0.1rem 0;
-  font: inherit;
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 500;
   color: var(--accent);
   cursor: pointer;
 }
 
 .lens-toggle:hover {
-  color: var(--accent-hover);
+  color: var(--accent-strong);
   text-decoration: underline;
 }
 
-/* Single down-triangle, rotated when collapsed: keeps consistent glyph
-   height in both states (the ▸/▾ pair rendered at mismatched sizes). */
 .lens-toggle::before {
   content: "▾";
   display: inline-block;
@@ -243,7 +419,6 @@
   transform: rotate(0);
 }
 
-/* Whole-company collapse (a fully off-lens entry under a lens) */
 .lens-roles {
   display: none;
 }
@@ -256,21 +431,45 @@
   margin-top: 0.9rem;
 }
 
-/* Sections */
+/* ------------------------------------------------------------------ *
+ * Sections. Each heading carries a small teal "channel" tick that ties
+ * back to the signal trace (a marker, not decorative numbering).
+ * ------------------------------------------------------------------ */
 .section {
   padding: 2rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--line);
 }
 
 .section > h2 {
-  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   margin: 0 0 1.25rem;
-  letter-spacing: 0.02em;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.section > h2::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.resume-side h2::before {
+  width: 11px;
 }
 
 .summary {
   margin: 0;
-  color: var(--text);
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.65;
 }
 
 /* Experience / education entries */
@@ -292,33 +491,42 @@
 
 .entry-title {
   margin: 0;
+  font-family: var(--sans);
   font-size: 1.05rem;
   font-weight: 700;
+  color: var(--ink);
 }
 
 .entry-org {
-  color: var(--accent);
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .entry-org-name {
-  color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.entry-title a {
+  color: var(--accent-strong);
 }
 
 .entry-date {
+  font-family: var(--mono);
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   white-space: nowrap;
 }
 
 .entry-sub {
-  margin: 0.15rem 0 0;
+  margin: 0.2rem 0 0;
   color: var(--muted);
   font-size: 0.92rem;
 }
 
 .entry-links {
-  margin: 0.25rem 0 0;
-  font-size: 0.85rem;
+  margin: 0.3rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
 }
 
 .entry-links .link-sep {
@@ -326,19 +534,20 @@
   opacity: 0.6;
 }
 
-/* One-line outcome summary for earlier-tier (compacted) entries. Sits above the
-   collapsed roles; carries the metric punch so the tier reads in a glance. */
+/* One-line outcome summary for earlier-tier (compacted) entries. */
 .entry-compact {
   margin: 0.4rem 0 0.1rem;
   font-size: 0.92rem;
+  color: var(--ink);
 }
 
-/* Quiet divider introducing the compacted "Earlier experience" tier. */
+/* Quiet divider introducing the "Earlier experience" tier. */
 .exp-tier-title {
-  margin: 1.6rem 0 0;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  margin: 1.8rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -358,8 +567,10 @@
 
 .position-title {
   margin: 0;
+  font-family: var(--sans);
   font-size: 0.98rem;
   font-weight: 600;
+  color: var(--ink);
 }
 
 .entry ul {
@@ -368,21 +579,20 @@
 }
 
 .entry li {
-  margin: 0.2rem 0;
+  margin: 0.25rem 0;
+  color: var(--ink);
 }
 
 .entry li::marker {
   color: var(--accent);
 }
 
-/* Selected highlights: a three-column showcase. Each column is a labelled group
-   (patents / authorship / community); each item is a card with a (linked) title,
-   a small meta line, and an optional one-liner. Collapses to one column on
-   narrow screens. */
+/* ------------------------------------------------------------------ *
+ * Selected highlights: readout panels. The mono meta line lets patent
+ * part-numbers read like the instrument labels they are.
+ * ------------------------------------------------------------------ */
 .highlights {
   display: grid;
-  /* Three credential groups: patents / talks & publications / open source.
-     (Personal items live in the "Beyond work" side-rail section, not here.) */
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem 1.75rem;
   align-items: start;
@@ -391,11 +601,12 @@
 .highlight-group-title {
   margin: 0 0 0.7rem;
   padding-bottom: 0.4rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.72rem;
-  font-weight: 700;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.1em;
   color: var(--accent);
 }
 
@@ -409,51 +620,53 @@
 
 .highlight-card {
   display: grid;
-  gap: 0.2rem;
+  gap: 0.25rem;
   background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-left: 2px solid rgba(108, 140, 255, 0.5);
-  border-radius: 10px;
-  padding: 0.7rem 0.85rem;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .highlight-card:hover {
-  border-left-color: var(--accent);
+  border-left-color: var(--live);
   transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(14, 26, 31, 0.07);
 }
 
 .highlight-label {
+  font-family: var(--sans);
   font-weight: 700;
   font-size: 0.92rem;
   line-height: 1.3;
-  color: var(--accent);
+  color: var(--ink);
 }
 
 a.highlight-label {
   text-decoration: none;
+  color: var(--accent-strong);
 }
 
 a.highlight-label:hover {
-  color: var(--accent-hover);
-}
-
-.highlight-meta {
-  font-size: 0.68rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--accent);
 }
 
-.highlight-text {
-  margin: 0.15rem 0 0;
-  font-size: 0.84rem;
-  line-height: 1.4;
+.highlight-meta {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--muted);
 }
 
-/* The lens expander sits under the cards without card chrome. */
+.highlight-text {
+  margin: 0.2rem 0 0;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
 .highlights-list .lens-toggle-li {
   margin-left: 0;
 }
@@ -465,7 +678,9 @@ a.highlight-label:hover {
   }
 }
 
-/* Skills + meta grids */
+/* ------------------------------------------------------------------ *
+ * Skills: panels of mono chips with a per-group readout line.
+ * ------------------------------------------------------------------ */
 .skill-grid {
   display: grid;
   gap: 1rem;
@@ -474,14 +689,17 @@ a.highlight-label:hover {
 
 .skill-group {
   background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1rem 1.1rem;
 }
 
 .skill-group h3 {
-  margin: 0 0 0.6rem;
-  font-size: 0.95rem;
+  margin: 0 0 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
 }
 
 .tags {
@@ -491,18 +709,17 @@ a.highlight-label:hover {
 }
 
 .tag {
-  background: rgba(108, 140, 255, 0.12);
-  border: 1px solid rgba(108, 140, 255, 0.25);
-  color: var(--text);
-  font-size: 0.8rem;
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
-  white-space: nowrap; /* keep each chip on one line; labels are kept short */
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  white-space: nowrap;
 }
 
-/* Interactive chips reveal a detail line on hover/focus/click. */
 button.tag {
-  font-family: inherit;
   line-height: inherit;
   cursor: pointer;
   transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
@@ -510,6 +727,7 @@ button.tag {
 
 button.tag:hover {
   border-color: var(--accent);
+  color: var(--accent-strong);
 }
 
 .tag.active {
@@ -518,28 +736,35 @@ button.tag:hover {
   color: #fff;
 }
 
+.tag.pinned {
+  box-shadow: 0 0 0 2px var(--trace);
+}
+
 /* One detail line per group; populated by the active chip. */
 .skill-detail {
-  margin: 0.65rem 0 0;
-  padding-left: 0.6rem;
+  margin: 0.7rem 0 0;
+  padding-left: 0.65rem;
   border-left: 2px solid var(--accent);
-  font-size: 0.82rem;
-  line-height: 1.4;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  line-height: 1.5;
   color: var(--muted);
 }
 
+/* Side rail lists (Languages, Awards): no bullets, the section's teal tick is
+   marker enough. */
 .side-list {
+  list-style: none;
   margin: 0;
-  padding-left: 1.2rem;
+  padding: 0;
   color: var(--muted);
 }
 
-.side-list li::marker {
-  color: var(--accent);
+.side-list li {
+  margin: 0.2rem 0;
 }
 
-/* Beyond work: compact list of personal projects in the side rail. No bullets;
-   each item is a linked label with a short, muted note beneath. */
+/* Beyond work: compact list of personal projects in the side rail. */
 .beyond-list {
   list-style: none;
   margin: 0;
@@ -549,42 +774,64 @@ button.tag:hover {
 }
 
 .beyond-label {
+  font-family: var(--sans);
   font-weight: 700;
   font-size: 0.9rem;
+  color: var(--ink);
+}
+
+a.beyond-label {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+a.beyond-label:hover {
+  color: var(--accent);
 }
 
 .beyond-text {
   margin: 0.1rem 0 0;
   color: var(--muted);
   font-size: 0.82rem;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .section a {
-  color: var(--accent);
+  color: var(--accent-strong);
   text-decoration: none;
 }
 
 .section a:hover {
-  color: var(--accent-hover);
+  color: var(--accent);
   text-decoration: underline;
 }
 
 footer {
   padding: 2.5rem 0 3rem;
+  font-family: var(--mono);
   color: var(--muted);
-  text-align: center;
-  font-size: 0.9rem;
+  text-align: left;
+  font-size: 0.78rem;
 }
 
-/* Print: clean, ATS-friendly black-on-white */
+/* ------------------------------------------------------------------ *
+ * Print: clean, ATS-friendly black-on-white. Reveals all lens/tier
+ * collapsed content and strips the on-screen instrument chrome.
+ * ------------------------------------------------------------------ */
 @media print {
-  :root {
-    --bg: #fff;
+  /* Print is always the light, ATS-clean resume, even when the dark theme is
+     active on screen (hence covering the data-theme selector too). */
+  :root,
+  :root[data-theme="dark"] {
+    --paper: #fff;
     --surface: #fff;
+    --ink: #111;
     --text: #111;
     --muted: #444;
-    --accent: #1a3aa0;
+    --line: #ccc;
+    --accent: #0a565e;
+    --accent-strong: #0a565e;
+    --bg: #fff;
   }
 
   body {
@@ -593,7 +840,7 @@ footer {
   }
 
   .resume-hero {
-    background: none;
+    border-top: none;
     padding: 0 0 1rem;
   }
 
@@ -601,12 +848,11 @@ footer {
   .back-btn,
   .lang-switch,
   .lens-bar,
+  .wave,
   footer {
     display: none !important;
   }
 
-  /* Print is always the complete resume: reveal collapsed content, hide the
-     expander controls. */
   li.lens-extra {
     display: list-item !important;
   }
@@ -618,6 +864,7 @@ footer {
   .highlight-card {
     border-color: #ccc;
     background: none;
+    box-shadow: none;
   }
 
   .skill-group.lens-extra {
@@ -628,8 +875,6 @@ footer {
     display: block !important;
   }
 
-  /* Earlier-tier entries: print restores the full roles, so the screen-only
-     one-line summary is redundant and hidden. */
   .entry-compact {
     display: none !important;
   }
@@ -652,12 +897,10 @@ footer {
   }
 
   a {
-    color: #1a3aa0 !important;
+    color: #0a565e !important;
     text-decoration: none !important;
   }
 
-  /* Show the URL after body links so they remain usable on paper.
-     Skip the contact row, whose links are already self-evident. */
   a[href^="http"]::after {
     content: " (" attr(href) ")";
     font-size: 0.85em;

@@ -9,6 +9,22 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="../assets/favicon.png" sizes="any" />
   <link rel="apple-touch-icon" href="../assets/favicon.png" />
+  <script>
+    // Set the theme before first paint to avoid a flash: stored choice wins,
+    // else the OS preference, else light (the default datasheet look).
+    (function () {
+      try {
+        var t = localStorage.getItem("resumeTheme");
+        if (t !== "dark" && t !== "light") {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/base.css" />
   <link rel="stylesheet" href="../assets/resume.css" />
 </head>
@@ -20,6 +36,10 @@
           <a href="../" id="r-back" class="back-btn">← Voltar ao início</a>
           <button type="button" id="r-print" class="back-btn print-btn">⤓ Baixar PDF</button>
         </div>
+        <div class="toolbar-right">
+        <button type="button" id="r-theme" class="theme-btn" aria-label="Toggle theme">
+          <span class="theme-ico" aria-hidden="true">☾</span>
+        </button>
         <div class="lang-switch" role="group" aria-label="Language / Idioma">
           <button type="button" data-lang="pt" class="lang-btn" aria-pressed="false">
             <svg class="flag" viewBox="0 0 28 20" aria-hidden="true"><use href="../assets/flags.svg#flag-br" /></svg>
@@ -31,10 +51,15 @@
             <span>EN</span>
           </button>
         </div>
+        </div>
       </div>
       <h1 id="r-name">Gustavo Emanuel Faria Araujo</h1>
       <p class="role" id="r-role">Lead Software Engineer</p>
       <div class="contact" id="r-contact"></div>
+      <svg class="wave" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+        <path class="trace" pathLength="100" d="M0 30 L80 30 L92 14 L104 46 L116 18 L128 42 L140 24 L152 36 L230 30 L246 8 L262 52 L278 16 L294 44 L310 30 L420 30 L432 22 L444 30 L520 30 L536 6 L552 50 L568 20 L584 40 L600 26 L616 34 L632 30 L760 30 L772 12 L784 30 L1000 30" />
+        <line class="cursor" x1="980" y1="19" x2="980" y2="41" />
+      </svg>
     </div>
   </header>
 

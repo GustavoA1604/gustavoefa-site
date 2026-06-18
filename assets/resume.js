@@ -13,6 +13,7 @@ const RESUME = {
     location: "Belo Horizonte, Brasil",
     back: "← Voltar ao início",
     download: "⤓ Baixar PDF",
+    theme: { light: "Tema claro", dark: "Tema escuro" },
     summaryTitle: "Resumo",
     summary:
       "Engenheiro de software que entrega IA em produção rodando no próprio dispositivo e detém três patentes nos EUA (duas concedidas). Desde o início de 2025, coloquei modelos quantizados de fala, OCR e tradução no dispositivo do usuário, sem servidor, em cinco plataformas (Windows, Linux, macOS, Android, iOS) com aceleração por GPU, e hoje lidero o time de 6 pessoas por trás desse trabalho de fala. Antes disso, foram cerca de 5 anos construindo e re-arquitetando o software de verificação (C/C++) do protocolo PCIe na Cadence, onde liderei o Verification IP e conquistei essas três patentes em aprendizado de máquina para verificação de hardware, além de um artigo técnico publicado e uma palestra na PCI-SIG. Ao longo de 9 anos, liderei times que vão desse grupo de fala a uma empresa júnior universitária de 20 pessoas, onde introduzi o SCRUM (NPS +70%, projetos atrasados -42%). Graduação em Engenharia Elétrica com ênfase em Ciência da Computação e pós-graduação em IA/ML.",
@@ -356,6 +357,7 @@ const RESUME = {
     location: "Belo Horizonte, Brazil",
     back: "← Back to home",
     download: "⤓ Download PDF",
+    theme: { light: "Light theme", dark: "Dark theme" },
     summaryTitle: "Summary",
     summary:
       "Software engineer who ships production AI on-device and holds three U.S. patents (two granted). Since early 2025 I've put quantized speech, OCR, and translation models on users' devices, no server, across five platforms (Windows, Linux, macOS, Android, iOS) with GPU acceleration, and today I lead the 6-person team behind that speech work. Before that came ~5 years building and re-architecting the C/C++ PCIe verification software at Cadence, where I led the Verification IP and earned those three patents in machine learning for hardware verification, alongside a published technical article and a PCI-SIG conference talk. Over 9 years I've led teams ranging from this speech group to a 20-person university enterprise, where I introduced SCRUM (NPS +70%, overdue projects -42%). Electrical Engineering degree with a Computer Science minor, plus a graduate degree in AI/ML.",
@@ -896,7 +898,7 @@ function renderEntry(item, bulletTags, lens, dict) {
   const head = el("div", "entry-head");
   const title = el("h3", "entry-title");
   if (item.orgHref) {
-    const a = el("a", null, item.org);
+    const a = el("a", null, item.org + " ↗");
     a.href = item.orgHref;
     a.target = "_blank";
     a.rel = "noopener noreferrer";
@@ -1017,7 +1019,7 @@ function render() {
   li.href = RESUME.linkedin;
   li.target = "_blank";
   li.rel = "noopener noreferrer";
-  li.textContent = "LinkedIn";
+  li.textContent = "LinkedIn ↗";
   contact.append(li);
 
   // Summary (lens-specific positioning sentence when a lens is active)
@@ -1208,10 +1210,28 @@ function render() {
   });
 
   renderLensBar(dict);
+  renderThemeBtn(dict);
 
   try {
     localStorage.setItem("resumeLang", lang);
   } catch (e) {}
+}
+
+// Theme toggle. The theme itself is applied to <html data-theme> before paint by
+// an inline script in each page; here we sync the button's icon and label to the
+// current theme (and the current language) and persist any click.
+let currentTheme =
+  document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+
+function renderThemeBtn(dict) {
+  const btn = document.getElementById("r-theme");
+  if (!btn) return;
+  const dark = currentTheme === "dark";
+  const ico = btn.querySelector(".theme-ico");
+  if (ico) ico.textContent = dark ? "☀" : "☾"; // shows the destination state
+  const label = dark ? dict.theme.light : dict.theme.dark; // action: switch to…
+  btn.setAttribute("aria-label", label);
+  btn.setAttribute("title", label);
 }
 
 // Persistent lens switcher under the hero, so a visitor can re-focus the
@@ -1251,6 +1271,17 @@ document.querySelectorAll(".lang-btn").forEach((btn) => {
 // the printed/saved file is always the complete, clean resume.
 const printBtn = document.getElementById("r-print");
 if (printBtn) printBtn.addEventListener("click", () => window.print());
+
+const themeBtn = document.getElementById("r-theme");
+if (themeBtn)
+  themeBtn.addEventListener("click", () => {
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    try {
+      localStorage.setItem("resumeTheme", currentTheme);
+    } catch (e) {}
+    renderThemeBtn(RESUME[currentLang] || RESUME.pt);
+  });
 
 // Default language: route sets window.RESUME_DEFAULT_LANG; user toggle is not
 // persisted across the two routes, so the route default always wins on load.
