@@ -13,6 +13,10 @@ const RESUME = {
     location: "Belo Horizonte, Brasil",
     back: "← Voltar ao início",
     download: "⤓ Baixar PDF",
+    // Static PDF served by the download button (relative to /resume or /curriculo).
+    // Only an English PDF exists today; swap this for a PT file when there is one.
+    pdf: "../assets/Gustavo-Araujo-Resume.pdf",
+    pdfName: "Gustavo-Araujo-Curriculo.pdf",
     theme: { light: "Tema claro", dark: "Tema escuro" },
     summaryTitle: "Resumo",
     summary:
@@ -357,6 +361,8 @@ const RESUME = {
     location: "Belo Horizonte, Brazil",
     back: "← Back to home",
     download: "⤓ Download PDF",
+    pdf: "../assets/Gustavo-Araujo-Resume.pdf",
+    pdfName: "Gustavo-Araujo-Resume.pdf",
     theme: { light: "Light theme", dark: "Dark theme" },
     summaryTitle: "Summary",
     summary:
@@ -1005,7 +1011,11 @@ function render() {
     lens !== "all" && dict.roles && dict.roles[lens] ? dict.roles[lens] : dict.role;
   document.getElementById("r-back").textContent = dict.back;
   const printBtn = document.getElementById("r-print");
-  if (printBtn) printBtn.textContent = dict.download;
+  if (printBtn) {
+    printBtn.textContent = dict.download;
+    printBtn.href = dict.pdf;
+    printBtn.setAttribute("download", dict.pdfName);
+  }
 
   // Contact line
   const contact = document.getElementById("r-contact");
@@ -1265,12 +1275,6 @@ document.querySelectorAll(".lang-btn").forEach((btn) => {
     render();
   });
 });
-
-// Download PDF: hand off to the browser's print-to-PDF. The @media print rules
-// in resume.css reveal all lens-collapsed content and strip the UI chrome, so
-// the printed/saved file is always the complete, clean resume.
-const printBtn = document.getElementById("r-print");
-if (printBtn) printBtn.addEventListener("click", () => window.print());
 
 const themeBtn = document.getElementById("r-theme");
 if (themeBtn)
