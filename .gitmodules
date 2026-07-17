@@ -1,3 +1,6 @@
 [submodule "entrelinhas"]
 	path = entrelinhas
 	url = https://github.com/GustavoA1604/entrelinhas.git
+[submodule "enquadrados"]
+	path = enquadrados
+	url = https://github.com/GustavoA1604/enquadrados.git
