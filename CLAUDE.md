@@ -23,6 +23,7 @@ Plain HTML/CSS/JS. `.nojekyll` is present, so files are served as-is.
 - `resume/index.html` + `curriculo/index.html` - the resume page (see below).
 - `assets/resume.js`, `assets/resume.css` - shared resume logic and styles.
 - `entrelinhas/` - git submodule (separate game repo).
+- `enquadrados/` - git submodule (separate game repo, a 3x3 word-board game).
 
 ## Resume page (`/resume` and `/curriculo`)
 

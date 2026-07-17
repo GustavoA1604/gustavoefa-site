@@ -171,6 +171,9 @@ button:focus-visible {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   background: var(--surface);
   border: 1px solid var(--line);
   border-left: 3px solid var(--accent);
@@ -182,6 +185,13 @@ button:focus-visible {
 .card:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 22px rgba(14, 26, 31, 0.07);
+}
+
+.card-logo {
+  display: block;
+  height: 48px;
+  width: auto;
+  margin-bottom: 0.75rem;
 }
 
 .card h3 {
@@ -196,6 +206,7 @@ button:focus-visible {
 
 .section a.button {
   display: inline-block;
+  margin-top: auto;
   background: var(--accent);
   color: #fff;
   font-weight: 600;
@@ -203,6 +214,12 @@ button:focus-visible {
   border-radius: 6px;
   text-decoration: none;
   transition: background 0.15s ease;
+}
+
+.section a.button::after {
+  content: "↗";
+  display: inline-block;
+  margin-left: 0.4em;
 }
 
 .section a.button:hover {
