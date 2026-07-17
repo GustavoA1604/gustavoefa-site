@@ -1,8 +1,48 @@
-/* Page-specific styles for the landing page. Shared tokens, reset, and the
-   language-switch component live in base.css (linked first). */
+/* Page-specific styles for the landing page. Shared reset and the
+   language-switch component live in base.css (linked first).
+
+   Palette/typography mirror the resume page (assets/resume.css): cool paper,
+   a signal-teal accent, Archivo for display type, IBM Plex Mono for small
+   readout-style labels. Kept a separate copy (not a shared import) so each
+   page's tokens can drift independently if needed. Toggled via data-theme on
+   <html>, set before paint by an inline script in index.html; the toggle
+   button persists the choice to localStorage under "theme". */
+
+:root {
+  --paper: #eef2f4;
+  --surface: #ffffff;
+  --ink: #0e1a1f;
+  --text: #0e1a1f;
+  --muted: #5b6b75;
+  --line: #d6dee2;
+  --accent: #0b6b74;
+  --accent-strong: #084e55;
+  --accent-hover: #0b6b74;
+  --radius: 10px;
+  --bg: #eef2f4;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --paper: #0b1316;
+  --surface: #121e22;
+  --ink: #e8eff0;
+  --text: #e8eff0;
+  --muted: #8ba2a8;
+  --line: rgba(255, 255, 255, 0.1);
+  --accent: #2fb9b3;
+  --accent-strong: #5fd6cf;
+  --accent-hover: #5fd6cf;
+  --bg: #0b1316;
+}
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
 }
 
 .container {
@@ -10,40 +50,117 @@ html {
   margin: 0 auto;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* The lang-switch flag ring (white in base.css) is invisible on light paper. */
+.flag {
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+/* Toolbar: theme toggle + language switch, top-right. */
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-btn:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+}
+
+.theme-ico {
+  display: block;
+}
+
 .hero {
-  padding: 4rem 0 3rem;
-  background: radial-gradient(120% 120% at 50% 0%, #232a4a 0%, var(--bg) 60%);
-  text-align: center;
+  padding: 2.4rem 0 2.2rem;
+  background: transparent;
+  border-top: 3px solid var(--accent);
+  text-align: left;
 }
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 800;
+  font-stretch: 115%;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  font-size: clamp(1.9rem, 5.5vw, 2.8rem);
+  color: var(--ink);
 }
 
 .tagline {
-  margin: 0.5rem 0 0;
-  color: var(--muted);
+  margin: 0.75rem 0 0;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--accent-strong);
 }
 
 .section {
-  padding: 2.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 2rem 0;
+  border-top: 1px solid var(--line);
 }
 
 .section h2 {
-  font-size: 1.4rem;
-  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.25rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.section h2::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.section p {
+  color: var(--ink);
+  line-height: 1.65;
 }
 
 .links a,
 .section a {
-  color: var(--accent);
+  color: var(--accent-strong);
   text-decoration: none;
 }
 
-.links a:hover {
-  color: var(--accent-hover);
+.links a:hover,
+.section a:hover {
+  color: var(--accent);
   text-decoration: underline;
 }
 
@@ -55,13 +172,21 @@ html {
 
 .card {
   background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
   border-radius: var(--radius);
   padding: 1.5rem;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(14, 26, 31, 0.07);
 }
 
 .card h3 {
   margin: 0 0 0.5rem;
+  color: var(--ink);
 }
 
 .card p {
@@ -72,29 +197,24 @@ html {
 .section a.button {
   display: inline-block;
   background: var(--accent);
-  color: #0b0e1a;
+  color: #fff;
   font-weight: 600;
   padding: 0.6rem 1.2rem;
-  border-radius: 999px;
+  border-radius: 6px;
   text-decoration: none;
   transition: background 0.15s ease;
 }
 
 .section a.button:hover {
-  background: var(--accent-hover);
-  color: #0b0e1a;
+  background: var(--accent-strong);
+  color: #fff;
   text-decoration: none;
-}
-
-/* Landing-page placement of the shared switch (base.css has the look) */
-.lang-switch {
-  justify-content: flex-end;
-  margin-bottom: 1rem;
 }
 
 footer {
   padding: 2.5rem 0 3rem;
+  font-family: var(--mono);
   color: var(--muted);
-  text-align: center;
-  font-size: 0.9rem;
+  text-align: left;
+  font-size: 0.78rem;
 }

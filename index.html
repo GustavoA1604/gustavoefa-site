@@ -14,6 +14,20 @@
   <link rel="icon" href="./assets/favicon.png" sizes="any" />
   <link rel="apple-touch-icon" href="./assets/favicon.png" />
 
+  <script>
+    // Set the theme before first paint to avoid a flash: stored choice wins,
+    // else the OS preference, else light.
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "dark" && t !== "light") {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gustavoefa.com.br/" />
@@ -44,22 +58,30 @@
   }
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/base.css" />
   <link rel="stylesheet" href="./assets/styles.css" />
 </head>
 <body>
   <header class="hero">
     <div class="container">
-      <div class="lang-switch" role="group" aria-label="Language / Idioma">
-        <button type="button" data-lang="pt" class="lang-btn" aria-pressed="false">
-          <svg class="flag" viewBox="0 0 28 20" aria-hidden="true"><use href="./assets/flags.svg#flag-br" /></svg>
-          <span>PT</span>
+      <div class="toolbar">
+        <button type="button" id="theme-btn" class="theme-btn" aria-label="Toggle theme">
+          <span class="theme-ico" aria-hidden="true">☾</span>
         </button>
-        <span class="lang-sep">/</span>
-        <button type="button" data-lang="en" class="lang-btn" aria-pressed="false">
-          <svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><use href="./assets/flags.svg#flag-uk" /></svg>
-          <span>EN</span>
-        </button>
+        <div class="lang-switch" role="group" aria-label="Language / Idioma">
+          <button type="button" data-lang="pt" class="lang-btn" aria-pressed="false">
+            <svg class="flag" viewBox="0 0 28 20" aria-hidden="true"><use href="./assets/flags.svg#flag-br" /></svg>
+            <span>PT</span>
+          </button>
+          <span class="lang-sep">/</span>
+          <button type="button" data-lang="en" class="lang-btn" aria-pressed="false">
+            <svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><use href="./assets/flags.svg#flag-uk" /></svg>
+            <span>EN</span>
+          </button>
+        </div>
       </div>
       <h1>Gustavo Emanuel Faria Araujo</h1>
       <p class="tagline" data-i18n="tagline">Desenvolvedor &amp; Gerente de software &amp; Criador de jogos</p>
@@ -113,6 +135,7 @@
         games_title: "Jogos",
         entrelinhas_desc: "Um jogo de palavras para testar o seu raciocínio.",
         entrelinhas_play: "Jogar Entrelinhas",
+        theme: { light: "Tema claro", dark: "Tema escuro" },
       },
       en: {
         lang: "en",
@@ -128,10 +151,12 @@
         entrelinhas_desc:
           "A word game to test your reasoning. Note: Entrelinhas is in Portuguese only.",
         entrelinhas_play: "Play Entrelinhas",
+        theme: { light: "Light theme", dark: "Dark theme" },
       },
     };
 
     function applyLanguage(lang) {
+      currentLang = lang;
       const dict = translations[lang] || translations.pt;
       document.documentElement.lang = dict.lang;
       document.title = dict.title;
@@ -145,6 +170,7 @@
         btn.classList.toggle("active", isActive);
         btn.setAttribute("aria-pressed", String(isActive));
       });
+      renderThemeBtn(dict);
       try {
         localStorage.setItem("lang", lang);
       } catch (e) {}
@@ -154,12 +180,43 @@
       btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
     });
 
+    // Theme toggle. The theme itself is applied to <html data-theme> before
+    // paint by the inline script in <head>; here we sync the button's icon
+    // and label to the current theme (and the current language) and persist
+    // any click, mirroring the resume page's toggle.
+    let currentTheme =
+      document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    let currentLang = "pt";
+
+    function renderThemeBtn(dict) {
+      const btn = document.getElementById("theme-btn");
+      if (!btn) return;
+      const dark = currentTheme === "dark";
+      const ico = btn.querySelector(".theme-ico");
+      if (ico) ico.textContent = dark ? "☀" : "☾"; // shows the destination state
+      const label = dark ? dict.theme.light : dict.theme.dark; // action: switch to…
+      btn.setAttribute("aria-label", label);
+      btn.setAttribute("title", label);
+    }
+
+    const themeBtn = document.getElementById("theme-btn");
+    if (themeBtn)
+      themeBtn.addEventListener("click", () => {
+        currentTheme = currentTheme === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", currentTheme);
+        try {
+          localStorage.setItem("theme", currentTheme);
+        } catch (e) {}
+        renderThemeBtn(translations[currentLang] || translations.pt);
+      });
+
     let saved = null;
     try {
       saved = localStorage.getItem("lang");
     } catch (e) {}
     const browserPt = (navigator.language || "").toLowerCase().startsWith("pt");
-    applyLanguage(saved || (browserPt ? "pt" : "en"));
+    currentLang = saved || (browserPt ? "pt" : "en");
+    applyLanguage(currentLang);
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
