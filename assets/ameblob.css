@@ -1,0 +1,192 @@
+/* Page-specific styles for the Ameblob wrapper page. Same tokens/patterns as
+   assets/styles.css and assets/resume.css (kept as separate copies per that
+   convention, see styles.css's header comment). This page's own content is
+   just a toolbar + hero + an embedded game frame, so it borrows the toolbar
+   layout and back-btn from resume.css and the hero/section rhythm from
+   styles.css, plus the game-frame rules below. */
+
+:root {
+  --paper: #eef2f4;
+  --surface: #ffffff;
+  --ink: #0e1a1f;
+  --text: #0e1a1f;
+  --muted: #5b6b75;
+  --line: #d6dee2;
+  --accent: #0b6b74;
+  --accent-strong: #084e55;
+  --accent-hover: #0b6b74;
+  --radius: 10px;
+  --bg: #eef2f4;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --paper: #0b1316;
+  --surface: #121e22;
+  --ink: #e8eff0;
+  --text: #e8eff0;
+  --muted: #8ba2a8;
+  --line: rgba(255, 255, 255, 0.1);
+  --accent: #2fb9b3;
+  --accent-strong: #5fd6cf;
+  --accent-hover: #5fd6cf;
+  --bg: #0b1316;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+}
+
+.container {
+  width: min(760px, 92%);
+  margin: 0 auto;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.flag {
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+/* Toolbar: back link on the left, theme toggle + language switch on the right. */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.toolbar-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.toolbar-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.back-btn:hover {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-btn:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+}
+
+.theme-ico {
+  display: block;
+}
+
+.hero {
+  padding: 2.4rem 0 1.6rem;
+  background: transparent;
+  border-top: 3px solid var(--accent);
+  text-align: left;
+}
+
+.hero h1 {
+  margin: 0;
+  font-weight: 800;
+  font-stretch: 115%;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  font-size: clamp(1.9rem, 5.5vw, 2.8rem);
+  color: var(--ink);
+}
+
+.tagline {
+  margin: 0.75rem 0 0;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--accent-strong);
+}
+
+.section {
+  padding: 2rem 0;
+}
+
+footer {
+  padding: 2.5rem 0 3rem;
+  font-family: var(--mono);
+  color: var(--muted);
+  text-align: left;
+  font-size: 0.78rem;
+}
+
+/* Game frame: the game is a fixed 500x500px canvas served from ./game/ (the
+   private Ameblob repo, fetched at deploy time). It's embedded via iframe
+   rather than inlined so its own relative asset/audio paths ("audio/...",
+   "img/...") keep resolving against its own document instead of this page's.
+   The iframe keeps its native 500x500 size and is scaled down with a CSS
+   transform to fit the available width (see the script at the bottom of
+   ameblob/index.html), since the game itself isn't responsive. */
+.game-frame-wrap {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: #000;
+}
+
+.game-frame-wrap iframe {
+  width: 500px;
+  height: 500px;
+  border: 0;
+  display: block;
+  transform-origin: top left;
+}

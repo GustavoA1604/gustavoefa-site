@@ -29,7 +29,7 @@ jobs:
           repository: GustavoA1604/Ameblob
           ref: revamp
           token: ${{ secrets.GAMES_DEPLOY_TOKEN }}
-          path: ameblob
+          path: ameblob/game
 
       - name: Prepare site directory
         run: |
